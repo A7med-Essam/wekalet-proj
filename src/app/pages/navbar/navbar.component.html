@@ -6,9 +6,9 @@
                     <img src="assets/images/logo.jpg" style="width: 50px;max-width: 50px;" alt="Site Logo">
                 </a>
             </div>
-            <div class="header-main-nav d-none d-md-block">
+            <div class="header-main-nav" #navbar>
                 <nav class="mainmenu-nav">
-                    <button class="mobile-close-btn mobile-nav-toggler"><i class="fas fa-times"></i></button>
+                    <button class="mobile-close-btn mobile-nav-toggler" (click)="closeSidebar(navbar)"><i class="fas fa-times"></i></button>
                     <div class="mobile-nav-brand">
                         <a href="index.html" class="logo">
                             <img src="assets/images/logo.jpg" alt="Site Logo">
@@ -18,17 +18,10 @@
                         <li class="menu-item-has-children" routerLinkActive='menu-item-open'>
                             <a routerLink="home">Home</a>
                         </li>
-                        <li class="menu-item-has-children" routerLinkActive='menu-item-open'>
-                            <a routerLink="products">Shop</a>
-                        </li>
-                        <li routerLinkActive='menu-item-open'><a routerLink="about">About</a></li>
-                        <li routerLinkActive='menu-item-open'><a routerLink="contact">Contact</a></li>
-                        <!-- <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
-                        </li> -->
-                        <!-- <li class="menu-item-has-children">
-                            <a href="#">Blog</a>
-                        </li> -->
+                        <li class="menu-item-has-children" routerLinkActive='menu-item-open'><a
+                                routerLink="products">Shop</a></li>
+                        <li routerLinkActive='menu-item-open' class="menu-item-has-children"><a routerLink="about">About</a></li>
+                        <li routerLinkActive='menu-item-open' class="menu-item-has-children"><a routerLink="contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -78,13 +71,14 @@
                                     class="btn-link">REGISTER HERE.</a></div>
                         </div>
                     </li>
-                    <li class="axil-mobile-toggle">
+                    <li class="axil-mobile-toggle" (click)="openSidebar(navbar)">
                         <button class="menu-btn mobile-nav-toggler">
                             <i class="fa-solid fa-bars"></i>
                         </button>
                     </li>
                 </ul>
             </div>
+            <div class="closeMask"></div>
         </div>
     </div>
 </nav>

@@ -8,12 +8,21 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, NotFoundComponent, HomeComponent, ProductsComponent],
-  imports: [BrowserModule, AppRoutingModule
-  
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    NotFoundComponent,
+    HomeComponent,
+    ProductsComponent,
+    ContactComponent,
+    AboutComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

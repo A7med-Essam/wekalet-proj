@@ -1,0 +1,126 @@
+.axil-section-gap {
+    padding: 80px 0;
+}.axil-contact-page .title {
+    font-weight: var(--s-medium);
+    color: var(--color-black);
+}
+
+.mb--10 {
+    margin-bottom: 10px;
+}.axil-contact-page .contact-form p {
+    width: 80%;
+    margin-bottom: 45px;
+}.form-group label {
+    position: absolute;
+    top: -11px;
+    left: 20px;
+    pointer-events: none;
+    z-index: 4;
+    background: #fff;
+    padding: 0 10px;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    color: var(--color-body);
+}.form-group {
+    margin-bottom: 30px;
+    position: relative;
+}.axil-contact-page .form-group input {
+    height: 60px;
+}
+
+.form-group input {
+    border: 0 none;
+    border-radius: 6px;
+    height: 50px;
+    font-size: var(--font-size-b2);
+    padding: 0 20px;
+    background-color: #fff;
+    border: 1px solid var(--color-light);
+}
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=tel], textarea {
+    font-size: var(--font-size-b2);
+    font-weight: 400;
+    height: auto;
+    line-height: 60px;
+    background: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0 30px;
+    outline: none;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+}.axil-contact-page .form-group label span {
+    color: var(--color-chart03);
+}.form-group textarea {
+    min-height: 160px;
+    border: 0 none;
+    border-radius: 6px;
+    resize: none;
+    padding: 15px;
+    font-size: var(--font-size-b2);
+    background-color: #fff;
+    border: 1px solid var(--color-light);
+    line-height: 1.5;
+    padding-left: 30px;
+    padding-top: 20px;
+}.mb--0 {
+    margin-bottom: 0 !important;
+}.axil-contact-page .form-group .axil-btn {
+    width: auto;
+}a.axil-btn.btn-bg-primary:before, button.axil-btn.btn-bg-primary:before {
+    background-color: var(--color-primary);
+}
+
+a.axil-btn:before, button.axil-btn:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transition: transform .5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+// contact info
+.mb--40 {
+    margin-bottom: 40px;
+}
+.axil-contact-page .title {
+    font-weight: 600;
+    color: var(--color-black);
+}
+.mb--20 {
+    margin-bottom: 20px;
+}.axil-contact-page .contact-location span {
+    display: block;
+}.axil-contact-page .contact-location span {
+    display: block;
+}.axil-contact-page .contact-location span {
+    display: block;
+}p:last-child {
+    margin-bottom: 0;
+}.contact-location span, .contact-career p,.opening-hour p{
+    color: #6c757d!important;
+}
+
+// map
+.pb--0 {
+    padding-bottom: 0 !important;
+}
+
+.axil-section-gap {
+    padding: 80px 0;
+}#gmap_canvas {
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+}

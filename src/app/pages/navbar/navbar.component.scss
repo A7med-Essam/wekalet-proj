@@ -1,0 +1,11 @@
+.header-main-nav.open .mainmenu-nav {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+}@media only screen and (max-width: 991px)
+{.header-main-nav .mainmenu-nav .mainmenu {
+    display: block;
+    height: 100%;
+    overflow-y: auto;
+    margin: 0;
+}}

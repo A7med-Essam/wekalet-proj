@@ -1,0 +1,52 @@
+// about section 1
+.axil-section-gap {
+    padding: 80px 0;
+}
+.axil-about-area .about-thumbnail img {
+    border-radius: 10px;
+    width: 100%;
+}.axil-about-area .about-content.content-right {
+    padding-left: 50px;
+}.title-highlighter.highlighter-primary2 {
+    color: var(--color-primary);
+}
+
+.title-highlighter {
+    font-size: 14px;
+    font-weight: var(--s-bold);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}.title-highlighter.highlighter-primary2 i {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+.title-highlighter i {
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    font-size: 12px;
+    text-align: center;
+    margin-right: 10px;
+}.axil-about-area .about-content .title {
+    margin-bottom: 24px;
+    line-height: 1.2;
+}.axil-about-area .about-content .text-heading {
+    font-size: 20px;
+    margin-bottom: 22px;
+    display: block;
+}.axil-about-area .about-content p {
+    font-size: var(--font-size-b2);
+    margin-bottom: 34px;
+}.mb--0 {
+    margin-bottom: 0 !important;
+}
+@media only screen and (max-width: 1199px)
+{.axil-about-area .about-content.content-right {
+    padding-left: 0;
+}}@media only screen and (max-width: 1199px)
+{.axil-about-area .about-content .title {
+    font-size: 36px;
+}}
