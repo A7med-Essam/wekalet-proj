@@ -10,6 +10,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AboutComponent } from './pages/about/about.component';
     ProductsComponent,
     ContactComponent,
     AboutComponent,
+    CheckoutComponent,
+    CartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

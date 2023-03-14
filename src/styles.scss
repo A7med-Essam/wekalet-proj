@@ -1340,3 +1340,8 @@ body.open .closeMask {
   z-index: 6;
   transition: .3s;
 }
+a {
+  color: var(--color-heading);
+  text-decoration: none;
+  outline: none;
+}

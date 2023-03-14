@@ -22,4 +22,14 @@ export class NavbarComponent implements OnInit {
     navbar.classList.remove("open")
     this.document.body.classList.remove('open');
   }
+
+  openCart(cartSidebar:HTMLElement){
+    cartSidebar.classList.add("open")
+    this.document.body.classList.add('open');
+  }
+
+  closeCart(cartSidebar:HTMLElement){
+    cartSidebar.classList.remove("open")
+    this.document.body.classList.remove('open');
+  }
 }
