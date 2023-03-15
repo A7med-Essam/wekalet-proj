@@ -19,6 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { I18nModule } from './shared/i18n/i18n.module';
 import { TranslateService } from '@ngx-translate/core';
 import { I18nService } from 'src/app/shared/i18n/i18n.service';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { DialogModule } from 'primeng/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,7 @@ import { I18nService } from 'src/app/shared/i18n/i18n.service';
     AboutComponent,
     CheckoutComponent,
     CartComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,7 @@ import { I18nService } from 'src/app/shared/i18n/i18n.service';
     ReactiveFormsModule,
     // FormsModule,
     I18nModule,
+    DialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
@@ -48,9 +53,9 @@ import { I18nService } from 'src/app/shared/i18n/i18n.service';
 })
 export class AppModule {
   constructor(
-    private _I18nService:I18nService,
+    private _I18nService: I18nService,
     public translate: TranslateService
-  ) { 
-    this._I18nService.saveCurrentLang(this.translate)
+  ) {
+    this._I18nService.saveCurrentLang(this.translate);
   }
 }

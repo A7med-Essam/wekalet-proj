@@ -83,6 +83,7 @@
       "title":"Explore All Products"
     },
     "products":{
+      "emptyMsg":"There isn't products at the moment for this category",
       "paginate":"Showing {{from}}-{{to}} of {{total}} results",
       "sort":{
         "byLatest":"Sort By Latest",
@@ -126,6 +127,15 @@
       "total":"Total",
       "empty": "The cart is empty..."
     }
+  },
+  "productDetails":{
+    "title":"Product Details",
+    "review":"(customer reviews 1)",
+    "colors":"colors",
+    "size":"size",
+    "description1":"In stock",
+    "description2":"Free delivery available",
+    "description3":"Sales 30% Off Use Code: MOTIVE30"
   },
   "checkout":{
     "coupon":{  

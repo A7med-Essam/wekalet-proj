@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit,OnDestroy  {
+export class ProductsComponent implements OnInit, OnDestroy {
   categoryFilterBtn: boolean = false;
   genderFilterBtn: boolean = false;
   colorsFilterBtn: boolean = false;
@@ -24,7 +24,6 @@ export class ProductsComponent implements OnInit,OnDestroy  {
 
   ngOnInit(): void {
     this.getCategoryId();
-    
   }
 
   toggleFilterBtn(type: string, e: any) {
@@ -58,15 +57,17 @@ export class ProductsComponent implements OnInit,OnDestroy  {
   }
 
   getCategoryId() {
-    this._CategoryService.categoryId.pipe(takeUntil(this.unsubscribe$)).subscribe({
-      next: (res) => {
-        if (res) {
-          this.getProductsByCategoryId(res)
-        }else{
-          this.getProducts()
-        }
-      },
-    });
+    this._CategoryService.categoryId
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe({
+        next: (res) => {
+          if (res) {
+            this.getProductsByCategoryId(res);
+          } else {
+            this.getProducts();
+          }
+        },
+      });
   }
 
   ngOnDestroy(): void {
@@ -79,15 +80,15 @@ export class ProductsComponent implements OnInit,OnDestroy  {
   getProducts() {
     this._ProductService.getProducts().subscribe({
       next: (res) => {
-        this.products = res.data.data
+        this.products = res.data.data;
       },
     });
   }
 
-  getProductsByCategoryId(id:number) {
+  getProductsByCategoryId(id: number) {
     this._ProductService.getProductsByCategoryId(id).subscribe({
       next: (res) => {
-        this.products = res.data.data
+        this.products = res.data.data;
       },
     });
   }

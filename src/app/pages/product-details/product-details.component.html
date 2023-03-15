@@ -1,0 +1,139 @@
+<p-dialog header="{{'productDetails.title'|translate}}" [(visible)]="display" [modal]="true" [style]="{width: '90vw',height: '100vw'}">
+    <div style="display: block; padding-right: 17px;">
+        <div class="single-product-thumb">
+            <div class="row">
+                <div class="col-xl-7">
+                    <div class="row">
+                        <div class="col-lg-10 order-lg-2">
+                            <div
+                                class="single-product-thumbnail product-large-thumbnail axil-product thumbnail-badge zoom-gallery slick-initialized slick-slider">
+                                <div class="slick-list">
+                                    <div class="slick-track">
+                                        <div class="thumbnail slick-slide slick-current slick-active"
+                                            data-slick-index="0" aria-hidden="false" tabindex="0">
+                                            <img src="assets/images/products/product-big-01.png" alt="Product Images">
+                                            <div class="label-block label-right">
+                                                <div class="product-badget">20% {{"labels.discount"|translate}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 order-lg-1">
+                            <div
+                                class="product-small-thumb small-thumb-wrapper slick-initialized slick-slider slick-vertical">
+                                <div class="slick-list draggable" >
+                                    <div class="slick-track">
+                                        <div class="small-thumb-img slick-slide slick-current slick-active"
+                                            data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 75px;">
+                                            <img src="assets/images/products/product-thumb/thumb-08.png"
+                                                alt="thumb image">
+                                        </div>
+                                        <div class="small-thumb-img slick-slide slick-active" data-slick-index="1"
+                                            aria-hidden="false" tabindex="0" style="width: 75px;">
+                                            <img src="assets/images/products/product-thumb/thumb-07.png"
+                                                alt="thumb image">
+                                        </div>
+                                        <div class="small-thumb-img slick-slide slick-active" data-slick-index="2"
+                                            aria-hidden="false" tabindex="0" style="width: 75px;">
+                                            <img src="assets/images/products/product-thumb/thumb-09.png"
+                                                alt="thumb image">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5">
+                    <div class="single-product-content">
+                        <div class="inner">
+                            <div class="product-rating pt-3">
+                                <div class="star-rating">
+                                    <img src="assets/images/icons/rate.png" alt="Rate Images">
+                                </div>
+                                <div class="review-link mx-2">
+                                    <a href="#">
+                                        {{"productDetails.review"|translate}}
+                                        <!-- (<span>1</span> customer reviews) -->
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="product-title">Serif Coffee Table</h3>
+                            <span class="price-amount">$155.00 - $255.00</span>
+                            <ul class="product-meta p-0">
+                                <li><i class="fas fa-check"></i>{{"productDetails.description1"|translate}}</li>
+                                <li><i class="fas fa-check"></i>{{"productDetails.description2"|translate}}</li>
+                                <li><i class="fas fa-check"></i>{{"productDetails.description3"|translate}}</li>
+                            </ul>
+                            <p class="description">In ornare lorem ut est dapibus, ut tincidunt nisi
+                                pretium. Integer ante est, elementum eget magna. Pellentesque sagittis
+                                dictum libero, eu dignissim tellus.</p>
+
+                            <div class="product-variations-wrapper">
+
+                                <!-- Start Product Variation  -->
+                                <div class="product-variation">
+                                    <h6 class="title">{{"productDetails.colors"|translate}}</h6>
+                                    <div class="color-variant-wrapper">
+                                        <ul class="color-variant mt--0 p-0">
+                                            <li class="color-extra-01 active"><span><span class="color"></span></span>
+                                            </li>
+                                            <li class="color-extra-02"><span><span class="color"></span></span>
+                                            </li>
+                                            <li class="color-extra-03"><span><span class="color"></span></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- End Product Variation  -->
+
+                                <!-- Start Product Variation  -->
+                                <div class="product-variation">
+                                    <h6 class="title">{{"productDetails.size"|translate}}</h6>
+                                    <ul class="range-variant p-0">
+                                        <li class="active">xs</li>
+                                        <li>s</li>
+                                        <li>m</li>
+                                        <li>l</li>
+                                        <li>xl</li>
+                                    </ul>
+                                </div>
+                                <!-- End Product Variation  -->
+
+                            </div>
+
+                            <!-- Start Product Action Wrapper  -->
+                            <div class="product-action-wrapper d-flex-center">
+                                <!-- Start Quentity Action  -->
+                                <div class="pro-qty"><span class="dec qtybtn">-</span><input type="text" value="1"><span
+                                        class="inc qtybtn">+</span></div>
+                                <!-- End Quentity Action  -->
+
+                                <!-- Start Product Action  -->
+                                <ul class="product-action d-flex-center mb--0 p-0">
+                                    <li class="add-to-cart">
+                                        <a href="cart.html" class="axil-btn btn-bg-primary">
+                                            {{"buttons.addToCart"|translate}}
+                                        </a>
+                                    </li>
+                                    <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i
+                                                class="far fa-heart"></i></a>
+                                    </li>
+                                </ul>
+                                <!-- End Product Action  -->
+
+                            </div>
+                            <!-- End Product Action Wrapper  -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-dialog>

@@ -26,7 +26,7 @@
     <!-- End Breadcrumb Area  -->
 
     <!-- Start Shop Area  -->
-    <div class="axil-shop-area axil-section-gap bg-color-white">
+    <div class="axil-shop-area axil-section-gap bg-color-white" *ngIf="products.length;else other_content">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 my-4">
@@ -145,11 +145,11 @@
                     </div>
                     <!-- End .row -->
                     <div class="row row--15">
-                        <div class="col-xl-4 col-sm-6">
+                        <div class="col-xl-4 col-sm-6" *ngFor="let product of products">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
                                     <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-01.png" alt="Product Images">
+                                        <img [src]="product.images[0].image" alt="Product Images">
                                     </a>
                                     <div class="label-block label-right">
                                         <div class="product-badget">10% {{"labels.discount"|translate}}</div>
@@ -164,17 +164,16 @@
                                 </div>
                                 <div class="product-content">
                                     <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">3D™ wireless headset</a></h5>
+                                        <h5 class="title"><a href="single-product.html">{{product.name}}</a></h5>
                                         <div class="product-price-variant">
-                                            <span class="price current-price">$30</span>
-                                            <span class="price old-price">$30</span>
+                                            <span class="price current-price">{{product.price}}{{"currency"|translate}}</span>
+                                            <span class="price old-price">{{product.price}}{{"currency"|translate}}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
-                        <div class="col-xl-4 col-sm-6">
+                        <!-- <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
                                     <a href="single-product.html">
@@ -199,7 +198,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
                         <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -228,7 +226,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
                         <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -257,7 +254,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
                         <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -283,7 +279,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
                         <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -312,7 +307,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
                         <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -341,7 +335,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
                         <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -367,7 +360,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Product  -->
                         <div class="col-xl-4 col-sm-6">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -395,8 +387,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- End Single Product  -->
+                        </div> -->
                     </div>
                     <div class="text-center pt--20">
                         <a href="#" class="axil-btn btn-bg-lighter btn-load-more">{{"buttons.loadMore"|translate}}</a>
@@ -407,7 +398,11 @@
         <!-- End .container -->
     </div>
     <!-- End Shop Area  -->
-
+    <ng-template #other_content>
+        <div class="text-danger my-5 text-center">
+            {{"shop.products.emptyMsg" | translate}}
+        </div>
+    </ng-template>
     <!-- Start Axil Newsletter Area  -->
     <div class="axil-newsletter-area axil-section-gap pt--0">
         <div class="container">

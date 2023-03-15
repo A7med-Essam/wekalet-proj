@@ -211,7 +211,7 @@
         left: 15px;
     }
 
-    .mainmenu > .menu-item-has-children > a {
+    .mainmenu>.menu-item-has-children>a {
         margin-right: 0px;
         margin-left: 15px;
         text-align: left;
@@ -247,15 +247,18 @@
     .cart-dropdown .cart-item .item-img .close-btn {
         right: -10px;
     }
-    @media only screen and (max-width: 991.5px){
+
+    @media only screen and (max-width: 991.5px) {
         .header-main-nav .mainmenu-nav {
             width: 320px !important;
         }
     }
+
     .cart-dropdown .cart-item .product-rating .rating-number {
         margin-left: 0px;
         margin-right: 5px;
     }
+
     .axil-breadcrumb-area .inner .bradcrumb-thumb {
         text-align: left;
     }
@@ -265,7 +268,8 @@
         right: 20px
     }
 
-    .axil-order-summery.order-checkout-summery .summery-table th:last-child, .axil-order-summery.order-checkout-summery .summery-table td:last-child {
+    .axil-order-summery.order-checkout-summery .summery-table th:last-child,
+    .axil-order-summery.order-checkout-summery .summery-table td:last-child {
         text-align: left !important;
     }
 
@@ -279,11 +283,12 @@
         margin-left: 8px;
     }
 
-    select, .select2 {
+    select,
+    .select2 {
         background-position: 5% !important;
     }
 
-    .axil-order-summery .summery-table tbody td:nth-child(even){
+    .axil-order-summery .summery-table tbody td:nth-child(even) {
         text-align: left;
     }
 
@@ -324,7 +329,45 @@
         text-align: left !important;
     }
 
-    .category-select .single-select{
+    .category-select .single-select {
         padding: 0px 20px 0px 45px !important;
     }
+
+    .single-product-thumbnail.thumbnail-badge .thumbnail .label-block.label-right {
+        right: auto !important;
+        left: 30px;
+    }
+
+    .single-product-thumbnail.thumbnail-badge .thumbnail {
+        padding-left: 45px;
+        padding-right: 0px !important;
+    }
+
+    .single-product-content .inner .product-meta li i {
+        padding-left: 15px;
+        padding-right: 0px !important;
+    }
+
+    .pro-qty {
+        padding-left: 12px;
+    }
+
+    .p-dialog-content>div {
+        padding: 0px !important;
+    }
+
+    .slick-track .slick-slide {
+        padding: 10px 0px
+    }
+
+    @media screen and (max-width:1200px) {
+        .single-product-thumbnail.thumbnail-badge .thumbnail {
+            padding-left: 0px !important;
+        }
+
+        .single-product-thumbnail.thumbnail-badge .thumbnail .label-block.label-right {
+            left: -15px !important;
+        }
+    }
+
 }

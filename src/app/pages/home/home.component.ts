@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _Router: Router
   ) {}
   private unsubscribe$ = new Subject<void>();
+  Math: Math = Math;
 
   ngOnInit(): void {
     this._CategoryService.categories
