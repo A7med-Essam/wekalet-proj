@@ -3,13 +3,14 @@
         <div class="row">
             <div class="col-sm-6 my-3">
                 <div class="header-info">
-                    <span class="subtitle text-pink"><i class="fas fa-fire"></i> Hot Deal In This Week</span>
-                    <h1 class="title">Men's Running Shoes - Black/Yellow</h1>
+                    <span class="subtitle text-pink"><i class="fas fa-fire"></i> {{ "home.section1.subtitle" | translate
+                        }}</span>
+                    <h1 class="title">{{ "home.section1.title" | translate }}</h1>
                     <div class="slide-action">
                         <div class="shop-btn">
                             <a href="shop.html" class="axil-btn btn-bg-white text-reset text-decoration-none"
                                 tabindex="0">
-                                <i class="fas fa-shopping-cart"></i> Shop Now
+                                <i class="fas fa-shopping-cart"></i> {{ "buttons.shopNow" | translate }}
                             </a>
                         </div>
                         <div class="item-rating">
@@ -30,7 +31,7 @@
                                     <i class="far fa-star"></i>
                                 </span>
                                 <span class="review-text">
-                                    <span>100+</span> Reviews
+                                    <span>100+</span> {{ "home.section1.reviews" | translate }}
                                 </span>
                             </div>
                         </div>
@@ -41,8 +42,8 @@
                 <div class="header-img">
                     <img src="assets/images/running_shoes_PNG5815.png" alt="Product">
                     <div class="product-price shadow-lg">
-                        <span class="text">From</span>
-                        <span class="price-amount">250<small><sub>egp</sub></small></span>
+                        <span class="text">{{ "home.section1.img_label" | translate }}</span>
+                        <span class="price-amount">250<small><sub>{{ "currency" | translate }}</sub></small></span>
                     </div>
                 </div>
             </div>
@@ -57,23 +58,24 @@
     <div class="container">
         <div class="section-title-wrapper">
             <span class="title-highlighter highlighter-secondary">
-                <i class="fa-solid fa-tags"></i> Categories
+                <i class="fa-solid fa-tags"></i> {{ "home.section2.subtitle" | translate }}
             </span>
-            <h2 class="title">Browse by Category</h2>
+            <h2 class="title">{{ "home.section2.title" | translate }}</h2>
         </div>
         <div class="row">
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                <div class="slick-single-layout slick-slide slick-current slick-active">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6" *ngFor="let category of categories">
+                <div class="slick-single-layout slick-slide slick-current slick-active"
+                    (click)="displayProductsByCategoryId(category?.id)">
                     <div class="categrie-product sal-animate" data-sal="zoom-out" data-sal-delay="200"
                         data-sal-duration="500">
-                        <a routerLink="../products" class="text-reset">
-                            <img class="img-fluid" src="./assets/images/categories/kids.png" alt="product categorie">
-                            <h6 class="cat-title text-center">Kids</h6>
+                        <a  class="text-reset">
+                            <img class="img-fluid" [src]="category?.image" alt="product categorie">
+                            <h6 class="cat-title text-center">{{category?.name}}</h6>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+            <!-- <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                 <div class="slick-single-layout slick-slide slick-current slick-active">
                     <div class="categrie-product sal-animate" data-sal="zoom-out" data-sal-delay="200"
                         data-sal-duration="500">
@@ -128,7 +130,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
@@ -137,26 +139,26 @@
     <div class="container">
         <div class="section-title-wrapper">
             <span class="title-highlighter highlighter-primary">
-                <i class="fas fa-shopping-basket"></i> Our Products
+                <i class="fas fa-shopping-basket"></i> {{ "home.section3.subtitle" | translate }}
             </span>
-            <h2 class="title">Explore Our Products</h2>
+            <h2 class="title"> {{ "home.section3.title" | translate }}</h2>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4">
+            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4" *ngFor="let product of products">
                 <div class="axil-product product-style-one">
                     <div class="thumbnail">
                         <a href="single-product.html" tabindex="0">
-                            <img class="hover-img" src="assets/images/products/product-01.png" alt="Product Images">
+                            <img class="hover-img" [src]="product?.image" alt="Product Images">
                         </a>
                         <div class="label-block label-right">
-                            <div class="product-badget">20% Off</div>
+                            <div class="product-badget">20% {{ "labels.discount" | translate }}</div>
                         </div>
                         <div class="product-hover-action">
                             <ul class="cart-action p-0">
                                 <li class="quickview"><a href="#"><i class="far fa-eye"></i></a></li>
                                 <li class="select-option">
                                     <a href="single-product.html" tabindex="0">
-                                        Add to Cart
+                                        {{ "buttons.addToCart" | translate }}
                                     </a>
                                 </li>
                                 <li class="wishlist"><a href="wishlist.html" tabindex="0"><i
@@ -177,31 +179,31 @@
                                 <span class="rating-number text-muted">(64)</span>
                             </div>
                             <h5 class="title">
-                                <a class="text-reset" href="single-product.html">Yantiti Leather &amp; Canvas Bags</a>
+                                <a class="text-reset" href="single-product.html">{{product?.name}}</a>
                             </h5>
                             <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
+                                <span class="price current-price">{{product?.price}} {{ "currency" | translate }}</span>
+                                <span class="price old-price">{{product?.price}} {{ "currency" | translate }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4">
+            <!-- <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4">
                 <div class="axil-product product-style-one">
                     <div class="thumbnail">
                         <a href="single-product.html" tabindex="0">
                             <img class="hover-img" src="assets/images/products/product-03.png" alt="Product Images">
                         </a>
                         <div class="label-block label-right">
-                            <div class="product-badget">20% Off</div>
+                            <div class="product-badget">20% {{ "labels.discount" | translate }}</div>
                         </div>
                         <div class="product-hover-action">
                             <ul class="cart-action p-0">
                                 <li class="quickview"><a href="#"><i class="far fa-eye"></i></a></li>
                                 <li class="select-option">
                                     <a href="single-product.html" tabindex="0">
-                                        Add to Cart
+                                        {{ "buttons.addToCart" | translate }}
                                     </a>
                                 </li>
                                 <li class="wishlist"><a href="wishlist.html" tabindex="0"><i
@@ -225,8 +227,8 @@
                                 <a class="text-reset" href="single-product.html">Yantiti Leather &amp; Canvas Bags</a>
                             </h5>
                             <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
+                                <span class="price current-price">29.99 {{ "currency" | translate }}</span>
+                                <span class="price old-price">49.99 {{ "currency" | translate }}</span>
                             </div>
                         </div>
                     </div>
@@ -239,14 +241,14 @@
                             <img class="hover-img" src="assets/images/products/product-05.png" alt="Product Images">
                         </a>
                         <div class="label-block label-right">
-                            <div class="product-badget">20% Off</div>
+                            <div class="product-badget">20% {{ "labels.discount" | translate }}</div>
                         </div>
                         <div class="product-hover-action">
                             <ul class="cart-action p-0">
                                 <li class="quickview"><a href="#"><i class="far fa-eye"></i></a></li>
                                 <li class="select-option">
                                     <a href="single-product.html" tabindex="0">
-                                        Add to Cart
+                                        {{ "buttons.addToCart" | translate }}
                                     </a>
                                 </li>
                                 <li class="wishlist"><a href="wishlist.html" tabindex="0"><i
@@ -270,8 +272,8 @@
                                 <a class="text-reset" href="single-product.html">Yantiti Leather &amp; Canvas Bags</a>
                             </h5>
                             <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
+                                <span class="price current-price">29.99 {{ "currency" | translate }}</span>
+                                <span class="price old-price">49.99 {{ "currency" | translate }}</span>
                             </div>
                         </div>
                     </div>
@@ -284,14 +286,14 @@
                             <img class="hover-img" src="assets/images/products/product-07.png" alt="Product Images">
                         </a>
                         <div class="label-block label-right">
-                            <div class="product-badget">20% Off</div>
+                            <div class="product-badget">20% {{ "labels.discount" | translate }}</div>
                         </div>
                         <div class="product-hover-action">
                             <ul class="cart-action p-0">
                                 <li class="quickview"><a href="#"><i class="far fa-eye"></i></a></li>
                                 <li class="select-option">
                                     <a href="single-product.html" tabindex="0">
-                                        Add to Cart
+                                        {{ "buttons.addToCart" | translate }}
                                     </a>
                                 </li>
                                 <li class="wishlist"><a href="wishlist.html" tabindex="0"><i
@@ -315,13 +317,13 @@
                                 <a class="text-reset" href="single-product.html">Yantiti Leather &amp; Canvas Bags</a>
                             </h5>
                             <div class="product-price-variant">
-                                <span class="price current-price">$29.99</span>
-                                <span class="price old-price">$49.99</span>
+                                <span class="price current-price">29.99 {{ "currency" | translate }}</span>
+                                <span class="price old-price">49.99 {{ "currency" | translate }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

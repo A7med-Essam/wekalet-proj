@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  BaseUrl: 'https://api.wekalet-abo-steet.me/api/',
 };

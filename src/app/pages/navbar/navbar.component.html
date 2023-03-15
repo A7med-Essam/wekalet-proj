@@ -15,13 +15,13 @@
                         </a>
                     </div>
                     <ul class="mainmenu">
-                        <li class="menu-item-has-children" routerLinkActive='menu-item-open'>
-                            <a routerLink="home">Home</a>
+                        <li class="menu-item-has-children" routerLinkActive='menu-item-open' (click)="closeSidebar(navbar)">
+                            <a routerLink="home">{{"pages.home"|translate}}</a>
                         </li>
-                        <li class="menu-item-has-children" routerLinkActive='menu-item-open'><a
-                                routerLink="products">Shop</a></li>
-                        <li routerLinkActive='menu-item-open' class="menu-item-has-children"><a routerLink="about">About</a></li>
-                        <li routerLinkActive='menu-item-open' class="menu-item-has-children"><a routerLink="contact">Contact</a></li>
+                        <li class="menu-item-has-children" routerLinkActive='menu-item-open'  (click)="closeSidebar(navbar)"><a
+                                routerLink="products">{{"pages.shop"|translate}}</a></li>
+                        <li routerLinkActive='menu-item-open' class="menu-item-has-children"  (click)="closeSidebar(navbar)"><a routerLink="about">{{"pages.about"|translate}}</a></li>
+                        <li routerLinkActive='menu-item-open' class="menu-item-has-children"  (click)="closeSidebar(navbar)"><a routerLink="contact">{{"pages.contact"|translate}}</a></li>
                     </ul>
                 </nav>
             </div>
@@ -86,7 +86,7 @@
 <div class="cart-dropdown" id="cart-dropdown" #cartSidebar>
     <div class="cart-content-wrap">
         <div class="cart-header">
-            <h2 class="header-title">Cart review</h2>
+            <h2 class="header-title">{{"labels.cartReview" | translate}}</h2>
             <button (click)="closeSidebar(cartSidebar)" class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
         </div>
         <div class="cart-body">
@@ -164,12 +164,12 @@
         </div>
         <div class="cart-footer">
             <h3 class="cart-subtotal">
-                <span class="subtotal-title">Subtotal:</span>
-                <span class="subtotal-amount">$610.00</span>
+                <span class="subtotal-title">{{"labels.subtotal" | translate}}:</span>
+                <span class="subtotal-amount"><span class="mx-1">610.00</span>{{"currency" | translate}}</span>
             </h3>
             <div class="group-btn">
-                <a (click)="closeCart(cartSidebar)" routerLink="cart" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
-                <a (click)="closeCart(cartSidebar)" routerLink="checkout" class="axil-btn btn-bg-secondary checkout-btn text-white">Checkout</a>
+                <a (click)="closeCart(cartSidebar)" routerLink="cart" class="axil-btn btn-bg-primary viewcart-btn">{{"buttons.viewCart" | translate}}</a>
+                <a (click)="closeCart(cartSidebar)" routerLink="checkout" class="axil-btn btn-bg-secondary checkout-btn text-white">{{"buttons.checkout" | translate}}</a>
             </div>
         </div>
     </div>

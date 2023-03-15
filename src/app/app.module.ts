@@ -12,7 +12,13 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CartComponent } from './pages/cart/cart.component';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptor/http.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { I18nModule } from './shared/i18n/i18n.module';
+import { TranslateService } from '@ngx-translate/core';
+import { I18nService } from 'src/app/shared/i18n/i18n.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,8 +32,25 @@ import { CartComponent } from './pages/cart/cart.component';
     CheckoutComponent,
     CartComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    // FormsModule,
+    I18nModule,
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(
+    private _I18nService:I18nService,
+    public translate: TranslateService
+  ) { 
+    this._I18nService.saveCurrentLang(this.translate)
+  }
+}

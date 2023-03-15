@@ -1345,3 +1345,12 @@ a {
   text-decoration: none;
   outline: none;
 }
+.btn-bg-primary.danger{
+  background-color: var(--color-secondary) !important;
+}
+
+a.axil-btn.btn-bg-primary.danger:before, button.axil-btn.btn-bg-primary.danger:before{
+  background-color: var(--color-secondary) !important;
+}
+@import "./assets/styles/styles.scss";
+@import "./assets/styles/ar_style/styles_ar.scss";
