@@ -6,9 +6,9 @@
             <div class="axil-product-cart-wrap">
                 <div class="product-table-heading">
                     <h4 class="title">{{"cart.title"|translate}}</h4>
-                    <a href="#" class="cart-clear">{{"buttons.clearShoppingCart"|translate}}</a>
+                    <a (click)="clearCart()" class="cart-clear pointer" *ngIf="cart.length;">{{"buttons.clearShoppingCart"|translate}}</a>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" *ngIf="cart.length;else other_content">
                     <table class="table axil-product-table axil-cart-table mb--40">
                         <thead>
                             <tr>
@@ -21,65 +21,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="product-remove"><a href="#" class="remove-wishlist"><i
-                                            class="fas fa-times"></i></a></td>
-                                <td class="product-thumbnail"><a href="single-product.html"><img
-                                            src="./assets/images/products/electric/product-01.png"
-                                            alt="Digital Product"></a></td>
+                            <tr *ngFor="let product of cart">
+                                <td class="product-remove">
+                                    <a (click)="updateCart(product.id)" class="remove-wishlist pointer">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </td>
+                                <td class="product-thumbnail">
+                                    <a>
+                                        <img [src]="product.images[0].image" [alt]="product.name">
+                                    </a>
+                                </td>
                                 <td class="product-title"><a href="single-product.html">Wireless PS Handler</a></td>
                                 <td class="product-price" data-title="Price"><span
-                                        class="currency-symbol">$</span>124.00</td>
+                                        class="currency-symbol">{{product.price}}</span>{{"currency"|translate}}</td>
                                 <td class="product-quantity" data-title="Qty">
-                                    <div class="pro-qty"><span class="dec qtybtn">-</span>
+                                    <div class="pro-qty">
+                                        <!-- <span class="dec qtybtn">-</span>
                                         <input type="text" class="quantity-input" value="1" readonly>
-                                        <span class="inc qtybtn">+</span>
+                                        <span class="inc qtybtn">+</span> -->
+                                        <span class="dec qtybtn" (click)="decreaseItem(product,product.count?product.count:1)">-</span>
+                                        <input type="text" readonly class="quantity-input" [value]="product.count?product.count:1">
+                                        <span class="inc qtybtn" (click)="increaseItem(product,product.count?product.count:1)">+</span>
                                     </div>
                                 </td>
-                                <td class="product-subtotal" data-title="Subtotal"><span
-                                        class="currency-symbol">$</span>275.00</td>
-                            </tr>
-                            <tr>
-                                <td class="product-remove"><a href="#" class="remove-wishlist"><i
-                                            class="fas fa-times"></i></a></td>
-                                <td class="product-thumbnail"><a href="single-product-2.html"><img
-                                            src="./assets/images/products/electric/product-02.png"
-                                            alt="Digital Product"></a></td>
-                                <td class="product-title"><a href="single-product-2.html">Gradient Light Keyboard</a>
+                                <td class="product-subtotal" data-title="Subtotal">
+                                    <span class="currency-symbol">{{product.price*(product.count?product.count:1)}}</span>
+                                    {{"currency"|translate}}
                                 </td>
-                                <td class="product-price" data-title="Price"><span
-                                        class="currency-symbol">$</span>124.00</td>
-                                <td class="product-quantity" data-title="Qty">
-                                    <div class="pro-qty"><span class="dec qtybtn">-</span>
-                                        <input type="text" class="quantity-input" value="1" readonly>
-                                        <span class="inc qtybtn">+</span>
-                                    </div>
-                                </td>
-                                <td class="product-subtotal" data-title="Subtotal"><span
-                                        class="currency-symbol">$</span>275.00</td>
-                            </tr>
-                            <tr>
-                                <td class="product-remove"><a href="#" class="remove-wishlist"><i
-                                            class="fas fa-times"></i></a></td>
-                                <td class="product-thumbnail"><a href="single-product-3.html"><img
-                                            src="./assets/images/products/electric/product-03.png"
-                                            alt="Digital Product"></a></td>
-                                <td class="product-title"><a href="single-product-3.html">HD CC Camera</a></td>
-                                <td class="product-price" data-title="Price"><span
-                                        class="currency-symbol">$</span>124.00</td>
-                                <td class="product-quantity" data-title="Qty">
-                                    <div class="pro-qty"><span class="dec qtybtn">-</span>
-                                        <input type="text" class="quantity-input" value="1" readonly>
-                                        <span class="inc qtybtn">+</span>
-                                    </div>
-                                </td>
-                                <td class="product-subtotal" data-title="Subtotal"><span
-                                        class="currency-symbol">$</span>275.00</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="cart-update-btn-area mt-4">
+                <div class="cart-update-btn-area mt-4" *ngIf="cart.length;">
                     <div class="input-group product-cupon">
                         <input placeholder="{{'cart.coupon_placeholder'|translate}}" type="text">
                         <div class="product-cupon-btn">
@@ -87,10 +61,10 @@
                         </div>
                     </div>
                     <div class="update-btn">
-                        <a href="#" class="axil-btn btn-outline text-reset">{{"buttons.updateCart"|translate}}</a>
+                        <a routerLink="../products" class="axil-btn btn-outline text-reset pointer">{{"buttons.updateCart"|translate}}</a>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="cart.length;">
                     <div class="col-xl-5 col-lg-7 offset-xl-7 offset-lg-5">
                         <div class="axil-order-summery mt--80">
                             <h5 class="title mb--20">{{"cart.payment.title"|translate}}</h5>
@@ -99,7 +73,7 @@
                                     <tbody>
                                         <tr class="order-subtotal">
                                             <td>{{"cart.payment.subtotal"|translate}}</td>
-                                            <td>$117.00</td>
+                                            <td>{{totalPrice}}{{"currency"|translate}}</td>
                                         </tr>
                                         <tr class="order-shipping">
                                             <td>{{"cart.payment.shipping.title"|translate}}</td>
@@ -110,21 +84,21 @@
                                                 </div>
                                                 <div class="input-group">
                                                     <input type="radio" id="radio2" name="shipping">
-                                                    <label for="radio2">{{"cart.payment.shipping.local"|translate}} 35.00 {{"currency"|translate}}</label>
+                                                    <label for="radio2">{{"cart.payment.shipping.local"|translate}} 0 {{"currency"|translate}}</label>
                                                 </div>
                                                 <div class="input-group">
                                                     <input type="radio" id="radio3" name="shipping">
-                                                    <label for="radio3">{{"cart.payment.shipping.flatRate"|translate}} 12.00 {{"currency"|translate}}</label>
+                                                    <label for="radio3">{{"cart.payment.shipping.flatRate"|translate}} 0 {{"currency"|translate}}</label>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr class="order-tax">
                                             <td>{{"cart.payment.stateTax"|translate}}</td>
-                                            <td>8.00 {{"currency"|translate}}</td>
+                                            <td>0 {{"currency"|translate}}</td>
                                         </tr>
                                         <tr class="order-total">
                                             <td>{{"cart.payment.total"|translate}}</td>
-                                            <td class="order-total-amount">125.00 {{"currency"|translate}}</td>
+                                            <td class="order-total-amount">{{totalPrice}} {{"currency"|translate}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -139,3 +113,15 @@
     <!-- End Cart Area  -->
 
 </main>
+
+<ng-template #other_content>
+    <div class="my-5">
+        <div class="container py-5">
+            <div class="text-danger my-5 text-center">
+                <span class="py-5">
+                    {{"cart.payment.emptyMsg" | translate}}
+                </span>
+            </div>
+        </div>
+    </div>
+</ng-template>

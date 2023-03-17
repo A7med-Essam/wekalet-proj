@@ -12,4 +12,8 @@ export class SharedService {
     return formData;
   }
 
+  getAllSiblings(element: HTMLElement, parent: any) {
+    const children = [...parent.children];
+    return children.filter((child) => child !== element);
+  }
 }

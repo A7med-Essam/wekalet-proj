@@ -6,9 +6,11 @@
                 <div class="col-lg-6 col-md-8">
                     <div class="inner">
                         <ul class="axil-breadcrumb">
-                            <li class="axil-breadcrumb-item"><a routerLink="../home">{{"shop.breadcrumb.home"|translate}}</a></li>
+                            <li class="axil-breadcrumb-item"><a
+                                    routerLink="../home">{{"shop.breadcrumb.home"|translate}}</a></li>
                             <li class="separator"></li>
-                            <li class="axil-breadcrumb-item active" aria-current="page">{{"shop.breadcrumb.current"|translate}}</li>
+                            <li class="axil-breadcrumb-item active" aria-current="page">
+                                {{"shop.breadcrumb.current"|translate}}</li>
                         </ul>
                         <h1 class="title">{{"shop.breadcrumb.title"|translate}}</h1>
                     </div>
@@ -35,13 +37,17 @@
                             <button class="sidebar-close filter-close-btn"><i class="fas fa-times"></i></button>
                         </div> -->
                         <div class="toggle-list product-categories">
-                            <h6 class="title" (click)="toggleFilterBtn('CATEGORIES',$event)">{{"shop.filter.category"|translate}}</h6>
+                            <h6 class="title" (click)="toggleFilterBtn('CATEGORIES',$event)">
+                                {{"shop.filter.category"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="categoryFilterBtn">
                                 <ul>
                                     <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Sun Care</a></li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Night Care</a></li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Treatments</a></li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Moisturizers</a></li>
+                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Night Care</a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Treatments</a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Moisturizers</a>
+                                    </li>
                                     <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Eye Care</a></li>
                                     <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Masks</a></li>
                                     <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Featured</a></li>
@@ -50,7 +56,8 @@
                             </div>
                         </div>
                         <div class="toggle-list product-categories product-gender">
-                            <h6 class="title" (click)="toggleFilterBtn('GENDER',$event)">{{"shop.filter.gender"|translate}}</h6>
+                            <h6 class="title" (click)="toggleFilterBtn('GENDER',$event)">
+                                {{"shop.filter.gender"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="genderFilterBtn">
                                 <ul>
                                     <li (click)="toggleClass($event,'chosen')"><a class="pointer">Men (40)</a></li>
@@ -60,25 +67,38 @@
                             </div>
                         </div>
                         <div class="toggle-list product-color">
-                            <h6 class="title" (click)="toggleFilterBtn('COLORS',$event)">{{"shop.filter.color"|translate}}</h6>
+                            <h6 class="title" (click)="toggleFilterBtn('COLORS',$event)">
+                                {{"shop.filter.color"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="colorsFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-01 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-02 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-03 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-04 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-05 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-06 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-07 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-08 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-09 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-10 pointer"></a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-11 pointer"></a></li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-01 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-02 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-03 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-04 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-05 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-06 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-07 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-08 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-09 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-10 pointer"></a>
+                                    </li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-11 pointer"></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="toggle-list product-size">
-                            <h6 class="title" (click)="toggleFilterBtn('SIZE',$event)">{{"shop.filter.size"|translate}}</h6>
+                            <h6 class="title" (click)="toggleFilterBtn('SIZE',$event)">{{"shop.filter.size"|translate}}
+                            </h6>
                             <div class="shop-submenu" *ngIf="sizeFilterBtn">
                                 <ul>
                                     <li (click)="toggleClass($event,'chosen')"><a class="pointer">XS</a></li>
@@ -93,14 +113,20 @@
                             </div>
                         </div>
                         <div class="toggle-list product-price-range">
-                            <h6 class="title" (click)="toggleFilterBtn('PRICE',$event)">{{"shop.filter.price"|translate}}</h6>
+                            <h6 class="title" (click)="toggleFilterBtn('PRICE',$event)">
+                                {{"shop.filter.price"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="priceFilterBtn">
                                 <ul class="mb-3">
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">100</a></li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">500</a></li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">1000</a></li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">1500</a></li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">2000</a></li>
+                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">100</a>
+                                    </li>
+                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">500</a>
+                                    </li>
+                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">1000</a>
+                                    </li>
+                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">1500</a>
+                                    </li>
+                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">2000</a>
+                                    </li>
                                 </ul>
                                 <!-- <form action="#" class="mt--25">
                                     <div  
@@ -126,9 +152,11 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="axil-shop-top mb--40">
-                                <div class="category-select align-items-center justify-content-lg-end justify-content-between">
+                                <div
+                                    class="category-select align-items-center justify-content-lg-end justify-content-between">
                                     <!-- Start Single Select  -->
-                                    <span class="filter-results">{{"shop.products.paginate"|translate : { from:1, to: 12,total:30 } }}</span>
+                                    <span class="filter-results">{{"shop.products.paginate"|translate : { from:1, to:
+                                        12,total:30 } }}</span>
                                     <select class="single-select">
                                         <option>{{"shop.products.sort.byLatest"|translate}}</option>
                                         <option>{{"shop.products.sort.byOldest"|translate}}</option>
@@ -148,17 +176,31 @@
                         <div class="col-xl-4 col-sm-6" *ngFor="let product of products">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img [src]="product.images[0].image" alt="Product Images">
+                                    <a>
+                                        <img [src]="product.images[0].image" style="height: 300px;"
+                                            alt="Product Images">
                                     </a>
                                     <div class="label-block label-right">
                                         <div class="product-badget">10% {{"labels.discount"|translate}}</div>
                                     </div>
                                     <div class="product-hover-action">
                                         <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
+                                            <li class="quickview pointer">
+                                                <a (click)="displayDetails(product)">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </li>
+                                            <li class="select-option" (click)="addToCart(product)">
+                                                <a class="pointer">
+                                                    {{"buttons.addToCart"|translate}}
+                                                </a>
+                                            </li>
+                                            <li class="wishlist">
+                                                <a href="wishlist.html">
+                                                    <i class="far fa-heart"></i>
+                                                </a>
+                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -166,8 +208,10 @@
                                     <div class="inner">
                                         <h5 class="title"><a href="single-product.html">{{product.name}}</a></h5>
                                         <div class="product-price-variant">
-                                            <span class="price current-price">{{product.price}}{{"currency"|translate}}</span>
-                                            <span class="price old-price">{{product.price}}{{"currency"|translate}}</span>
+                                            <span
+                                                class="price current-price">{{product.price}}{{"currency"|translate}}</span>
+                                            <span
+                                                class="price old-price">{{product.price}}{{"currency"|translate}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -408,7 +452,8 @@
         <div class="container">
             <div class="etrade-newsletter-wrapper bg_image bg_image--5">
                 <div class="newsletter-content">
-                    <span class="title-highlighter highlighter-primary2"><i class="fas fa-envelope-open"></i>{{"shop.subscribe.subtitle"|translate}}</span>
+                    <span class="title-highlighter highlighter-primary2"><i
+                            class="fas fa-envelope-open"></i>{{"shop.subscribe.subtitle"|translate}}</span>
                     <h2 class="title mb--40 mb_sm--30">{{"shop.subscribe.title"|translate}}</h2>
                     <div class="input-group newsletter-form mt-5">
                         <div class="position-relative newsletter-inner mb--15 me-4 my-3">
@@ -423,3 +468,8 @@
     </div>
     <!-- End Axil Newsletter Area  -->
 </main>
+
+<div *ngIf="productDetailsStatus">
+    <app-product-details (modalStatus)="onCloseModal($event)" [product]="currentProduct"></app-product-details>
+</div>
+<p-toast></p-toast>

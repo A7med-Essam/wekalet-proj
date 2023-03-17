@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/core/services/api.service';
   providedIn: 'root',
 })
 export class AuthService {
-  currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
+  // currentUser: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(
     private _Router: Router,

@@ -1,6 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { IProduct } from 'src/app/shared/interfaces/product';
+import { CartService } from 'src/app/shared/services/cart.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -17,7 +20,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
   priceFilterBtn: boolean = false;
   constructor(
     private _CategoryService: CategoryService,
-    private _ProductService: ProductService
+    private _ProductService: ProductService,
+    private _CartService: CartService,
+    private _MessageService: MessageService
   ) {}
 
   private unsubscribe$ = new Subject<void>();
@@ -26,28 +31,30 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.getCategoryId();
   }
 
-  toggleFilterBtn(type: string, e: any) {
-    e.target.parentElement.classList.toggle('active');
-    switch (type.toLowerCase()) {
-      case 'categories':
-        this.categoryFilterBtn = !this.categoryFilterBtn;
-        break;
-      case 'gender':
-        this.genderFilterBtn = !this.genderFilterBtn;
-        break;
-      case 'colors':
-        this.colorsFilterBtn = !this.colorsFilterBtn;
-        break;
-      case 'size':
-        this.sizeFilterBtn = !this.sizeFilterBtn;
-        break;
-      default:
-        this.priceFilterBtn = !this.priceFilterBtn;
-        break;
+  toggleFilterBtn(type: string, e: MouseEvent) {
+    if (e?.target != null) {
+      (e.target as any).parentElement.classList.toggle('active');
+      switch (type.toLowerCase()) {
+        case 'categories':
+          this.categoryFilterBtn = !this.categoryFilterBtn;
+          break;
+        case 'gender':
+          this.genderFilterBtn = !this.genderFilterBtn;
+          break;
+        case 'colors':
+          this.colorsFilterBtn = !this.colorsFilterBtn;
+          break;
+        case 'size':
+          this.sizeFilterBtn = !this.sizeFilterBtn;
+          break;
+        default:
+          this.priceFilterBtn = !this.priceFilterBtn;
+          break;
+      }
     }
   }
 
-  toggleClass(event: any, className: string) {
+  toggleClass(event: MouseEvent | any, className: string) {
     const hasClass = event.currentTarget.classList.contains(className);
     if (hasClass) {
       event.currentTarget.classList.remove(className);
@@ -76,7 +83,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  products: any[] = [];
+  products: IProduct[] = [];
   getProducts() {
     this._ProductService.getProducts().subscribe({
       next: (res) => {
@@ -91,5 +98,26 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.products = res.data.data;
       },
     });
+  }
+
+  // =============
+  @Input() currentProduct!: IProduct;
+  productDetailsStatus: boolean = false;
+  displayDetails(item: IProduct) {
+    this.productDetailsStatus = true;
+    this.currentProduct = item;
+  }
+
+  onCloseModal(e: boolean) {
+    this.productDetailsStatus = e;
+  }
+
+  // cart methods
+  addToCart(product: IProduct) {
+    if (this._CartService.addToCart(product)) {
+      this._MessageService.add(this._CartService.addMessageService(product));
+    } else {
+      this._MessageService.add(this._CartService.warningMessageService());
+    }
   }
 }

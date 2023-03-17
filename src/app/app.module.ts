@@ -21,6 +21,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { I18nService } from 'src/app/shared/i18n/i18n.service';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -45,9 +47,11 @@ import { DialogModule } from 'primeng/dialog';
     // FormsModule,
     I18nModule,
     DialogModule,
+    ToastModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    MessageService
   ],
   bootstrap: [AppComponent],
 })

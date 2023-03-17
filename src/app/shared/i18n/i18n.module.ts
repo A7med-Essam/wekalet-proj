@@ -15,15 +15,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       loader: {
         provide: TranslateLoader,
         useFactory: CreateTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
+        deps: [HttpClient],
+      },
+    }),
   ],
-  exports: [TranslateModule]
+  exports: [TranslateModule],
 })
+export class I18nModule {}
 
-export class I18nModule { }
-
-export function CreateTranslateLoader(http:HttpClient) {
-  return  new TranslateHttpLoader(http, './assets/i18n/', '.json');
+export function CreateTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

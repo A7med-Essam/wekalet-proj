@@ -1,7 +1,17 @@
-import { AfterContentChecked, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ICategory, IProduct } from 'src/app/shared/interfaces/product';
+import { CartService } from 'src/app/shared/services/cart.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -14,11 +24,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private _CategoryService: CategoryService,
     private _ProductService: ProductService,
-    private _Router: Router
+    private _Router: Router,
+    private _MessageService: MessageService,
+    private _CartService: CartService
   ) {}
   private unsubscribe$ = new Subject<void>();
-  Math: Math = Math;
-
+  @Input() currentProduct!: IProduct;
   ngOnInit(): void {
     this._CategoryService.categories
       .pipe(takeUntil(this.unsubscribe$))
@@ -28,16 +39,14 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
       });
 
-      this._ProductService.products
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe({
-        next: (res) => {
-          res ? (this.products = res) : this.getProducts();
-        },
-      });
+    this._ProductService.products.pipe(takeUntil(this.unsubscribe$)).subscribe({
+      next: (res) => {
+        res ? (this.products = res) : this.getProducts();
+      },
+    });
   }
 
-  categories: any[] = [];
+  categories: ICategory[] = [];
   getCategories() {
     this._CategoryService.getCategories().subscribe({
       next: (res) => {
@@ -52,7 +61,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._Router.navigate(['./products']);
   }
 
-  products: any[] = [];
+  products: IProduct[] = [];
   getProducts() {
     this._ProductService.getProducts().subscribe({
       next: (res) => {
@@ -65,5 +74,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  productDetailsStatus: boolean = false;
+  displayDetails(item: IProduct) {
+    this.productDetailsStatus = true;
+    this.currentProduct = item;
+  }
+
+  onCloseModal(e: boolean) {
+    this.productDetailsStatus = e;
+  }
+
+  // cart methods
+  addToCart(product: IProduct) {
+    if (this._CartService.addToCart(product)) {
+      this._MessageService.add(this._CartService.addMessageService(product));
+    } else {
+      this._MessageService.add(this._CartService.warningMessageService());
+    }
   }
 }

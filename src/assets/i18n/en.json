@@ -125,7 +125,7 @@
       },
       "stateTax":"State Tax",
       "total":"Total",
-      "empty": "The cart is empty..."
+      "emptyMsg": "The cart is empty..."
     }
   },
   "productDetails":{
