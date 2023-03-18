@@ -48,32 +48,29 @@
                             <i style="font-size: 20px;" class="fa-solid fa-cart-plus"></i>
                         </a>
                     </li>
-                    <li class="my-account position-relative ">
-                        <a href="javascript:void(0)">
+                    <li class="my-account position-relative">
+                        <a href="javascript:void(0)" (click)="toggleProfileList(profileList)">
                             <!-- <i class="flaticon-person"></i> -->
                             <i style="font-size: 20px;" class="fa-regular fa-user"></i>
                         </a>
-                        <div class="my-account-dropdown ">
-                            <span class="title">QUICKLINKS</span>
-                            <ul class="quick-links">
-                                <li>
-                                    <a class="text-reset" href="my-account.html">My Account</a>
+                        <div class="my-account-dropdown" #profileList>
+                            <span class="title">{{"profile.title"|translate}}</span>
+                            <ul class="quick-links p-0">
+                                <li  (click)="toggleProfileList(profileList)">
+                                    <a class="text-reset pointer" >{{"profile.account"|translate}}</a>
                                 </li>
-                                <li>
-                                    <a class="text-reset" href="#">Initiate return</a>
+                                <li  (click)="toggleProfileList(profileList)">
+                                    <a class="text-reset pointer">{{"profile.support"|translate}}</a>
                                 </li>
-                                <li>
-                                    <a class="text-reset" href="#">Support</a>
-                                </li>
-                                <li>
-                                    <a class="text-reset" href="#">Language</a>
+                                <li (click)="changeLang();toggleProfileList(profileList)">
+                                    <a class="text-reset pointer">{{"profile.lang"|translate}}</a>
                                 </li>
                             </ul>
                             <div class="login-btn">
-                                <a href="sign-in.html" class="axil-btn btn-bg-primary">Login</a>
+                                <a href="sign-in.html" class="axil-btn btn-bg-primary">{{"profile.login"|translate}}</a>
                             </div>
-                            <div class="reg-footer text-center">No account yet? <a href="sign-up.html"
-                                    class="btn-link">REGISTER HERE.</a></div>
+                            <div class="reg-footer text-center">{{"profile.registerLabel"|translate}} <a 
+                                    class="btn-link pointer">{{"profile.register"|translate}}</a></div>
                         </div>
                     </li>
                     <li class="axil-mobile-toggle" (click)="openSidebar(navbar)">
@@ -106,7 +103,7 @@
                 <li class="cart-item" *ngFor="let product of cart">
                     <div class="item-img">
                         <a><img [src]="product.images[0].image" alt="Commodo Blown Lamp"></a>
-                        <button class="close-btn" (click)="updateCart(product.id)"><i class="fas fa-times"></i></button>
+                        <button class="close-btn" (click)="updateCart(product)"><i class="fas fa-times"></i></button>
                     </div>
                     <div class="item-content">
                         <div class="product-rating">

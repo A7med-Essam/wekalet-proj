@@ -3,6 +3,8 @@ import { IProduct } from 'src/app/shared/interfaces/product';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MessageService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -13,7 +15,7 @@ export class CartComponent implements OnInit, OnDestroy {
   cart: IProduct[] = [];
   totalPrice: number = 0;
 
-  constructor(private _CartService: CartService) {}
+  constructor(private _CartService: CartService,private _MessageService:MessageService, private _TranslateService:TranslateService) {}
 
   ngOnInit(): void {
     this._CartService.cart.pipe(takeUntil(this.unsubscribe$)).subscribe({
@@ -36,12 +38,30 @@ export class CartComponent implements OnInit, OnDestroy {
     this._CartService.decreaseItem(item, count);
   }
 
-  updateCart(id: number) {
-    this._CartService.updateCart(id);
+  updateCart(product: IProduct) {
+    this._CartService.updateCart(product.id);
+    this._MessageService.add(this._CartService.deleteItemNotify(product));
   }
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
+  }
+
+  applyCoupon(){
+    if (this._TranslateService.currentLang == 'ar') {
+      this._MessageService.add({
+        severity: 'warn',
+        summary: 'القسيمة',
+        detail: 'نأسف هذه القسيمة غير صالحة',
+      });
+    }
+    else{
+      this._MessageService.add({
+        severity: 'warn',
+        summary: 'Coupon',
+        detail: 'Sorry this coupon is not valid',
+      });
+    }
   }
 }

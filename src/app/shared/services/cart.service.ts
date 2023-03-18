@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiService } from 'src/app/core/services/api.service';
 import { IProduct } from '../interfaces/product';
 import { LocalService } from './local.service';
 
@@ -12,7 +13,8 @@ export class CartService {
 
   constructor(
     private _TranslateService: TranslateService,
-    private _LocalService: LocalService
+    private _LocalService: LocalService,
+    private _ApiService: ApiService
   ) {}
 
   addToCart(product: IProduct) {
@@ -28,7 +30,7 @@ export class CartService {
     return this.cart.value;
   }
 
-  addMessageService(product: IProduct) {
+  addItemNotify(product: IProduct) {
     let notify: object;
     if (this._TranslateService.currentLang == 'ar') {
       notify = {
@@ -81,9 +83,12 @@ export class CartService {
     this.cart.next([]);
   }
 
-  calcCartPrice(res: IProduct[]): number {
-    if (res.length > 0) {
-      const prices = res.map((product: IProduct) => product.price*(product.count?product.count:1));
+  calcCartPrice(arr: IProduct[]): number {
+    if (arr.length > 0) {
+      const prices = arr.map(
+        (product: IProduct) =>
+          product.price * (product.count ? product.count : 1)
+      );
       return prices.reduce((acc: number, curr: number) => acc + curr);
     }
     return 0;
@@ -95,16 +100,43 @@ export class CartService {
   }
 
   increaseItem(item: IProduct, count: number) {
-    item.count = count+1
-    this.cart.next(this.cart.value)
+    item.count = count + 1;
+    this.cart.next(this.cart.value);
     this.saveCartToStorage(this.cart.getValue());
   }
 
   decreaseItem(item: IProduct, count: number) {
     if (item.count && item.count > 1) {
-      item.count = count-1
-      this.cart.next(this.cart.value)
+      item.count = count - 1;
+      this.cart.next(this.cart.value);
       this.saveCartToStorage(this.cart.getValue());
     }
+  }
+
+  deleteItemNotify(product: IProduct) {
+    let notify: object;
+    if (this._TranslateService.currentLang == 'ar') {
+      notify = {
+        severity: 'warn',
+        summary: 'أشعار عن السله',
+        detail: `تم أزاله (${product.name}) من السله`,
+      };
+    } else {
+      notify = {
+        severity: 'warn',
+        summary: 'Cart Notification',
+        detail: `This product (${product.name}) has been removed from cart`,
+      };
+    }
+    return notify;
+  }
+
+  // *********************************************
+  checkout(checkoutForm: any): Observable<{
+    message: string;
+    status: number;
+    data: any;
+  }> {
+    return this._ApiService.postReq('checkOut', checkoutForm);
   }
 }

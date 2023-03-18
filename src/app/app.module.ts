@@ -22,7 +22,8 @@ import { I18nService } from 'src/app/shared/i18n/i18n.service';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -48,10 +49,12 @@ import { MessageService } from 'primeng/api';
     I18nModule,
     DialogModule,
     ToastModule,
+    ConfirmDialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    MessageService
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent],
 })

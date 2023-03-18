@@ -13,7 +13,7 @@ export interface IProduct {
   sizes: ISize[];
   colors: IColor[];
   descriptions: IDescription[];
-  count?:number
+  count?: number;
 }
 export interface ISize {
   id: number;
@@ -22,13 +22,15 @@ export interface ISize {
   deleted_at: string;
   created_at: string;
   updated_at: string;
-  size: {
+  size: ISize2
+}
+
+export interface ISize2 {
     id: number;
     name: string;
     deleted_at: string;
     created_at: string;
     updated_at: string;
-  };
 }
 export interface IColor {
   id: number;
@@ -37,15 +39,18 @@ export interface IColor {
   deleted_at: string;
   created_at: string;
   updated_at: string;
-  color: {
+  color: IColor2
+}
+
+export interface IColor2 {
     id: number;
     name: string;
     hexa: string;
     deleted_at: string;
     created_at: string;
     updated_at: string;
-  };
 }
+
 export interface IImages {
   id: number;
   image: string;
@@ -91,4 +96,12 @@ export interface IPagination {
   prev_page_url: string;
   to: number;
   total: number;
+  data:any
+}
+
+export interface IFilterOptions {
+  colors: IColor2[];
+  sizes: ISize2[];
+  genders: IGender[];
+  categories: ICategory[];
 }

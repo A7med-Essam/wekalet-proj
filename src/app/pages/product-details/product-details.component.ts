@@ -75,7 +75,7 @@ export class ProductDetailsComponent implements OnInit {
   // cart methods
   addToCart(product: IProduct) {
     if (this._CartService.addToCart(product)) {
-      this._MessageService.add(this._CartService.addMessageService(product));
+      this._MessageService.add(this._CartService.addItemNotify(product));
       this.display = false;
     } else {
       this._MessageService.add(this._CartService.warningMessageService());

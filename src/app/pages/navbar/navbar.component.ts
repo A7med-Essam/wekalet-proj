@@ -1,7 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { I18nService } from 'src/app/shared/i18n/i18n.service';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { CartService } from 'src/app/shared/services/cart.service';
 
@@ -17,7 +20,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private _CartService: CartService
+    private _CartService: CartService,
+    private _MessageService:MessageService,
+    private _I18nService:I18nService,
+    private _TranslateService:TranslateService
   ) {}
 
   cart: IProduct[] = [];
@@ -56,13 +62,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.document.body.classList.remove('open');
   }
 
+  toggleProfileList(profileModal: HTMLElement) {
+    profileModal.classList.toggle('open');
+  }
+
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
 
-  updateCart(id: number) {
-    this._CartService.updateCart(id);
+  updateCart(product: IProduct) {
+    this._CartService.updateCart(product.id);
+    this._MessageService.add(this._CartService.deleteItemNotify(product));
   }
 
   increaseItem(item: IProduct, count: number) {
@@ -71,5 +82,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   decreaseItem(item: IProduct, count: number) {
     this._CartService.decreaseItem(item,count)
+  }
+
+  changeLang(){
+    if (this._I18nService.currentLang == 'ar') {
+      this._I18nService.changeCurrentLang(this._TranslateService,'en')
+    } else {
+      this._I18nService.changeCurrentLang(this._TranslateService,'ar')
+    }
+    this._I18nService.saveCurrentLang(this._TranslateService)
   }
 }

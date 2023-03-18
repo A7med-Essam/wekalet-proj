@@ -2,12 +2,13 @@
     <!-- Start Checkout Area  -->
     <div class="axil-checkout-area axil-section-gap pt-5">
         <div class="container pt-5">
-            <form action="#">
+            <form [formGroup]="paymentForm" (ngSubmit)='processToCheckout(paymentForm)'>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="axil-checkout-notice">
                             <div class="axil-toggle-box">
-                                <div class="toggle-bar"><i class="fas fa-pencil"></i> <span class="text-muted">{{"checkout.coupon.question"|translate}}</span>
+                                <div class="toggle-bar"><i class="fas fa-pencil"></i> <span
+                                        class="text-muted">{{"checkout.coupon.question"|translate}}</span>
                                     <a (click)="toggleCouponSection(CouponSection)" class="toggle-btn pointer">
                                         {{"checkout.coupon.clickHere"|translate}} <i class="fas fa-angle-down"></i></a>
                                 </div>
@@ -16,9 +17,11 @@
                                     [ngClass]="couponStatus ? 'd-block' : 'd-none'" #CouponSection>
                                     <p>{{"checkout.coupon.note"|translate}}</p>
                                     <div class="input-group">
-                                        <input placeholder="{{'checkout.coupon.enterCoupon_placeholder'|translate}}" type="text">
+                                        <input placeholder="{{'checkout.coupon.enterCoupon_placeholder'|translate}}"
+                                            type="text" formControlName='coupon'>
                                         <div class="apply-btn">
-                                            <button type="submit" class="axil-btn btn-bg-primary">{{"buttons.apply"|translate}}</button>
+                                            <button type="button" (click)="applyCoupon()"
+                                                class="axil-btn btn-bg-primary">{{"buttons.apply"|translate}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -26,27 +29,85 @@
                         </div>
                         <div class="axil-checkout-billing">
                             <h4 class="title mb--40">{{"checkout.billingDetails.title"|translate}}</h4>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>{{"checkout.billingDetails.firstName"|translate}} <span>*</span></label>
-                                        <input type="text" id="first-name" placeholder="Adam">
+                                        <input type="text" id="first-name" placeholder="Adam"
+                                            formControlName='firstName'>
+                                        <div class="text-start">
+                                            <small class="text-danger ms-1" *ngIf="paymentForm.get('firstName')?.touched &&
+                                                paymentForm.get('firstName')?.hasError('required')">{{"errors.required"
+                                                |
+                                                translate}}</small>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>{{"checkout.billingDetails.lastName"|translate}} <span>*</span></label>
-                                        <input type="text" id="last-name" placeholder="John">
+                                        <input type="text" id="last-name" placeholder="John" formControlName='lastName'>
+                                        <div class="text-start">
+                                            <small class="text-danger ms-1" *ngIf="paymentForm.get('lastName')?.touched &&
+                                            paymentForm.get('lastName')?.hasError('required')">{{"errors.required" |
+                                                translate}}</small>
+                                        </div>
                                     </div>
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label>{{"checkout.billingDetails.companyName"|translate}} <span>*</span></label>
+                                <input type="text" id="company-name" formControlName='company'>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('company')?.touched &&
+                                    paymentForm.get('company')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>{{"checkout.billingDetails.companyName"|translate}}</label>
-                                <input type="text" id="company-name">
+                                <label>{{"checkout.billingDetails.phone"|translate}} <span>*</span></label>
+                                <!-- <input type="tel" id="phone"  formControlName='mobile'> -->
+                                <input type="text" maxlength="11" formControlName="mobile"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" />
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('mobile')?.touched &&
+                                paymentForm.get('mobile')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
+                                </div>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('mobile')?.touched &&
+                                paymentForm.get('mobile')?.hasError('pattern')">{{"errors.mobile" | translate}}</small>
+                                </div>
                             </div>
                             <div class="form-group">
+                                <label>{{"checkout.billingDetails.email"|translate}} <span style="color: #00000050;">{{"labels.optional"|translate}}</span></label>
+                                <input type="email" id="email" formControlName='email'>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('email')?.touched &&
+                                    paymentForm.get('email')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
+                                </div>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('email')?.touched &&
+                                    paymentForm.get('email')?.hasError('email')">{{"errors.email" | translate}}</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>{{"checkout.billingDetails.location"|translate}}</label>
+                                <input type="text" id="last-name" placeholder="https://goo.gl/maps" formControlName='location'>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('location')?.touched &&
+                                    paymentForm.get('location')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
+                                </div>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('mobile')?.touched &&
+                                paymentForm.get('mobile')?.hasError('pattern')">{{"errors.mobile" | translate}}</small>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
                                 <label>{{"checkout.billingDetails.country"|translate}} <span>*</span></label>
-                                <select id="Region">
+                                <select id="Region" formControlName='country'>
                                     <option value="3">Australia</option>
                                     <option value="4">England</option>
                                     <option value="6">New Zealand</option>
@@ -54,32 +115,49 @@
                                     <option value="1">United Kindom (UK)</option>
                                     <option value="2">United States (USA)</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-group">
-                                <label>{{"checkout.billingDetails.streetAddress"|translate}} <span>*</span></label>
-                                <input type="text" id="address1" class="mb--15"
-                                    placeholder="{{'checkout.billingDetails.streetAddress_placeholder'|translate}}">
-                                <input type="text" id="address2" placeholder="{{'checkout.billingDetails.apartment_placeholder'|translate}}">
+                                <label>{{"checkout.billingDetails.country"|translate}}  <span>*</span></label>
+                                <input type="text" id="country" formControlName='country'>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('country')?.touched &&
+                                        paymentForm.get('country')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>{{"checkout.billingDetails.city"|translate}} <span>*</span></label>
-                                <input type="text" id="town">
-                            </div>
-                            <!-- <div class="form-group">
-                                <label>Country</label>
-                                <input type="text" id="country">
-                            </div> -->
-                            <div class="form-group">
-                                <label>{{"checkout.billingDetails.phone"|translate}} <span>*</span></label>
-                                <input type="tel" id="phone">
+                                <input type="text" id="town" formControlName='city'>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('city')?.touched &&
+                                        paymentForm.get('city')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>{{"checkout.billingDetails.email"|translate}} <span>*</span></label>
-                                <input type="email" id="email">
+                                <label>{{"checkout.billingDetails.streetAddress"|translate}} <span>*</span></label>
+                                <input type="text" id="address1" class="" formControlName='address1'
+                                    placeholder="{{'checkout.billingDetails.streetAddress_placeholder'|translate}}">
+                                <div class="text-start mb--15">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('address1')?.touched &&
+                                        paymentForm.get('address1')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
+                                </div>
+                                <!-- <input type="text" id="address2"
+                                    placeholder="{{'checkout.billingDetails.apartment_placeholder'|translate}}"
+                                    formControlName='address2'>
+                                <div class="text-start">
+                                    <small class="text-danger ms-1" *ngIf="paymentForm.get('address2')?.touched &&
+                                        paymentForm.get('address2')?.hasError('required')">{{"errors.required" |
+                                        translate}}</small>
+                                </div> -->
                             </div>
+                 
+                  
+                    
                             <div class="form-group">
                                 <label>{{"checkout.billingDetails.otherNote"|translate}}</label>
-                                <textarea id="notes" rows="2"
+                                <textarea id="notes" rows="2" formControlName='notes'
                                     placeholder="{{'checkout.billingDetails.otherNote_placeholder'|translate}}"></textarea>
                             </div>
                         </div>
@@ -96,41 +174,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="order-product">
-                                            <td>Commodo Blown Lamp <span class="quantity">x1</span></td>
-                                            <td>$117.00</td>
-                                        </tr>
-                                        <tr class="order-product">
-                                            <td>Commodo Blown Lamp <span class="quantity">x1</span></td>
-                                            <td>$198.00</td>
-                                        </tr>
-                                        <tr class="order-subtotal">
-                                            <td>{{"checkout.orderDetails.subtotal"|translate}}</td>
-                                            <td>$117.00</td>
+                                        <tr class="order-product" *ngFor="let product of cart">
+                                            <td>{{product.name}} <span
+                                                    class="quantity">x{{product.count?product.count:1}}</span></td>
+                                            <td>{{product.price*(product.count?product.count:1)}}
+                                                {{"currency"|translate}}</td>
                                         </tr>
                                         <tr class="order-shipping">
                                             <td colspan="2">
                                                 <div class="shipping-amount">
-                                                    <span class="title">{{"checkout.orderDetails.shipping.title"|translate}}</span>
-                                                    <span class="amount">$35.00</span>
+                                                    <span
+                                                        class="title">{{"checkout.orderDetails.shipping.title"|translate}}</span>
+                                                    <span class="amount">0 {{"currency"|translate}}</span>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input type="radio" id="radio1" name="shipping" checked="">
-                                                    <label for="radio1">{{"checkout.orderDetails.shipping.free"|translate}}</label>
+                                                    <input type="radio" id="radio1" name="shipping" checked=""
+                                                        value="Free" (click)="chooseShippingMethod($event)">
+                                                    <label
+                                                        for="radio1">{{"checkout.orderDetails.shipping.free"|translate}}</label>
+                                                </div>
+                                                <!-- <div class="input-group">
+                                                    <input type="radio" id="radio2" name="shipping" value="local"
+                                                        (click)="chooseShippingMethod($event)">
+                                                    <label
+                                                        for="radio2">{{"checkout.orderDetails.shipping.local"|translate}}</label>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input type="radio" id="radio2" name="shipping">
-                                                    <label for="radio2">{{"checkout.orderDetails.shipping.local"|translate}}</label>
-                                                </div>
-                                                <div class="input-group">
-                                                    <input type="radio" id="radio3" name="shipping">
-                                                    <label for="radio3">{{"checkout.orderDetails.shipping.flatRate"|translate}}</label>
-                                                </div>
+                                                    <input type="radio" id="radio3" name="shipping" value="flatRate"
+                                                        (click)="chooseShippingMethod($event)">
+                                                    <label
+                                                        for="radio3">{{"checkout.orderDetails.shipping.flatRate"|translate}}</label>
+                                                </div> -->
                                             </td>
+                                        </tr>
+                                        <tr class="order-tax">
+                                            <td>{{"cart.payment.stateTax"|translate}}</td>
+                                            <td>0 {{"currency"|translate}}</td>
                                         </tr>
                                         <tr class="order-total">
                                             <td>{{"checkout.orderDetails.total"|translate}}</td>
-                                            <td class="order-total-amount">$323.00</td>
+                                            <td class="order-total-amount">{{totalPrice}} {{"currency"|translate}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -138,20 +221,27 @@
                             <div class="order-payment-method">
                                 <div class="single-payment">
                                     <div class="input-group">
-                                        <input type="radio" id="radio4" name="payment" checked>
-                                        <label for="radio4">{{"checkout.orderDetails.paymentWays.bank.title"|translate}}</label>
+                                        <input type="radio" id="radio4" name="payment" value="bank" checked
+                                            (click)="choosePaymentMethod($event)">
+                                        <label
+                                            for="radio4">{{"checkout.orderDetails.paymentWays.bank.title"|translate}}</label>
                                     </div>
                                     <p>{{"checkout.orderDetails.paymentWays.bank.description"|translate}}</p>
                                 </div>
                                 <div class="single-payment">
                                     <div class="input-group">
-                                        <input type="radio" id="radio5" name="payment">
-                                        <label for="radio5">{{"checkout.orderDetails.paymentWays.onDelivery.title"|translate}}</label>
+                                        <input type="radio" id="radio5" name="payment" value="Cash On Delivery"
+                                            (click)="choosePaymentMethod($event)">
+                                        <label
+                                            for="radio5">{{"checkout.orderDetails.paymentWays.onDelivery.title"|translate}}</label>
                                     </div>
                                     <p>{{"checkout.orderDetails.paymentWays.onDelivery.description"|translate}}</p>
                                 </div>
                             </div>
-                            <button type="submit" class="axil-btn btn-bg-primary checkout-btn">{{"buttons.processToCheckout"|translate}}</button>
+                            <button type="submit" class="axil-btn btn-bg-primary checkout-btn pointer"
+                                [disabled]="paymentForm.invalid">
+                                {{"buttons.processToCheckout"|translate}}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -160,3 +250,6 @@
     </div>
     <!-- End Checkout Area  -->
 </main>
+
+<p-confirmDialog [style]="{width: '50vw'}" acceptIcon=""
+ [baseZIndex]="10000" rejectButtonStyleClass="d-none" acceptButtonStyleClass="p-button-success"></p-confirmDialog>

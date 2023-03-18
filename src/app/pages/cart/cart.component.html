@@ -23,7 +23,7 @@
                         <tbody>
                             <tr *ngFor="let product of cart">
                                 <td class="product-remove">
-                                    <a (click)="updateCart(product.id)" class="remove-wishlist pointer">
+                                    <a (click)="updateCart(product)" class="remove-wishlist pointer">
                                         <i class="fas fa-times"></i>
                                     </a>
                                 </td>
@@ -57,7 +57,7 @@
                     <div class="input-group product-cupon">
                         <input placeholder="{{'cart.coupon_placeholder'|translate}}" type="text">
                         <div class="product-cupon-btn">
-                            <button type="submit" class="axil-btn btn-outline">{{"buttons.apply"|translate}}</button>
+                            <button type="button" (click)="applyCoupon()" class="axil-btn btn-outline">{{"buttons.apply"|translate}}</button>
                         </div>
                     </div>
                     <div class="update-btn">
@@ -82,14 +82,14 @@
                                                     <input type="radio" id="radio1" name="shipping" checked="">
                                                     <label for="radio1">{{"cart.payment.shipping.free"|translate}}</label>
                                                 </div>
-                                                <div class="input-group">
+                                                <!-- <div class="input-group">
                                                     <input type="radio" id="radio2" name="shipping">
                                                     <label for="radio2">{{"cart.payment.shipping.local"|translate}} 0 {{"currency"|translate}}</label>
                                                 </div>
                                                 <div class="input-group">
                                                     <input type="radio" id="radio3" name="shipping">
                                                     <label for="radio3">{{"cart.payment.shipping.flatRate"|translate}} 0 {{"currency"|translate}}</label>
-                                                </div>
+                                                </div> -->
                                             </td>
                                         </tr>
                                         <tr class="order-tax">
@@ -125,3 +125,4 @@
         </div>
     </div>
 </ng-template>
+

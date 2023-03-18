@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // cart methods
   addToCart(product: IProduct) {
     if (this._CartService.addToCart(product)) {
-      this._MessageService.add(this._CartService.addMessageService(product));
+      this._MessageService.add(this._CartService.addItemNotify(product));
     } else {
       this._MessageService.add(this._CartService.warningMessageService());
     }

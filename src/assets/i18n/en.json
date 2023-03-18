@@ -1,9 +1,5 @@
 {
-  "country": "Egypt",
-  "lang": {
-    "title": "Select your favourite language",
-    "desc": "Language is not just words. It is a culture, a tradition, the unification of a society, a whole history that creates what society is. It is all embodied in language."
-  },
+  "currency": "egp",
   "errors": {
     "required": "This field is required",
     "email": "The email is invalid",
@@ -11,10 +7,6 @@
     "password_pattern": "Password must be at least 8 characters long.",
     "mobile": "This field must be 11 digits long."
   },
-
-
-
-  "currency": "egp",
   "home":{
     "section1":{
       "title":"Men's Running Shoes - Black/Yellow",
@@ -148,7 +140,8 @@
       "title":"Billing details",
       "firstName":"First Name",
       "lastName":"Last Name",
-      "companyName":"Company Name",
+      "companyName":"Merchant name",
+      "location":"Location Url",
       "country":"Country/Region",
       "streetAddress":"Street Address",
       "streetAddress_placeholder":"House number and street name",
@@ -216,7 +209,9 @@
   "labels":{
     "discount":"off",
     "subtotal":"Subtotal",
-    "cartReview":"Cart review"
+    "cartReview":"Cart review",
+    "new":"New",
+    "optional":"(Optional)"
   },
   "footer":{
     "allRightsReserved":"© 2022. All rights reserved by",
@@ -227,5 +222,14 @@
     "shop":"Shop",
     "about":"About",
     "contact":"Contact"
+  },
+  "profile":{
+    "account":"My Account",
+    "support":"Support",
+    "lang":"Language",
+    "login":"Login",
+    "register":"Sign Up",
+    "registerLabel":"No account yet?",
+    "title":"QUICKLINKS"
   }
 }

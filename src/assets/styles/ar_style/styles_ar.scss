@@ -293,7 +293,7 @@
     }
 
     .axil-order-summery .summery-table .order-shipping .input-group label {
-        margin-right: auto;
+        padding-right: 26px;
     }
 
     .axil-product-cart-wrap .update-btn {
@@ -370,7 +370,31 @@
         }
     }
 
-        .p-toast-summary {
-            margin: 0px 6px !important;
-        }
+    .p-toast-summary,
+    .p-toast-detail {
+        margin: 0px 6px !important;
+    }
+
+    .header-action .my-account .my-account-dropdown {
+        right: auto !important;
+        left: 0;
+    }
+
+    .axil-shop-sidebar .product-categories ul li a::before {
+        top: 6px !important;
+    }
+
+    .axil-order-summery input[type=checkbox]~label::before,
+    input[type=radio]~label::before {
+        right: 0;
+        left: auto;
+    }
+
+    .axil-order-summery.order-checkout-summery .order-payment-method .single-payment .input-group label {
+        padding-right: 26px;
+    }
+
+    .p-dialog-footer {
+        text-align: left;
+    }
 }

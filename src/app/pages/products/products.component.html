@@ -28,7 +28,7 @@
     <!-- End Breadcrumb Area  -->
 
     <!-- Start Shop Area  -->
-    <div class="axil-shop-area axil-section-gap bg-color-white" *ngIf="products.length;else other_content">
+    <div class="axil-shop-area axil-section-gap bg-color-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 my-4">
@@ -41,17 +41,10 @@
                                 {{"shop.filter.category"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="categoryFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Sun Care</a></li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Night Care</a>
+                                    <li (click)="toggleClass($event,'current-cat')"
+                                        *ngFor="let category of filterOptions.categories">
+                                        <a class="pointer" name="category" [attr.val]="category.id">{{category.name}}</a>
                                     </li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Treatments</a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Moisturizers</a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Eye Care</a></li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Masks</a></li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">Featured</a></li>
-                                    <li (click)="toggleClass($event,'current-cat')"><a class="pointer">On Sale</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -60,9 +53,9 @@
                                 {{"shop.filter.gender"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="genderFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">Men (40)</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">Women (56)</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">Unisex (18)</a></li>
+                                    <li (click)="toggleClass($event,'chosen')" *ngFor="let gender of filterOptions.genders">
+                                        <a class="pointer" name="gender" [attr.val]="gender.id">{{gender.name}}</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -71,9 +64,10 @@
                                 {{"shop.filter.color"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="colorsFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-01 pointer"></a>
+                                    <li (click)="toggleClass($event,'chosen')" *ngFor="let color of filterOptions.colors">
+                                        <a class="color-extra-01 pointer" [style.background-color]="color.hexa" name="color" [attr.val]="color.id"></a>
                                     </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-02 pointer"></a>
+                                    <!-- <li (click)="toggleClass($event,'chosen')"><a class="color-extra-02 pointer"></a>
                                     </li>
                                     <li (click)="toggleClass($event,'chosen')"><a class="color-extra-03 pointer"></a>
                                     </li>
@@ -92,7 +86,7 @@
                                     <li (click)="toggleClass($event,'chosen')"><a class="color-extra-10 pointer"></a>
                                     </li>
                                     <li (click)="toggleClass($event,'chosen')"><a class="color-extra-11 pointer"></a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -101,18 +95,20 @@
                             </h6>
                             <div class="shop-submenu" *ngIf="sizeFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">XS</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">S</a></li>
+                                    <li (click)="toggleClass($event,'chosen')" *ngFor="let size of filterOptions.sizes">
+                                        <a class="pointer" name="size" [attr.val]="size.id">{{size.name}}</a>
+                                    </li>
+                                    <!-- <li (click)="toggleClass($event,'chosen')"><a class="pointer">S</a></li>
                                     <li (click)="toggleClass($event,'chosen')"><a class="pointer">M</a></li>
                                     <li (click)="toggleClass($event,'chosen')"><a class="pointer">L</a></li>
                                     <li (click)="toggleClass($event,'chosen')"><a class="pointer">XL</a></li>
                                     <li (click)="toggleClass($event,'chosen')"><a class="pointer">XXL</a></li>
                                     <li (click)="toggleClass($event,'chosen')"><a class="pointer">3XL</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">4XL</a></li>
+                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">4XL</a></li> -->
                                 </ul>
                             </div>
                         </div>
-                        <div class="toggle-list product-price-range">
+                        <!-- <div class="toggle-list product-price-range">
                             <h6 class="title" (click)="toggleFilterBtn('PRICE',$event)">
                                 {{"shop.filter.price"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="priceFilterBtn">
@@ -128,28 +124,18 @@
                                     <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">2000</a>
                                     </li>
                                 </ul>
-                                <!-- <form action="#" class="mt--25">
-                                    <div  
-                                    id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content position-relative">
-                                        <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 20%;"></div>
-                                        <span 
-                                         tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default pointer" style="left: 0%;"></span>
-                                        <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default pointer" style="left: 100%;"></span>
-                                    </div>
-                                    <div class="flex-center mt--20">
-                                        <span class="input-range">Price: </span>
-                                        <input type="range" id="amount" class="amount-range" readonly="">
-                                    </div>
-                                </form> -->
                             </div>
-                        </div>
-                        <button class="axil-btn btn-bg-primary danger m-1">{{"buttons.apply"|translate}}</button>
+                        </div> -->
+                        <button class="axil-btn btn-bg-primary danger m-1" 
+                        (click)="ApplyFilter()">
+                            {{"buttons.apply"|translate}}
+                        </button>
                         <button class="axil-btn btn-bg-primary m-1">{{"buttons.reset"|translate}}</button>
                     </div>
                     <!-- End .axil-shop-sidebar -->
                 </div>
                 <div class="col-lg-9 my-4">
-                    <div class="row">
+                    <div class="row" *ngIf="products.length;else other_content">
                         <div class="col-lg-12">
                             <div class="axil-shop-top mb--40">
                                 <div
@@ -157,11 +143,11 @@
                                     <!-- Start Single Select  -->
                                     <span class="filter-results">{{"shop.products.paginate"|translate : { from:1, to:
                                         12,total:30 } }}</span>
-                                    <select class="single-select">
-                                        <option>{{"shop.products.sort.byLatest"|translate}}</option>
-                                        <option>{{"shop.products.sort.byOldest"|translate}}</option>
-                                        <option>{{"shop.products.sort.byName"|translate}}</option>
-                                        <option>{{"shop.products.sort.byPrice"|translate}}</option>
+                                    <select class="single-select" (change)="sort($event)">
+                                        <option value="new">{{"shop.products.sort.byLatest"|translate}}</option>
+                                        <option value="old">{{"shop.products.sort.byOldest"|translate}}</option>
+                                        <option value="name">{{"shop.products.sort.byName"|translate}}</option>
+                                        <option value="price">{{"shop.products.sort.byPrice"|translate}}</option>
                                     </select>
                                     <!-- End Single Select  -->
                                 </div>
@@ -433,20 +419,22 @@
                             </div>
                         </div> -->
                     </div>
-                    <div class="text-center pt--20">
-                        <a href="#" class="axil-btn btn-bg-lighter btn-load-more">{{"buttons.loadMore"|translate}}</a>
+                    <div class="text-center pt--20" *ngIf="products.length">
+                        <a (click)="loadMoreProducts()" class="axil-btn btn-bg-lighter btn-load-more pointer">{{"buttons.loadMore"|translate}}</a>
                     </div>
+                    <ng-template #other_content>
+                        <div class="text-danger my-5 text-center">
+                            {{"shop.products.emptyMsg" | translate}}
+                        </div>
+                    </ng-template>
                 </div>
+
             </div>
         </div>
         <!-- End .container -->
     </div>
     <!-- End Shop Area  -->
-    <ng-template #other_content>
-        <div class="text-danger my-5 text-center">
-            {{"shop.products.emptyMsg" | translate}}
-        </div>
-    </ng-template>
+
     <!-- Start Axil Newsletter Area  -->
     <div class="axil-newsletter-area axil-section-gap pt--0">
         <div class="container">
@@ -472,4 +460,3 @@
 <div *ngIf="productDetailsStatus">
     <app-product-details (modalStatus)="onCloseModal($event)" [product]="currentProduct"></app-product-details>
 </div>
-<p-toast></p-toast>
