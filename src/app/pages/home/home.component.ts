@@ -39,11 +39,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
       });
 
-    this._ProductService.products.pipe(takeUntil(this.unsubscribe$)).subscribe({
-      next: (res) => {
-        res ? (this.products = res) : this.getProducts();
-      },
-    });
+    // this._ProductService.products.pipe(takeUntil(this.unsubscribe$)).subscribe({
+    //   next: (res) => {
+    //     res ? (this.products = res) : this.getProducts();
+    //   },
+    // });
+    this.getProducts()
   }
 
   categories: ICategory[] = [];

@@ -41,7 +41,7 @@
                                 {{"shop.filter.category"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="categoryFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'current-cat')"
+                                    <li (click)="toggleClass($event,'current-cat')" [class.current-cat]="category.id == currentCategoryId"
                                         *ngFor="let category of filterOptions.categories">
                                         <a class="pointer" name="category" [attr.val]="category.id">{{category.name}}</a>
                                     </li>

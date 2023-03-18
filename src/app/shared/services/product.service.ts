@@ -14,7 +14,7 @@ export class ProductService {
 
   constructor(private _ApiService: ApiService) {}
 
-  getProducts(page:number = 1): Observable<{
+  getProducts(page: number = 1): Observable<{
     message: string;
     status: number;
     data: IPagination;
@@ -22,12 +22,12 @@ export class ProductService {
     return this._ApiService.postReq(`dashboard/products?page=${page}`, '');
   }
 
-  getProductsByCategoryId(category_id: number): Observable<{
+  getProductsByCategoryId(category_ids: number): Observable<{
     message: string;
     status: number;
     data: IPagination;
   }> {
-    return this._ApiService.postReq('dashboard/products', { category_id });
+    return this._ApiService.postReq('dashboard/products', { category_ids:[category_ids] });
   }
 
   getFilterOptions(): Observable<{

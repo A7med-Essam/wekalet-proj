@@ -28,7 +28,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   ngOnInit(): void {
-    this.getCategoryId();
     this._ProductService.filterOptions
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe({
@@ -36,7 +35,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
           res ? (this.filterOptions = res) : this.getFilterOptions();
         },
       });
-  }
+      this.getCategoryId();
+    }
 
   toggleFilterBtn(type: string, e: MouseEvent) {
     if (e?.target != null) {
@@ -80,12 +80,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
   }
 
+  currentCategoryId:number = 0;
   getCategoryId() {
     this._CategoryService.categoryId
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe({
         next: (res) => {
           if (res) {
+            this.currentCategoryId = res
             this.getProductsByCategoryId(res);
           } else {
             this.getProducts();

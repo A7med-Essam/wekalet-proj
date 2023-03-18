@@ -5,7 +5,8 @@
     "email": "The email is invalid",
     "confirm": "Password does not match",
     "password_pattern": "Password must be at least 8 characters long.",
-    "mobile": "This field must be 11 digits long."
+    "mobile": "This field must be 11 digits long.",
+    "minLength":"Name must be at least 3 characters long."
   },
   "home":{
     "section1":{
