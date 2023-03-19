@@ -24,7 +24,40 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
+export const ngxUiLoaderConfig: any = {
+  bgsColor: '#2E36B2',
+  bgsOpacity: 1,
+  bgsPosition: 'bottom-right',
+  bgsSize: 150,
+  bgsType: 'ball-scale-multiple',
+  blur: 15,
+  delay: 0,
+  fastFadeOut: true,
+  fgsColor: 'rgba(0,0,0,0)',
+  // "fgsColor": "#19a44b",
+  fgsPosition: 'center-center',
+  fgsSize: 20,
+  fgsType: 'three-strings',
+  gap: 25,
+  logoPosition: 'center-center',
+  logoSize: 80,
+  // "logoUrl": "../../../assets/images/logo/LC_LOGO_(1).png",
+  masterLoaderId: 'master',
+  overlayBorderRadius: '0',
+  // "overlayColor": "rgba(40, 40, 40, 0.8)",
+  overlayColor: 'rgba(40, 40, 40, 0.30)',
+  pbColor: '#2E36B2',
+  pbDirection: 'ltr',
+  pbThickness: 7,
+  hasProgressBar: true,
+  // "text": "Loading",
+  textColor: '#2E36B2',
+  textPosition: 'center-center',
+  maxTime: -1,
+  minTime: 300,
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,11 +78,12 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // FormsModule,
     I18nModule,
     DialogModule,
     ToastModule,
     ConfirmDialogModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

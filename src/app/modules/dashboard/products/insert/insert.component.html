@@ -3,35 +3,19 @@
         <div class="container mt-5">
             <form [formGroup]="insertForm" (ngSubmit)='insertRow(insertForm)'>
                 <div class="row mx-0">
-                    <div class="col-md-6 my-3">
+                    <div class="col-lg-4 my-3">
                         <label for="">Name</label>
                         <input type="text" pInputText ngClass="w-100" formControlName='name' />
                     </div>
-                    <div class="col-md-6 my-3">
+                    <div class="col-lg-4 my-3">
                         <label for="">Name Ar</label>
                         <input type="text" pInputText ngClass="w-100" formControlName='name_ar' />
                     </div>
-                    <div class="col-md-6 my-3">
+                    <div class="col-lg-4 my-3">
                         <label for="">Price</label>
                         <input type="text" pInputText
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                             formControlName='price' ngClass="w-100">
-                    </div>
-                    <div class="col-md-6 my-3">
-                        <label for="">Title</label>
-                        <input type="text" pInputText ngClass="w-100" formControlName='title' />
-                    </div>
-                    <div class="col-md-6 my-3">
-                        <label for="">Title Ar</label>
-                        <input type="text" pInputText ngClass="w-100" formControlName='title_ar' />
-                    </div>
-                    <div class="col-md-6 my-3">
-                        <label for="">Description</label>
-                        <input type="text" pInputText ngClass="w-100" formControlName='description' />
-                    </div>
-                    <div class="col-md-6 my-3">
-                        <label for="">Description</label>
-                        <input type="text" pInputText ngClass="w-100" formControlName='description_ar' />
                     </div>
                     <div class="col-md-6 my-3">
                         <label for="">Category</label>
@@ -39,15 +23,15 @@
                             formControlName='category_id' styleClass="w-100" placeholder="Select Category"></p-dropdown>
                     </div>
                     <div class="col-md-6 my-3">
+                        <label for="">Colors</label>
+                        <p-multiSelect [options]="productOptions?.colors" formControlName='color_ids'
+                        placeholder="Select Colors" styleClass="w-100" optionLabel="name" optionValue="id"
+                        display="chip" appendTo="body"></p-multiSelect>
+                    </div>
+                    <div class="col-md-6 my-3">
                         <label for="">Gender</label>
                         <p-dropdown [options]="productOptions?.genders" optionLabel="name" optionValue="id"
                             formControlName='gender_id' styleClass="w-100" placeholder="Select Gender"></p-dropdown>
-                    </div>
-                    <div class="col-md-6 my-3">
-                        <label for="">Colors</label>
-                        <p-multiSelect [options]="productOptions?.colors" formControlName='color_ids'
-                            placeholder="Select Colors" styleClass="w-100" optionLabel="name" optionValue="id"
-                            display="chip" appendTo="body"></p-multiSelect>
                     </div>
                     <div class="col-md-6 my-3">
                         <label for="">Sizes</label>
@@ -55,12 +39,33 @@
                             placeholder="Select Sizes" styleClass="w-100" optionLabel="name" optionValue="id"
                             display="chip" appendTo="body"></p-multiSelect>
                     </div>
-                    <div class="col-md-6 my-3">
+                    <div class="col-12 my-3">
                         <label for="" style="opacity: 0;">images</label>
-                        <p-button ngClass="w-100"  icon="pi pi-plus"  label="Upload Product Images" (click)="importImage()"></p-button>
+                        <div *ngIf="uploadedImages.length > 0" class="mb-3">
+                            <img *ngFor="let img of uploadedImages" class="mx-2" [src]="img" style="width: 50px;height: 50px;border-radius:50%">
+                        </div>
+                        <p-button ngClass="w-100"  icon="pi pi-plus"  label="Upload Product Multi Images" (click)="importImage()"></p-button>
+                    </div>
+                    <div class="col-md-6 my-3">
+                        <label for="">Title Ar</label>
+                        <input type="text" pInputText ngClass="w-100" formControlName='title_ar' />
+                    </div>
+                    <div class="col-md-6 my-3">
+                        <label for="">Title</label>
+                        <input type="text" pInputText ngClass="w-100" formControlName='title' />
+                    </div>
+                    <div class="col-md-6 my-3">
+                        <label for="">Description Ar</label>
+                        <!-- <input type="text" pInputText ngClass="w-100" formControlName='description_ar' /> -->
+                        <textarea  cols="30" rows="7" formControlName="description_ar" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-6 my-3">
+                        <label for="">Description</label>
+                        <!-- <input type="text" pInputText ngClass="w-100" formControlName='description' /> -->
+                        <textarea  cols="30" rows="7" formControlName="description" class="form-control"></textarea>
                     </div>
                     <div class="col-12 my-3">
-                         <button pButton type="submit"label="Insert" class="p-button-sm w-100"></button>
+                         <button pButton type="submit"label="Insert" class="p-button-sm w-100" [disabled]="insertForm.invalid"></button>
                     </div>
                 </div>
             </form>

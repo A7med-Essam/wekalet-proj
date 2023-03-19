@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DashboardService } from 'src/app/shared/services/dashboard.service';
 import { ProductService } from 'src/app/shared/services/product.service';
@@ -35,18 +35,18 @@ export class InsertComponent implements OnInit {
 
   setInsertForm() {
     this.insertForm = new FormGroup({
-      name: new FormControl(null),
-      name_ar: new FormControl(null),
-      price: new FormControl(null),
-      category_id: new FormControl(null),
-      gender_id: new FormControl(null),
-      images: new FormControl(null),
-      title: new FormControl(null),
-      title_ar: new FormControl(null),
-      description: new FormControl(null),
-      description_ar: new FormControl(null),
-      color_ids: new FormControl(null),
-      size_ids: new FormControl(null),
+      name: new FormControl(null, [Validators.required]),
+      name_ar: new FormControl(null, [Validators.required]),
+      price: new FormControl(null, [Validators.required]),
+      category_id: new FormControl(null, [Validators.required]),
+      gender_id: new FormControl(null, [Validators.required]),
+      images: new FormControl(null, [Validators.required]),
+      title: new FormControl(null, [Validators.required]),
+      title_ar: new FormControl(null, [Validators.required]),
+      description: new FormControl(null, [Validators.required]),
+      description_ar: new FormControl(null, [Validators.required]),
+      color_ids: new FormControl(null, [Validators.required]),
+      size_ids: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -66,13 +66,16 @@ export class InsertComponent implements OnInit {
       reader.onerror = (error) => reject(error);
     });
 
+  uploadedImages: string[] = [];
   async getImages(input: HTMLInputElement) {
     let base64: any[] = [];
     if (input.files != null) {
       for (let i = 0; i < input.files.length; i++) {
-        base64.push(await this.toBase64(input.files[i]))
+        base64.push(await this.toBase64(input.files[i]));
       }
       this.insertForm.controls['images'].setValue(base64);
+      this.insertForm.controls['images'].setErrors(null);
+      this.uploadedImages = base64;
     }
   }
 

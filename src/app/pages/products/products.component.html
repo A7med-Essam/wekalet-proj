@@ -65,7 +65,9 @@
                             <div class="shop-submenu" *ngIf="colorsFilterBtn">
                                 <ul>
                                     <li (click)="toggleClass($event,'chosen')" *ngFor="let color of filterOptions.colors">
-                                        <a class="color-extra-01 pointer" [style.background-color]="color.hexa" name="color" [attr.val]="color.id"></a>
+                                        <a class="color-extra-01 pointer" [style.background-color]="color.hexa"
+                                        [style.border]="color.hexa.toLowerCase() == '#fff'&& '1px solid #000' "
+                                        name="color" [attr.val]="color.id"></a>
                                     </li>
                                     <!-- <li (click)="toggleClass($event,'chosen')"><a class="color-extra-02 pointer"></a>
                                     </li>

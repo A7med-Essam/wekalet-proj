@@ -20,6 +20,7 @@ import { ShowComponent as productsDetails } from './products/show/show.component
 import { ShowComponent as OrderDetails } from './orders/show/show.component';
 import { InsertComponent } from './products/insert/insert.component';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
     PaginatorModule,
     ButtonModule,
     MultiSelectModule,
+    ConfirmDialogModule,
   ],
 })
 export class DashboardModule {}

@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 my-3">
                 <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Date Issue:</span> {{details.created_at | date}}
+                    <span>Date:</span> {{details.created_at | date}}
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 my-3">
@@ -43,21 +43,23 @@
             </div>
         </div>
         <div class="card">
-            <p-table [value]="details.products">
+            <p-table [value]="details?.order_products">
                 <ng-template pTemplate="header">
                     <tr>
+                        <th class="text-center">Name</th>
                         <th class="text-center">Count</th>
                         <th class="text-center">Price</th>
                         <th class="text-center">Total price</th>
-                        <th class="text-center">Date Issue</th>
+                        <th class="text-center">Date</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-order>
                     <tr>
-                        <td class="text-center">{{order?.count}}</td>
-                        <td class="text-center">{{order?.price}}</td>
-                        <td class="text-center">{{order?.total_price}}</td>
-                        <td class="text-center">{{order?.created_at | date}}</td>
+                        <td class="text-center">{{order.product.name}}</td>
+                        <td class="text-center">{{order.count}}</td>
+                        <td class="text-center">{{order.price}}</td>
+                        <td class="text-center">{{order.total_price}}</td>
+                        <td class="text-center">{{order.created_at | date}}</td>
                     </tr>
                 </ng-template>
             </p-table>

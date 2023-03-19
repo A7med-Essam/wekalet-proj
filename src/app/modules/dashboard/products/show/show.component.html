@@ -1,1 +1,112 @@
-<p>show works!</p>
+<section class="mt-5">
+    <div class="container pt-5">
+        <div class="row py-5">
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>Name:</span> {{details?.name}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>price:</span> {{details?.price}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>Date:</span> {{details?.created_at | date}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>category name:</span>{{details?.category.name}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>category image:</span>
+                    <img [src]="details?.category.image" alt="" style="width: 50px;height: 50px;border-radius:50%">
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>descriptions - title:</span> {{details?.descriptions[0].title}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>descriptions:</span> {{details?.descriptions[0].description}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
+                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
+                    <span>gender:</span> {{details?.gender.name}}
+                </div>
+            </div>
+
+        </div>
+        <div class="card my-3">
+            <p-table [value]="details?.images">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th [attr.colspan]="details?.images.length" class="text-center">Image</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-images>
+                    <td class="text-center">
+                        <img [src]="images.image" class="pointer" style="width: 50px;height: 50px;border-radius:50%" (click)="imgActionsModal= true;getCurrentImg(images)">
+                    </td>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="card my-3">
+            <p-table [value]="details?.sizes">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th [attr.colspan]="details?.sizes.length" class="text-center">Sizes</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-sizes>
+                    <td class="text-center">
+                        {{sizes.size.name}}
+                    </td>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="card my-3">
+            <p-table [value]="details?.colors">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th class="text-center">Colors</th>
+                        <th class="text-center">hexa</th>
+                        <th class="text-center">color</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-colors>
+                    <tr>
+                        <td class="text-center">{{colors?.color?.name}}</td>
+                        <td class="text-center">{{colors?.color?.hexa}}</td>
+                        <td class="text-center d-flex justify-content-center">
+                            <div style="height: 50px;width: 50px;border-radius:50%;text-align: center;"
+                                [style.backgroundColor]="colors?.color?.hexa"
+                                [style.border]="colors?.color?.hexa.toLowerCase() == '#fff'&& '1px solid #000' ">
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</section>
+
+<p-dialog header="Take Action On Image" [(visible)]="imgActionsModal" [modal]="true" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div class="upload-btn-wrapper">
+            <button class="btn btn-warning" (click)="imgActionsModal = false;importImage()">Update</button>
+        </div>
+        <div class="upload-btn-wrapper">
+            <button class="btn btn-danger" (click)="imgActionsModal = false;deleteImage()">Delete</button>
+        </div>
+    </div>
+</p-dialog>

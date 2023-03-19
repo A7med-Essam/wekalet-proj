@@ -23,6 +23,7 @@
     "@ngx-translate/http-loader": "^7.0.0",
     "bootstrap": "^5.2.3",
     "crypto-js": "^4.1.1",
+    "ngx-ui-loader": "^13.0.0",
     "primeicons": "^5.0.0",
     "primeng": "^13.4.1",
     "rxjs": "~6.6.0",

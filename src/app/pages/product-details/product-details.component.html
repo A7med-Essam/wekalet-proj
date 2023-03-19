@@ -12,7 +12,8 @@
                                     <div class="slick-track">
                                         <div class="thumbnail slick-slide slick-current slick-active w-100"
                                             data-slick-index="0" aria-hidden="false" tabindex="0">
-                                            <img [src]="product.images[0].image" alt="Product Images" #mainImage>
+                                            <img [src]="product.images[0].image" style="height: 500px;"
+                                                alt="Product Images" #mainImage>
                                             <div class="label-block label-right">
                                                 <div class="product-badget">20% {{"labels.discount"|translate}}</div>
                                             </div>
@@ -79,8 +80,8 @@
                                                 <span #selectedColor [style.border-color]="i == 0&&color.color.hexa"
                                                     [class.active]="i == 0"
                                                     (click)="toggleColors(color.color.hexa,selectedColor,colorContainer,colorsParent)">
-                                                    <span class="color"
-                                                        [style.background-color]="color.color.hexa"></span>
+                                                    <span class="color" [style.background-color]="color.color.hexa"
+                                                        [style.border]="color.color.hexa.toLowerCase()=='#fff'&&'1px solid #000'"></span>
                                                 </span>
                                             </li>
                                             <!-- <li class="color-extra-02"><span><span class="color"></span></span>
@@ -113,9 +114,12 @@
                                     <!-- <span class="dec qtybtn">-</span>
                                     <input type="text" value="1">
                                     <span class="inc qtybtn">+</span> -->
-                                    <span class="dec qtybtn" (click)="decreaseItem(product,product.count?product.count:1)">-</span>
-                                    <input type="text" readonly class="quantity-input" [value]="product.count?product.count:1">
-                                    <span class="inc qtybtn" (click)="increaseItem(product,product.count?product.count:1)">+</span>
+                                    <span class="dec qtybtn"
+                                        (click)="decreaseItem(product,product.count?product.count:1)">-</span>
+                                    <input type="text" readonly class="quantity-input"
+                                        [value]="product.count?product.count:1">
+                                    <span class="inc qtybtn"
+                                        (click)="increaseItem(product,product.count?product.count:1)">+</span>
                                 </div>
                                 <!-- End Quentity Action  -->
 

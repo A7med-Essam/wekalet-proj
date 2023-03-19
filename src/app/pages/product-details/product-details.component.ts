@@ -57,7 +57,11 @@ export class ProductDetailsComponent implements OnInit {
           e.children[0].classList.remove('active');
         e.children[0].style.borderColor = 'transparent';
       });
-    selectedColor.style.borderColor = hexa;
+    if (hexa.toLowerCase() == '#fff') {
+      selectedColor.style.borderColor = '#000';
+    } else {
+      selectedColor.style.borderColor = hexa;
+    }
     selectedColor.classList.contains('active') ||
       selectedColor.classList.add('active');
   }
@@ -85,8 +89,8 @@ export class ProductDetailsComponent implements OnInit {
   increaseItem(item: IProduct, count: number) {
     this._CartService.increaseItem(item, count);
   }
-  
+
   decreaseItem(item: IProduct, count: number) {
-    this._CartService.decreaseItem(item,count)
+    this._CartService.decreaseItem(item, count);
   }
 }
