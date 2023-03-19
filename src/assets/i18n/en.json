@@ -190,23 +190,7 @@
     "apply": "Apply",
     "updateCart":"Update Cart",
     "processToCheckout":"Process to Checkout",
-
-    "next---------": "Next",
-    "previous---------": "Previous",
-    "back---------": "Back",
-    "close---------": "Close",
-    "send---------": "Send",
-    "changePassword---------": "Change password",
-    "edit---------": "Edit",
-    "delete---------": "Delete",
-    "addNewAddress---------": "Add new address",
-    "editAddress---------": "Edit address",
-    "save---------": "Save",
-    "select---------": "Select",
-    "confirm---------": "Confirm",
-    "details---------": "Details",
-    "goHomePage---------": "Go Home Page",
-    "viewMore---------": "Show more"
+    "goHomePage": "Back To Home"
   },
   "labels":{
     "discount":"off",
@@ -233,5 +217,10 @@
     "register":"Sign Up",
     "registerLabel":"No account yet?",
     "title":"QUICKLINKS"
+  },
+  "notFound":{
+    "title":"Page not found",
+    "subtitle":"Oops! Something's missing",
+    "description":"It seems like we dont find what you searched. The page you were looking for doesn't exist, isn't available loading incorrectly"
   }
 }
