@@ -6,6 +6,7 @@ import { IFilterOptions, IProduct } from 'src/app/shared/interfaces/product';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
@@ -22,6 +23,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private _CategoryService: CategoryService,
     private _ProductService: ProductService,
     private _CartService: CartService,
+    private _TranslateService: TranslateService,
     private _MessageService: MessageService
   ) {}
 
@@ -35,8 +37,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
           res ? (this.filterOptions = res) : this.getFilterOptions();
         },
       });
-      this.getCategoryId();
-    }
+    this.getCategoryId();
+  }
 
   toggleFilterBtn(type: string, e: MouseEvent) {
     if (e?.target != null) {
@@ -80,15 +82,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
   }
 
-  currentCategoryId:number = 0;
+  currentCategoryId: number = 0;
   getCategoryId() {
     this._CategoryService.categoryId
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe({
         next: (res) => {
           if (res) {
-            this.currentCategoryId = res
+            this.currentCategoryId = res;
             this.getProductsByCategoryId(res);
+            this.categoryFilterBtn = true;
           } else {
             this.getProducts();
           }
@@ -103,21 +106,27 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   products: IProduct[] = [];
-  currentPage:number = 0;
-  getProducts(page:number = 1) {
+  currentPage: number = 0;
+  pagination:any;
+  getProducts(page: number = 1) {
     this._ProductService.getProducts(page).subscribe({
       next: (res) => {
         this.products = res.data.data;
-        this.currentPage = res.data.current_page
+        this.pagination = res.data
+        this.currentPage = res.data.current_page;
       },
     });
   }
 
-  loadMoreProducts(){
-    this._ProductService.getProducts(this.currentPage+1).subscribe({
+  loadMoreProducts(loadBtn: HTMLAnchorElement) {
+    loadBtn.innerHTML = `<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>`;
+    this._ProductService.getProducts(this.currentPage + 1).subscribe({
       next: (res) => {
-        res.data.data.length > 0 && this.products.push(res.data.data)
-        this.currentPage = res.data.current_page
+        res.data.data.length > 0 && this.products.push(...res.data.data);
+        this.currentPage = res.data.current_page;
+        if (res.data.total == this.products.length) {
+          loadBtn.style.display = 'none';
+        }
       },
     });
   }
@@ -174,10 +183,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
       color_ids: this.selectedColors,
       gender_ids: this.selectedGenders,
     };
-    filters.category_ids.length == 0 &&  (filters.category_ids = null)
-    filters.size_ids.length == 0 &&  (filters.size_ids = null)
-    filters.color_ids.length == 0 &&  (filters.color_ids = null)
-    filters.gender_ids.length == 0 &&  (filters.gender_ids = null)
+    filters.category_ids.length == 0 && (filters.category_ids = null);
+    filters.size_ids.length == 0 && (filters.size_ids = null);
+    filters.color_ids.length == 0 && (filters.color_ids = null);
+    filters.gender_ids.length == 0 && (filters.gender_ids = null);
     this._ProductService.filterProducts(filters).subscribe({
       next: (res) => {
         this.products = res.data;
@@ -224,37 +233,74 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
   }
 
-  // sort
-  sortByPrice(){
-    this.products = this.products.sort((a, b) => a.price - b.price);
+  // EmailSubscribe
+  getEmailSubscribe(email: HTMLInputElement) {
+    if (email.value == '') {
+      if (this._TranslateService.currentLang == 'ar') {
+        this._MessageService.add({
+          severity: 'warn',
+          summary: 'اشترك من خلال البريد الإلكتروني',
+          detail: 'رجاءا أدخل بريدك الإلكتروني',
+        });
+      } else {
+        this._MessageService.add({
+          severity: 'warn',
+          summary: 'Subscribe via email',
+          detail: 'Please enter your email',
+        });
+      }
+    } else {
+      if (this._TranslateService.currentLang == 'ar') {
+        this._MessageService.add({
+          severity: 'success',
+          summary: 'اشترك من خلال البريد الإلكتروني',
+          detail: 'تم الأشتراك بنجاح',
+        });
+      } else {
+        this._MessageService.add({
+          severity: 'success',
+          summary: 'Subscribe via email',
+          detail: 'Subscription completed successfully',
+        });
+      }
+      email.value = '';
+    }
   }
-  sortDescending(){
-    this.products = this.products.sort((a:any, b:any) => parseFloat(b.price) - parseFloat(a.price));
-  }
-  sortByName(){
-    this.products = this.products.sort(function(a, b){
-      if(a.name < b.name) { return -1; }
-      if(a.name > b.name) { return 1; }
-      return 0;
-  })
-  }
-  // sortByPrice(){}
-  sort(event:any){
-    // switch (event.target.value) {
-    //   case 'price':
-    //     this.sortByPrice()
-    //     break;
-    //     case 'old':
-    //       this.sortDescending()
-    //       break;
-    //       case 'name':
-    //         this.sortByName()
-    //         break;
-    //   default:
-    //     break;
-    // }
 
-    this.sortDescending()
-    console.log(this.products);
+  // sort
+  sort(event: any) {
+    switch (event.target.value) {
+      case 'low price':
+        this.products.sort(this.sort_by('price', false, parseInt));
+        break;
+      case 'heigh price':
+        this.products.sort(this.sort_by('price', true, parseInt));
+        break;
+      case 'old':
+        this.products.sort(this.sort_by('id', false, parseInt));
+        break;
+      case 'name':
+        this.products.sort(this.sort_by('name', true, parseInt));
+        break;
+      default:
+        this.products.sort(this.sort_by('id', true, parseInt));
+        break;
+    }
   }
+
+  sort_by = (field: string, reverse: any, primer: any) => {
+    const key = primer
+      ? function (x: any) {
+          return primer(x[field]);
+        }
+      : function (x: any) {
+          return x[field];
+        };
+    reverse = !reverse ? 1 : -1;
+    return function (a: any, b: any) {
+      return (
+        (a = key(a)), (b = key(b)), reverse * ((a && a > b) - (b && b > a))
+      );
+    };
+  };
 }

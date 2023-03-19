@@ -15,7 +15,7 @@
                                             <img [src]="product.images[0].image" style="height: 500px;"
                                                 alt="Product Images" #mainImage>
                                             <div class="label-block label-right">
-                                                <div class="product-badget">20% {{"labels.discount"|translate}}</div>
+                                                <div class="product-badget"> {{"labels.new"|translate}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -28,7 +28,7 @@
                             <div
                                 class="product-small-thumb small-thumb-wrapper slick-initialized slick-slider slick-vertical">
                                 <div class="slick-list draggable">
-                                    <div class="slick-track" #imgParent>
+                                    <div class="slick-track d-flex flex-column" #imgParent>
                                         <div class="small-thumb-img slick-slide slick-active m-0" #imgContainer
                                             *ngFor="let img of product.images;let i = index"
                                             (click)="toggleImages(img.image,imgContainer,mainImage,imgParent)"
@@ -53,8 +53,7 @@
                                 </div>
                                 <div class="review-link mx-2">
                                     <a href="#">
-                                        {{"productDetails.review"|translate}}
-                                        <!-- (<span>1</span> customer reviews) -->
+                                        ({{"productDetails.review"|translate}}<span>{{product.id+20}}</span> )
                                     </a>
                                 </div>
                             </div>
@@ -63,7 +62,7 @@
                             <ul class="product-meta p-0">
                                 <li><i class="fas fa-check"></i>{{"productDetails.description1"|translate}}</li>
                                 <li><i class="fas fa-check"></i>{{"productDetails.description2"|translate}}</li>
-                                <li><i class="fas fa-check"></i>{{"productDetails.description3"|translate}}</li>
+                                <!-- <li><i class="fas fa-check"></i>{{"productDetails.description3"|translate}}</li> -->
                             </ul>
                             <p class="description">{{product.descriptions[0].title}}</p>
                             <p class="description">{{product.descriptions[0].description}}</p>

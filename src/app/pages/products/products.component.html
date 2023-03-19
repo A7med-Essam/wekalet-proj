@@ -69,26 +69,6 @@
                                         [style.border]="color.hexa.toLowerCase() == '#fff'&& '1px solid #000' "
                                         name="color" [attr.val]="color.id"></a>
                                     </li>
-                                    <!-- <li (click)="toggleClass($event,'chosen')"><a class="color-extra-02 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-03 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-04 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-05 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-06 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-07 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-08 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-09 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-10 pointer"></a>
-                                    </li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="color-extra-11 pointer"></a>
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -110,29 +90,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- <div class="toggle-list product-price-range">
-                            <h6 class="title" (click)="toggleFilterBtn('PRICE',$event)">
-                                {{"shop.filter.price"|translate}}</h6>
-                            <div class="shop-submenu" *ngIf="priceFilterBtn">
-                                <ul class="mb-3">
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">100</a>
-                                    </li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">500</a>
-                                    </li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">1000</a>
-                                    </li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">1500</a>
-                                    </li>
-                                    <li class="my-1" (click)="toggleClass($event,'chosen')"><a class="pointer">2000</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
                         <button class="axil-btn btn-bg-primary danger m-1" 
                         (click)="ApplyFilter()">
                             {{"buttons.apply"|translate}}
                         </button>
-                        <button class="axil-btn btn-bg-primary m-1">{{"buttons.reset"|translate}}</button>
+                        <!-- <button class="axil-btn btn-bg-primary m-1">{{"buttons.reset"|translate}}</button> -->
                     </div>
                     <!-- End .axil-shop-sidebar -->
                 </div>
@@ -143,33 +105,31 @@
                                 <div
                                     class="category-select align-items-center justify-content-lg-end justify-content-between">
                                     <!-- Start Single Select  -->
-                                    <span class="filter-results">{{"shop.products.paginate"|translate : { from:1, to:
-                                        12,total:30 } }}</span>
+                                    <span class="filter-results">
+                                        {{"shop.products.paginate"|translate : {from:1, to: products.length,total:pagination.total} }}</span>
                                     <select class="single-select" (change)="sort($event)">
                                         <option value="new">{{"shop.products.sort.byLatest"|translate}}</option>
                                         <option value="old">{{"shop.products.sort.byOldest"|translate}}</option>
                                         <option value="name">{{"shop.products.sort.byName"|translate}}</option>
-                                        <option value="price">{{"shop.products.sort.byPrice"|translate}}</option>
+                                        <option value="heigh price">{{"shop.products.sort.byPriceHeigh"|translate}}</option>
+                                        <option value="low price">{{"shop.products.sort.byPriceLow"|translate}}</option>
                                     </select>
                                     <!-- End Single Select  -->
                                 </div>
-                                <!-- <div class="d-lg-none">
-                                    <button class="product-filter-mobile filter-toggle"><i class="fas fa-filter"></i> FILTER</button>
-                                </div> -->
                             </div>
                         </div>
                     </div>
                     <!-- End .row -->
-                    <div class="row row--15">
+                    <div class="row row--15" *ngIf="products.length">
                         <div class="col-xl-4 col-sm-6" *ngFor="let product of products">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
                                     <a>
-                                        <img [src]="product.images[0].image" style="height: 300px;"
+                                        <img [src]="product.images&&product.images[0].image" style="height: 300px;"
                                             alt="Product Images">
                                     </a>
                                     <div class="label-block label-right">
-                                        <div class="product-badget">10% {{"labels.discount"|translate}}</div>
+                                        <div class="product-badget">{{"labels.new"|translate}}</div>
                                     </div>
                                     <div class="product-hover-action">
                                         <ul class="cart-action">
@@ -205,224 +165,31 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-02.png" alt="Product Images">
-                                    </a>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Media remote</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$40</span>
-                                            <span class="price old-price">$50</span>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                    <div *ngIf="products.length == 0">
+                        <div class="row">
+                            <div class="col-xl-4 col-sm-6 my-2">
+                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                            </div>
+                            <div class="col-xl-4 col-sm-6 my-2">
+                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                            </div>
+                            <div class="col-xl-4 col-sm-6 my-2">
+                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                            </div>
+                            <div class="col-xl-4 col-sm-6 my-2">
+                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                            </div>
+                            <div class="col-xl-4 col-sm-6 my-2">
+                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                            </div>
+                            <div class="col-xl-4 col-sm-6 my-2">
+                                <p-skeleton width="100%" height="20rem"></p-skeleton>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-03.png" alt="Product Images">
-                                    </a>
-                                    <div class="label-block label-right">
-                                        <div class="product-badget">25% {{"labels.discount"|translate}}</div>
-                                    </div>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">HD camera</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$45</span>
-                                            <span class="price old-price">$60</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-04.png" alt="Product Images">
-                                    </a>
-                                    <div class="label-block label-right">
-                                        <div class="product-badget">5% {{"labels.discount"|translate}}</div>
-                                    </div>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Guys Bomber Jacket</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$50</span>
-                                            <span class="price old-price">$60</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-05.png" alt="Product Images">
-                                    </a>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Level 20 RGB Cherry</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$38</span>
-                                            <span class="price old-price">$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-06.png" alt="Product Images">
-                                    </a>
-                                    <div class="label-block label-right">
-                                        <div class="product-badget">5% {{"labels.discount"|translate}}</div>
-                                    </div>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Level 20 RGB Cherry</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$25</span>
-                                            <span class="price old-price">$40</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-07.png" alt="Product Images">
-                                    </a>
-                                    <div class="label-block label-right">
-                                        <div class="product-badget">15% {{"labels.discount"|translate}}</div>
-                                    </div>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Logitech Streamcam</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$15</span>
-                                            <span class="price old-price">$20</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-08.png" alt="Product Images">
-                                    </a>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Bass Meets Clarity</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$60</span>
-                                            <span class="price old-price">$80</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="axil-product product-style-one mb--30">
-                                <div class="thumbnail">
-                                    <a href="single-product.html">
-                                        <img src="assets/images/products/electric/product-02.png" alt="Product Images">
-                                    </a>
-                                    <div class="label-block label-right">
-                                        <div class="product-badget">30% {{"labels.discount"|translate}}</div>
-                                    </div>
-                                    <div class="product-hover-action">
-                                        <ul class="cart-action">
-                                            <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">{{"buttons.addToCart"|translate}}</a></li>
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-content">
-                                    <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">Media remote</a></h5>
-                                        <div class="product-price-variant">
-                                            <span class="price current-price">$40</span>
-                                            <span class="price old-price">$50</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     <div class="text-center pt--20" *ngIf="products.length">
-                        <a (click)="loadMoreProducts()" class="axil-btn btn-bg-lighter btn-load-more pointer">{{"buttons.loadMore"|translate}}</a>
+                        <a #loadBtn (click)="loadMoreProducts(loadBtn)" class="axil-btn btn-bg-lighter btn-load-more pointer">{{"buttons.loadMore"|translate}}</a>
                     </div>
                     <ng-template #other_content>
                         <div class="text-danger my-5 text-center">
@@ -447,9 +214,11 @@
                     <h2 class="title mb--40 mb_sm--30">{{"shop.subscribe.title"|translate}}</h2>
                     <div class="input-group newsletter-form mt-5">
                         <div class="position-relative newsletter-inner mb--15 me-4 my-3">
-                            <input placeholder="{{'shop.subscribe.subscribeInputPlaceholder'|translate}}" type="text">
+                            <input placeholder="{{'shop.subscribe.subscribeInputPlaceholder'|translate}}" type="text" #subscribeInput>
                         </div>
-                        <button type="submit" class="axil-btn mb--15 my-3">{{"buttons.subscribe"|translate}}</button>
+                        <button type="submit" class="axil-btn mb--15 my-3" 
+                        (click)="getEmailSubscribe(subscribeInput)"
+                        >{{"buttons.subscribe"|translate}}</button>
                     </div>
                 </div>
             </div>

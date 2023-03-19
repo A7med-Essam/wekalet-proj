@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _ProductService: ProductService,
     private _Router: Router,
     private _MessageService: MessageService,
-    private _CartService: CartService
+    private _CartService: CartService,
   ) {}
   private unsubscribe$ = new Subject<void>();
   @Input() currentProduct!: IProduct;
@@ -95,4 +95,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this._MessageService.add(this._CartService.warningMessageService());
     }
   }
+
+
 }

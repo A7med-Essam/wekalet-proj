@@ -25,6 +25,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import {SkeletonModule} from 'primeng/skeleton';
 
 export const ngxUiLoaderConfig: any = {
   bgsColor: '#2E36B2',
@@ -47,10 +48,10 @@ export const ngxUiLoaderConfig: any = {
   masterLoaderId: 'master',
   overlayBorderRadius: '0',
   // "overlayColor": "rgba(40, 40, 40, 0.8)",
-  overlayColor: 'rgba(40, 40, 40, 0.30)',
+  overlayColor: 'rgba(40, 40, 40, 0)',
   pbColor: '#2E36B2',
   pbDirection: 'ltr',
-  pbThickness: 7,
+  pbThickness: 4,
   hasProgressBar: true,
   // "text": "Loading",
   textColor: '#2E36B2',
@@ -84,6 +85,7 @@ export const ngxUiLoaderConfig: any = {
     ConfirmDialogModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderModule,
+    SkeletonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

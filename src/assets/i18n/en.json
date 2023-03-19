@@ -82,7 +82,8 @@
         "byLatest":"Sort By Latest",
         "byOldest":"Sort By Oldest",
         "byName":"Sort By Name",
-        "byPrice":"Sort By Price"
+        "byPriceHeigh":"Sort By Heigh Price",
+        "byPriceLow":"Sort By Low Price"
       }
     },
     "filter":{
@@ -123,7 +124,7 @@
   },
   "productDetails":{
     "title":"Product Details",
-    "review":"(customer reviews 1)",
+    "review":" customer reviews ",
     "colors":"colors",
     "size":"size",
     "description1":"In stock",

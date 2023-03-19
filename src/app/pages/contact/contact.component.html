@@ -6,9 +6,11 @@
                 <div class="col-lg-6 col-md-8">
                     <div class="inner">
                         <ul class="axil-breadcrumb">
-                            <li class="axil-breadcrumb-item"><a routerLink="../home">{{"contact.breadcrumb.home"|translate}}</a></li>
+                            <li class="axil-breadcrumb-item"><a
+                                    routerLink="../home">{{"contact.breadcrumb.home"|translate}}</a></li>
                             <li class="separator"></li>
-                            <li class="axil-breadcrumb-item active" aria-current="page">{{"contact.breadcrumb.current"|translate}}</li>
+                            <li class="axil-breadcrumb-item active" aria-current="page">
+                                {{"contact.breadcrumb.current"|translate}}</li>
                         </ul>
                         <h1 class="title">{{"contact.breadcrumb.title"|translate}}</h1>
                     </div>
@@ -34,35 +36,46 @@
                         <div class="contact-form">
                             <h3 class="title mb--10">{{"contact.form.title"|translate}}</h3>
                             <p>{{"contact.form.subtitle"|translate}}</p>
-                            <form id="contact-form" method="POST" action="mail.php" class="axil-contact-form">
+                            <form id="contact-form" [formGroup]="insertForm" (ngSubmit)='insertRow(insertForm)'
+                                class="axil-contact-form">
                                 <div class="row row--10">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="contact-name">{{"contact.form.inputName"|translate}} <span>*</span></label>
-                                            <input type="text" name="contact-name" id="contact-name">
+                                            <label for="contact-name">{{"contact.form.inputName"|translate}}
+                                                <span>*</span></label>
+                                            <input type="text" name="contact-name" id="contact-name"
+                                                formControlName='name'>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="contact-phone">{{"contact.form.inputPhone"|translate}} <span>*</span></label>
-                                            <input type="text" name="contact-phone" id="contact-phone">
+                                            <label for="contact-phone">{{"contact.form.inputPhone"|translate}}
+                                                <span>*</span></label>
+                                            <input type="text" name="contact-phone" id="contact-phone"
+                                                formControlName='mobile'>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="contact-email">{{"contact.form.inputEmail"|translate}} <span>*</span></label>
-                                            <input type="email" name="contact-email" id="contact-email">
+                                            <label for="contact-email">{{"contact.form.inputEmail"|translate}}
+                                                <span>*</span></label>
+                                            <input type="email" name="contact-email" id="contact-email"
+                                                formControlName='email'>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="contact-message">{{"contact.form.textareaMessage"|translate}}</label>
-                                            <textarea name="contact-message" id="contact-message" cols="1" rows="2"></textarea>
+                                            <label
+                                                for="contact-message">{{"contact.form.textareaMessage"|translate}}</label>
+                                            <textarea name="contact-message" id="contact-message" cols="1" rows="2"
+                                                formControlName='message'></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group mb--0">
-                                            <button name="submit" type="submit" id="submit" class="axil-btn btn-bg-primary">{{"buttons.sendMessage"|translate}}</button>
+                                            <button name="submit" [disabled]="insertForm.invalid" type="submit"
+                                                id="submit"
+                                                class="axil-btn btn-bg-primary">{{"buttons.sendMessage"|translate}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +92,7 @@
                         <div class="contact-career mb--40">
                             <h4 class="title mb--20">{{"contact.contactDetails.section2.title"|translate}}</h4>
                             <p>
-                                {{"contact.contactDetails.section2.description_part1"|translate}} 
+                                {{"contact.contactDetails.section2.description_part1"|translate}}
                                 <b>{{"contact.contactDetails.section2.description_part2"|translate}}</b>
                                 {{"contact.contactDetails.section2.description_part3"|translate}}
                             </p>
@@ -96,8 +109,10 @@
             <div class="axil-google-map-wrap axil-section-gap pb--0">
                 <div class="mapouter">
                     <div class="gmap_canvas">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2846.7751686044967!2d30.01956292898694!3d31.27782939805543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5d0621370670f%3A0xab1bf63b01145138!2sAdlan%2C%20Al%20Amrawi%2C%20Montaza%202%2C%20Alexandria%20Governorate%205525015!5e0!3m2!1sen!2seg!4v1678696367990!5m2!1sen!2seg" 
-                        width="1080" id="gmap_canvas" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2846.7751686044967!2d30.01956292898694!3d31.27782939805543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f5d0621370670f%3A0xab1bf63b01145138!2sAdlan%2C%20Al%20Amrawi%2C%20Montaza%202%2C%20Alexandria%20Governorate%205525015!5e0!3m2!1sen!2seg!4v1678696367990!5m2!1sen!2seg"
+                            width="1080" id="gmap_canvas" height="500" style="border:0;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>

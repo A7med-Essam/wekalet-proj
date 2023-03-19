@@ -32,7 +32,7 @@
             </div>
             <div class="header-action">
                 <ul class="action-list">
-                    <li class="axil-search">
+                    <!-- <li class="axil-search">
                         <a href="javascript:void(0)" class="header-search-icon" title="Search">
                             <i style="font-size: 20px;" class="fa-solid fa-magnifying-glass"></i>
                         </a>
@@ -41,7 +41,7 @@
                         <a href="wishlist.html">
                             <i style="font-size: 20px;" class="fa-regular fa-heart"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="shopping-cart" (click)="openSidebar(cartSidebar)">
                         <a href="#" class="cart-dropdown-btn">
                             <span class="cart-count">{{cartCount}}</span>
@@ -56,21 +56,23 @@
                         <div class="my-account-dropdown" #profileList>
                             <span class="title">{{"profile.title"|translate}}</span>
                             <ul class="quick-links p-0">
-                                <li  (click)="toggleProfileList(profileList)">
+                                <!-- <li  (click)="toggleProfileList(profileList)">
                                     <a class="text-reset pointer" >{{"profile.account"|translate}}</a>
-                                </li>
-                                <li  (click)="toggleProfileList(profileList)">
-                                    <a class="text-reset pointer">{{"profile.support"|translate}}</a>
+                                </li> -->
+                                <li (click)="toggleProfileList(profileList)">
+                                    <a class="text-reset pointer"
+                                        href="https://api.whatsapp.com/send?phone=+201062794576"
+                                        target="_blank" rel="noopener noreferrer">{{"profile.support"|translate}}</a>
                                 </li>
                                 <li (click)="changeLang();toggleProfileList(profileList)">
                                     <a class="text-reset pointer">{{"profile.lang"|translate}}</a>
                                 </li>
                             </ul>
-                            <div class="login-btn">
+                            <!-- <div class="login-btn">
                                 <a href="sign-in.html" class="axil-btn btn-bg-primary">{{"profile.login"|translate}}</a>
                             </div>
                             <div class="reg-footer text-center">{{"profile.registerLabel"|translate}} <a 
-                                    class="btn-link pointer">{{"profile.register"|translate}}</a></div>
+                                    class="btn-link pointer">{{"profile.register"|translate}}</a></div> -->
                         </div>
                     </li>
                     <li class="axil-mobile-toggle" (click)="openSidebar(navbar)">
@@ -120,9 +122,11 @@
                         <div class="item-price"><span
                                 class="currency-symbol">{{product.price}}</span>{{"currency"|translate}}</div>
                         <div class="pro-qty item-quantity">
-                            <span class="dec qtybtn" (click)="decreaseItem(product,product.count?product.count:1)">-</span>
+                            <span class="dec qtybtn"
+                                (click)="decreaseItem(product,product.count?product.count:1)">-</span>
                             <input type="text" readonly class="quantity-input" [value]="product.count?product.count:1">
-                            <span class="inc qtybtn" (click)="increaseItem(product,product.count?product.count:1)">+</span>
+                            <span class="inc qtybtn"
+                                (click)="increaseItem(product,product.count?product.count:1)">+</span>
                         </div>
                     </div>
                 </li>
