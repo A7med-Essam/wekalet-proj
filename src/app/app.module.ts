@@ -54,7 +54,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     MessageService,
-    ConfirmationService
+    ConfirmationService,
   ],
   bootstrap: [AppComponent],
 })

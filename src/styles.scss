@@ -1547,3 +1547,7 @@ button.axil-btn.btn-bg-primary.danger:before {
 
 @import "./assets/styles/styles.scss";
 @import "./assets/styles/ar_style/styles_ar.scss";
+
+.p-paginator-element {
+  width: fit-content !important;
+}
