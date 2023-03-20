@@ -11,12 +11,19 @@
                     <tr>
                         <th class="text-center">Name</th>
                         <th class="text-center">Hexa</th>
+                        <th class="text-center">Color</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-product>
                     <tr>
                         <td class="text-center">{{product?.name}}</td>
                         <td class="text-center">{{product?.hexa}}</td>
+                        <td class="text-center">
+                            <div style="height: 50px;width: 50px;border-radius:50%;margin: auto;"
+                            [style.backgroundColor]="product?.hexa"
+                            [style.border]="product?.hexa.toLowerCase() == '#fff'&& '1px solid #000' ">
+                        </div>
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>

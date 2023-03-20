@@ -129,7 +129,8 @@
     "size":"size",
     "description1":"In stock",
     "description2":"Free delivery available",
-    "description3":"Sales 30% Off Use Code: MOTIVE30"
+    "description3":"Sales 30% Off Use Code: MOTIVE30",
+    "description4":"Minimum quantity is {{min}}"
   },
   "checkout":{
     "coupon":{  
@@ -196,7 +197,7 @@
     "discount":"off",
     "subtotal":"Subtotal",
     "cartReview":"Cart review",
-    "new":"New",
+    "new":"Minimum Quantity {{min}} Pieces",
     "optional":"(Optional)"
   },
   "footer":{

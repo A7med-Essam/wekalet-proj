@@ -129,7 +129,8 @@
     "size":"المقاسات",
     "description1":"متوفرة",
     "description2":"التوصيل المجاني متاح",
-    "description3":"خصم 30٪ على كود الاستخدام: MOTIVE30"
+    "description3":"خصم 30٪ على كود الاستخدام: MOTIVE30",
+    "description4":"الحد الأدنى للكمية هو {{min}}"
   },
   "checkout":{
     "coupon":{  
@@ -196,7 +197,7 @@
     "discount":"خصم",
     "subtotal":"المبلغ الاجمالي",
     "cartReview":"مراجعة عربة التسوق",
-    "new":"جديد",
+    "new":"أقل كمية {{min}} قطع",
     "optional":"(أختياري)"
   },
   "footer":{

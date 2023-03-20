@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private _AuthService: AuthService, private _Router: Router) {}
-  // pass = prompt('Please enter password');
+  pass = prompt('Please enter password');
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -30,13 +30,12 @@ export class AuthGuard implements CanActivate {
     // this._Router.navigate(['./auth/login']);
     //   return false;
     // }
-    // if (this.pass?.toLocaleLowerCase() == '123123123') {
-    //   return true;
-    // } else {
-    //   this.pass = null;
-    //   this._Router.navigate(['./home']);
-    //   return false;
-    // }
-    return true;
+    if (this.pass?.toLocaleLowerCase() == '123123123') {
+      return true;
+    } else {
+      this.pass = null;
+      this._Router.navigate(['./home']);
+      return false;
+    }
   }
 }

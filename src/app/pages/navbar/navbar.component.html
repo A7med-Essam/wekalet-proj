@@ -123,10 +123,10 @@
                                 class="currency-symbol">{{product.price}}</span>{{"currency"|translate}}</div>
                         <div class="pro-qty item-quantity">
                             <span class="dec qtybtn"
-                                (click)="decreaseItem(product,product.count?product.count:1)">-</span>
-                            <input type="text" readonly class="quantity-input" [value]="product.count?product.count:1">
+                                (click)="decreaseItem(product)">-</span>
+                            <input type="text" readonly class="quantity-input" [value]="product.quantity">
                             <span class="inc qtybtn"
-                                (click)="increaseItem(product,product.count?product.count:1)">+</span>
+                                (click)="increaseItem(product)">+</span>
                         </div>
                     </div>
                 </li>

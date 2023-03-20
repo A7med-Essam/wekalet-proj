@@ -151,7 +151,7 @@
                                 alt="Product Images">
                         </a>
                         <div class="label-block label-right">
-                            <div class="product-badget"> {{ "labels.new" | translate }}</div>
+                            <div class="product-badget"> {{ "labels.new" | translate: {min:product.min_quantity} }}</div>
                         </div>
                         <div class="product-hover-action">
                             <ul class="cart-action p-0">
@@ -184,147 +184,12 @@
                             </h5>
                             <div class="product-price-variant">
                                 <span class="price current-price">{{product?.price}} {{ "currency" | translate }}</span>
-                                <span class="price old-price">{{product?.price}} {{ "currency" | translate }}</span>
+                                <span class="price old-price"  *ngIf="product?.old_price">{{product?.price}} {{ "currency" | translate }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4">
-                <div class="axil-product product-style-one">
-                    <div class="thumbnail">
-                        <a href="single-product.html" tabindex="0">
-                            <img class="hover-img" src="assets/images/products/product-03.png" alt="Product Images">
-                        </a>
-                        <div class="label-block label-right">
-                            <div class="product-badget"> {{ "labels.new" | translate }}</div>
-                        </div>
-                        <div class="product-hover-action">
-                            <ul class="cart-action p-0">
-                                <li class="quickview"><a href="#"><i class="far fa-eye"></i></a></li>
-                                <li class="select-option">
-                                    <a href="single-product.html" tabindex="0">
-                                        {{ "buttons.addToCart" | translate }}
-                                    </a>
-                                </li>
-                                <li class="wishlist"><a href="wishlist.html" tabindex="0"><i
-                                            class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="inner">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number text-muted">(64)</span>
-                            </div>
-                            <h5 class="title">
-                                <a class="text-reset" href="single-product.html">Yantiti Leather &amp; Canvas Bags</a>
-                            </h5>
-                            <div class="product-price-variant">
-                                <span class="price current-price">29.99 {{ "currency" | translate }}</span>
-                                <span class="price old-price">49.99 {{ "currency" | translate }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4">
-                <div class="axil-product product-style-one">
-                    <div class="thumbnail">
-                        <a href="single-product.html" tabindex="0">
-                            <img class="hover-img" src="assets/images/products/product-05.png" alt="Product Images">
-                        </a>
-                        <div class="label-block label-right">
-                            <div class="product-badget"> {{ "labels.new" | translate }}</div>
-                        </div>
-                        <div class="product-hover-action">
-                            <ul class="cart-action p-0">
-                                <li class="quickview"><a href="#"><i class="far fa-eye"></i></a></li>
-                                <li class="select-option">
-                                    <a href="single-product.html" tabindex="0">
-                                        {{ "buttons.addToCart" | translate }}
-                                    </a>
-                                </li>
-                                <li class="wishlist"><a href="wishlist.html" tabindex="0"><i
-                                            class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="inner">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number text-muted">(64)</span>
-                            </div>
-                            <h5 class="title">
-                                <a class="text-reset" href="single-product.html">Yantiti Leather &amp; Canvas Bags</a>
-                            </h5>
-                            <div class="product-price-variant">
-                                <span class="price current-price">29.99 {{ "currency" | translate }}</span>
-                                <span class="price old-price">49.99 {{ "currency" | translate }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4">
-                <div class="axil-product product-style-one">
-                    <div class="thumbnail">
-                        <a href="single-product.html" tabindex="0">
-                            <img class="hover-img" src="assets/images/products/product-07.png" alt="Product Images">
-                        </a>
-                        <div class="label-block label-right">
-                            <div class="product-badget"> {{ "labels.new" | translate }}</div>
-                        </div>
-                        <div class="product-hover-action">
-                            <ul class="cart-action p-0">
-                                <li class="quickview"><a href="#"><i class="far fa-eye"></i></a></li>
-                                <li class="select-option">
-                                    <a href="single-product.html" tabindex="0">
-                                        {{ "buttons.addToCart" | translate }}
-                                    </a>
-                                </li>
-                                <li class="wishlist"><a href="wishlist.html" tabindex="0"><i
-                                            class="far fa-heart"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="inner">
-                            <div class="product-rating">
-                                <span class="icon">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </span>
-                                <span class="rating-number text-muted">(64)</span>
-                            </div>
-                            <h5 class="title">
-                                <a class="text-reset" href="single-product.html">Yantiti Leather &amp; Canvas Bags</a>
-                            </h5>
-                            <div class="product-price-variant">
-                                <span class="price current-price">29.99 {{ "currency" | translate }}</span>
-                                <span class="price old-price">49.99 {{ "currency" | translate }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </section>

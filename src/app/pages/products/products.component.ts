@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private _TranslateService: TranslateService,
     private _MessageService: MessageService
   ) {}
+  rangeValues: number[] = [1000,5000];
 
   private unsubscribe$ = new Subject<void>();
 
@@ -46,18 +47,23 @@ export class ProductsComponent implements OnInit, OnDestroy {
       switch (type.toLowerCase()) {
         case 'categories':
           this.categoryFilterBtn = !this.categoryFilterBtn;
+          this.selectedCategories = []
           break;
         case 'gender':
           this.genderFilterBtn = !this.genderFilterBtn;
+          this.selectedGenders = []
           break;
         case 'colors':
           this.colorsFilterBtn = !this.colorsFilterBtn;
+          this.selectedColors = []
           break;
         case 'size':
           this.sizeFilterBtn = !this.sizeFilterBtn;
+          this.selectedSizes = []
           break;
         default:
           this.priceFilterBtn = !this.priceFilterBtn;
+          this.selectedPrices = []
           break;
       }
     }
@@ -107,21 +113,28 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   products: IProduct[] = [];
   currentPage: number = 0;
-  pagination:any;
+  pagination: any;
+  skeletonStatus: boolean = true;
+  perPage:number[]=[]
   getProducts(page: number = 1) {
     this._ProductService.getProducts(page).subscribe({
       next: (res) => {
+        this.skeletonStatus = false;
         this.products = res.data.data;
-        this.pagination = res.data
+        this.pagination = res.data;
         this.currentPage = res.data.current_page;
+        this.perPage = Array(res.data.per_page).fill(0).map((x,i)=>i);
       },
     });
   }
-
+  skeletonStatus2:boolean = false;
   loadMoreProducts(loadBtn: HTMLAnchorElement) {
+    this.skeletonStatus2 = true;
     loadBtn.innerHTML = `<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>`;
     this._ProductService.getProducts(this.currentPage + 1).subscribe({
       next: (res) => {
+        this.skeletonStatus2 = false;
+        loadBtn.innerHTML = this._TranslateService.instant('buttons.loadMore');
         res.data.data.length > 0 && this.products.push(...res.data.data);
         this.currentPage = res.data.current_page;
         if (res.data.total == this.products.length) {
@@ -134,6 +147,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   getProductsByCategoryId(id: number) {
     this._ProductService.getProductsByCategoryId(id).subscribe({
       next: (res) => {
+        this.skeletonStatus = false;
         this.products = res.data.data;
       },
     });
@@ -177,6 +191,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   selectedCategories: any = [];
   selectedPrices: any = [];
   ApplyFilter() {
+    this.skeletonStatus = true;
     const filters = {
       category_ids: this.selectedCategories,
       size_ids: this.selectedSizes,
@@ -190,6 +205,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this._ProductService.filterProducts(filters).subscribe({
       next: (res) => {
         this.products = res.data;
+        this.skeletonStatus = false;
       },
     });
   }

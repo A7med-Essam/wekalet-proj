@@ -24,6 +24,7 @@ export class InsertComponent implements OnInit {
   }
 
   insertRow(insertForm: FormGroup) {
+    this.insertForm.controls.quantity.setValue(this.insertForm.value.min_quantity)
     this._DashboardService
       .insertProduct(insertForm.value)
       .subscribe((res: any) => {
@@ -47,6 +48,8 @@ export class InsertComponent implements OnInit {
       description_ar: new FormControl(null, [Validators.required]),
       color_ids: new FormControl(null, [Validators.required]),
       size_ids: new FormControl(null, [Validators.required]),
+      min_quantity: new FormControl(null, [Validators.required]),
+      quantity: new FormControl(null),
     });
   }
 

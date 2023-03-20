@@ -15,7 +15,7 @@
                                             <img [src]="product.images[0].image" style="height: 500px;"
                                                 alt="Product Images" #mainImage>
                                             <div class="label-block label-right">
-                                                <div class="product-badget"> {{"labels.new"|translate}}</div>
+                                                <div class="product-badget"> {{"labels.new"|translate: {min:product.min_quantity} }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -62,6 +62,7 @@
                             <ul class="product-meta p-0">
                                 <li><i class="fas fa-check"></i>{{"productDetails.description1"|translate}}</li>
                                 <li><i class="fas fa-check"></i>{{"productDetails.description2"|translate}}</li>
+                                <li><i class="fas fa-check"></i>{{"productDetails.description4"|translate : {min:product.min_quantity} }}</li>
                                 <!-- <li><i class="fas fa-check"></i>{{"productDetails.description3"|translate}}</li> -->
                             </ul>
                             <p class="description">{{product.descriptions[0].title}}</p>
@@ -114,11 +115,11 @@
                                     <input type="text" value="1">
                                     <span class="inc qtybtn">+</span> -->
                                     <span class="dec qtybtn"
-                                        (click)="decreaseItem(product,product.count?product.count:1)">-</span>
+                                        (click)="decreaseItem(product)">-</span>
                                     <input type="text" readonly class="quantity-input"
-                                        [value]="product.count?product.count:1">
+                                        [value]="product.quantity">
                                     <span class="inc qtybtn"
-                                        (click)="increaseItem(product,product.count?product.count:1)">+</span>
+                                        (click)="increaseItem(product)">+</span>
                                 </div>
                                 <!-- End Quentity Action  -->
 

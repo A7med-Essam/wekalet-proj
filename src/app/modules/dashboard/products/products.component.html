@@ -13,6 +13,7 @@
                         <th class="text-center">Price</th>
                         <th class="text-center">Category</th>
                         <th class="text-center">Gender</th>
+                        <th class="text-center">Min Quantity</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </ng-template>
@@ -22,6 +23,7 @@
                         <td class="text-center">{{product?.price}}</td>
                         <td class="text-center">{{product?.category?.name}}</td>
                         <td class="text-center">{{product?.gender?.name}}</td>
+                        <td class="text-center">{{product?.min_quantity}}</td>
                         <td class="text-center">
                             <button pButton type="button" icon="pi pi-trash"
                             (click)="confirm(product?.id)" class="m-1 p-button-danger p-button-sm"></button>

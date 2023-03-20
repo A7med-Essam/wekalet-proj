@@ -156,8 +156,8 @@ export class CheckoutComponent implements OnInit ,OnDestroy{
       order.push({
         product_id: e.id,
         price: e.price,
-        total_price: e.price * (e.count ? e.count : 1),
-        count: e.count ? e.count : 1,
+        total_price: e.price * e.min_quantity,
+        count: e.min_quantity,
       });
     });
     return order;

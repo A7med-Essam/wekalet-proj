@@ -1551,3 +1551,27 @@ button.axil-btn.btn-bg-primary.danger:before {
 .p-paginator-element {
   width: fit-content !important;
 }
+
+.qtybtn {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+.pro-qty {
+  display: flex;
+  justify-content: center;
+}
+
+.axil-product-table {
+  text-align: center;
+}
+
+@media all and (max-width:991.5px) {
+  .slick-track {
+    flex-direction: row !important
+  }
+}

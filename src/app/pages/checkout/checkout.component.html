@@ -173,8 +173,8 @@
                                     <tbody>
                                         <tr class="order-product" *ngFor="let product of cart">
                                             <td>{{product.name}} <span
-                                                    class="quantity">x{{product.count?product.count:1}}</span></td>
-                                            <td>{{product.price*(product.count?product.count:1)}}
+                                                    class="quantity">x{{product.quantity}}</span></td>
+                                            <td>{{product.price*(product.quantity)}}
                                                 {{"currency"|translate}}</td>
                                         </tr>
                                         <tr class="order-shipping">

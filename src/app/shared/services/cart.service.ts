@@ -87,7 +87,7 @@ export class CartService {
     if (arr.length > 0) {
       const prices = arr.map(
         (product: IProduct) =>
-          product.price * (product.count ? product.count : 1)
+          product.price * (product.quantity)
       );
       return prices.reduce((acc: number, curr: number) => acc + curr);
     }
@@ -99,15 +99,15 @@ export class CartService {
     this.saveCartToStorage(this.cart.getValue());
   }
 
-  increaseItem(item: IProduct, count: number) {
-    item.count = count + 1;
+  increaseItem(item: IProduct) {
+    item.quantity += item.min_quantity;
     this.cart.next(this.cart.value);
     this.saveCartToStorage(this.cart.getValue());
   }
 
-  decreaseItem(item: IProduct, count: number) {
-    if (item.count && item.count > 1) {
-      item.count = count - 1;
+  decreaseItem(item: IProduct) {
+    if (item.quantity > item.min_quantity) {
+      item.quantity = item.quantity - item.min_quantity;
       this.cart.next(this.cart.value);
       this.saveCartToStorage(this.cart.getValue());
     }

@@ -13,7 +13,9 @@ export interface IProduct {
   sizes: ISize[];
   colors: IColor[];
   descriptions: IDescription[];
-  count?: number;
+  min_quantity:number
+  quantity:number
+  old_price:string
 }
 export interface ISize {
   id: number;

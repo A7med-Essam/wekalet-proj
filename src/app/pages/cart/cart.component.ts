@@ -30,12 +30,12 @@ export class CartComponent implements OnInit, OnDestroy {
     this._CartService.clearCart();
   }
 
-  increaseItem(item: IProduct, count: number) {
-    this._CartService.increaseItem(item, count);
+  increaseItem(item: IProduct) {
+    this._CartService.increaseItem(item);
   }
   
-  decreaseItem(item: IProduct, count: number) {
-    this._CartService.decreaseItem(item, count);
+  decreaseItem(item: IProduct) {
+    this._CartService.decreaseItem(item);
   }
 
   updateCart(product: IProduct) {

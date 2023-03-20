@@ -25,7 +25,8 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import {SkeletonModule} from 'primeng/skeleton';
+import { SkeletonModule } from 'primeng/skeleton';
+import { SliderModule } from 'primeng/slider';
 
 export const ngxUiLoaderConfig: any = {
   bgsColor: '#2E36B2',
@@ -85,7 +86,9 @@ export const ngxUiLoaderConfig: any = {
     ConfirmDialogModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderModule,
-    SkeletonModule
+    SkeletonModule,
+    SliderModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

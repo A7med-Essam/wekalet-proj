@@ -41,9 +41,11 @@
                                 {{"shop.filter.category"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="categoryFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'current-cat')" [class.current-cat]="category.id == currentCategoryId"
+                                    <li (click)="toggleClass($event,'current-cat')"
+                                        [class.current-cat]="category.id == currentCategoryId"
                                         *ngFor="let category of filterOptions.categories">
-                                        <a class="pointer" name="category" [attr.val]="category.id">{{category.name}}</a>
+                                        <a class="pointer" name="category"
+                                            [attr.val]="category.id">{{category.name}}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -53,7 +55,8 @@
                                 {{"shop.filter.gender"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="genderFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'chosen')" *ngFor="let gender of filterOptions.genders">
+                                    <li (click)="toggleClass($event,'chosen')"
+                                        *ngFor="let gender of filterOptions.genders">
                                         <a class="pointer" name="gender" [attr.val]="gender.id">{{gender.name}}</a>
                                     </li>
                                 </ul>
@@ -64,10 +67,11 @@
                                 {{"shop.filter.color"|translate}}</h6>
                             <div class="shop-submenu" *ngIf="colorsFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'chosen')" *ngFor="let color of filterOptions.colors">
+                                    <li (click)="toggleClass($event,'chosen')"
+                                        *ngFor="let color of filterOptions.colors">
                                         <a class="color-extra-01 pointer" [style.background-color]="color.hexa"
-                                        [style.border]="color.hexa.toLowerCase() == '#fff'&& '1px solid #000' "
-                                        name="color" [attr.val]="color.id"></a>
+                                            [style.border]="color.hexa.toLowerCase() == '#fff'&& '1px solid #000' "
+                                            name="color" [attr.val]="color.id"></a>
                                     </li>
                                 </ul>
                             </div>
@@ -80,18 +84,18 @@
                                     <li (click)="toggleClass($event,'chosen')" *ngFor="let size of filterOptions.sizes">
                                         <a class="pointer" name="size" [attr.val]="size.id">{{size.name}}</a>
                                     </li>
-                                    <!-- <li (click)="toggleClass($event,'chosen')"><a class="pointer">S</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">M</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">L</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">XL</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">XXL</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">3XL</a></li>
-                                    <li (click)="toggleClass($event,'chosen')"><a class="pointer">4XL</a></li> -->
                                 </ul>
                             </div>
                         </div>
-                        <button class="axil-btn btn-bg-primary danger m-1" 
-                        (click)="ApplyFilter()">
+                        <div class="toggle-list product-price" *ngIf="false">
+                            <h6 class="title" (click)="toggleFilterBtn('PRICE',$event)">{{"shop.filter.price"|translate}}
+                            </h6>
+                            <div class="shop-submenu" *ngIf="priceFilterBtn">
+                                <h5>Range: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
+                                <p-slider [min]="100" [max]="10000" [step]="10" [range]="true" [(ngModel)]="rangeValues"></p-slider>
+                            </div>
+                        </div>
+                        <button class="axil-btn btn-bg-primary danger m-1" (click)="ApplyFilter()">
                             {{"buttons.apply"|translate}}
                         </button>
                         <!-- <button class="axil-btn btn-bg-primary m-1">{{"buttons.reset"|translate}}</button> -->
@@ -99,19 +103,21 @@
                     <!-- End .axil-shop-sidebar -->
                 </div>
                 <div class="col-lg-9 my-4">
-                    <div class="row" *ngIf="products.length;else other_content">
+                    <div class="row" *ngIf="products.length&&!skeletonStatus;else other_content">
                         <div class="col-lg-12">
                             <div class="axil-shop-top mb--40">
                                 <div
                                     class="category-select align-items-center justify-content-lg-end justify-content-between">
                                     <!-- Start Single Select  -->
                                     <span class="filter-results">
-                                        {{"shop.products.paginate"|translate : {from:1, to: products.length,total:pagination.total} }}</span>
+                                        {{"shop.products.paginate"|translate : {from:1, to:
+                                        products.length,total:pagination.total} }}</span>
                                     <select class="single-select" (change)="sort($event)">
                                         <option value="new">{{"shop.products.sort.byLatest"|translate}}</option>
                                         <option value="old">{{"shop.products.sort.byOldest"|translate}}</option>
                                         <option value="name">{{"shop.products.sort.byName"|translate}}</option>
-                                        <option value="heigh price">{{"shop.products.sort.byPriceHeigh"|translate}}</option>
+                                        <option value="heigh price">{{"shop.products.sort.byPriceHeigh"|translate}}
+                                        </option>
                                         <option value="low price">{{"shop.products.sort.byPriceLow"|translate}}</option>
                                     </select>
                                     <!-- End Single Select  -->
@@ -120,7 +126,7 @@
                         </div>
                     </div>
                     <!-- End .row -->
-                    <div class="row row--15" *ngIf="products.length">
+                    <div class="row row--15" *ngIf="products.length&&!skeletonStatus">
                         <div class="col-xl-4 col-sm-6" *ngFor="let product of products">
                             <div class="axil-product product-style-one mb--30">
                                 <div class="thumbnail">
@@ -129,7 +135,8 @@
                                             alt="Product Images">
                                     </a>
                                     <div class="label-block label-right">
-                                        <div class="product-badget">{{"labels.new"|translate}}</div>
+                                        <div class="product-badget">{{"labels.new"|translate: {min:product.min_quantity}
+                                            }}</div>
                                     </div>
                                     <div class="product-hover-action">
                                         <ul class="cart-action">
@@ -158,38 +165,45 @@
                                         <div class="product-price-variant">
                                             <span
                                                 class="price current-price">{{product.price}}{{"currency"|translate}}</span>
-                                            <span
-                                                class="price old-price">{{product.price}}{{"currency"|translate}}</span>
+                                            <span class="price old-price" *ngIf="product?.old_price">
+                                                {{product.price}}{{"currency"|translate}}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <ng-container *ngIf="skeletonStatus2">
+                            <div class="col-xl-4 col-sm-6" *ngFor="let paginate of perPage">
+                                <p-skeleton width="100%" height="18.75rem"></p-skeleton>
+                            </div>
+                        </ng-container>
                     </div>
-                    <div *ngIf="products.length == 0">
+                    <div *ngIf="skeletonStatus">
                         <div class="row">
                             <div class="col-xl-4 col-sm-6 my-2">
-                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                                <p-skeleton width="100%" height="18.75rem"></p-skeleton>
                             </div>
                             <div class="col-xl-4 col-sm-6 my-2">
-                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                                <p-skeleton width="100%" height="18.75rem"></p-skeleton>
                             </div>
                             <div class="col-xl-4 col-sm-6 my-2">
-                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                                <p-skeleton width="100%" height="18.75rem"></p-skeleton>
                             </div>
                             <div class="col-xl-4 col-sm-6 my-2">
-                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                                <p-skeleton width="100%" height="18.75rem"></p-skeleton>
                             </div>
                             <div class="col-xl-4 col-sm-6 my-2">
-                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                                <p-skeleton width="100%" height="18.75rem"></p-skeleton>
                             </div>
                             <div class="col-xl-4 col-sm-6 my-2">
-                                <p-skeleton width="100%" height="20rem"></p-skeleton>
+                                <p-skeleton width="100%" height="18.75rem"></p-skeleton>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center pt--20" *ngIf="products.length">
-                        <a #loadBtn (click)="loadMoreProducts(loadBtn)" class="axil-btn btn-bg-lighter btn-load-more pointer">{{"buttons.loadMore"|translate}}</a>
+                    <div class="text-center pt--20" *ngIf="products.length&&!skeletonStatus">
+                        <a #loadBtn (click)="loadMoreProducts(loadBtn)"
+                            class="axil-btn btn-bg-lighter btn-load-more pointer">{{"buttons.loadMore"|translate}}</a>
                     </div>
                     <ng-template #other_content>
                         <div class="text-danger my-5 text-center">
@@ -214,11 +228,11 @@
                     <h2 class="title mb--40 mb_sm--30">{{"shop.subscribe.title"|translate}}</h2>
                     <div class="input-group newsletter-form mt-5">
                         <div class="position-relative newsletter-inner mb--15 me-4 my-3">
-                            <input placeholder="{{'shop.subscribe.subscribeInputPlaceholder'|translate}}" type="text" #subscribeInput>
+                            <input placeholder="{{'shop.subscribe.subscribeInputPlaceholder'|translate}}" type="text"
+                                #subscribeInput>
                         </div>
-                        <button type="submit" class="axil-btn mb--15 my-3" 
-                        (click)="getEmailSubscribe(subscribeInput)"
-                        >{{"buttons.subscribe"|translate}}</button>
+                        <button type="submit" class="axil-btn mb--15 my-3"
+                            (click)="getEmailSubscribe(subscribeInput)">{{"buttons.subscribe"|translate}}</button>
                     </div>
                 </div>
             </div>

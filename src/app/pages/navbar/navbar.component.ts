@@ -76,12 +76,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._MessageService.add(this._CartService.deleteItemNotify(product));
   }
 
-  increaseItem(item: IProduct, count: number) {
-    this._CartService.increaseItem(item, count);
+  increaseItem(item: IProduct) {
+    this._CartService.increaseItem(item);
   }
   
-  decreaseItem(item: IProduct, count: number) {
-    this._CartService.decreaseItem(item,count)
+  decreaseItem(item: IProduct) {
+    this._CartService.decreaseItem(item)
   }
 
   changeLang(){

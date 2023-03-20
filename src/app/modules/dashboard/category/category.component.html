@@ -16,7 +16,9 @@
                 <ng-template pTemplate="body" let-product>
                     <tr>
                         <td class="text-center">{{product?.name}}</td>
-                        <td class="text-center">{{product?.image}}</td>
+                        <td class="text-center">
+                            <img [src]="product?.image" style="height: 50px;width:50px;" alt="">
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>
