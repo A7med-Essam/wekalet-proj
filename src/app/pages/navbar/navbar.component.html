@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header-navbar justify-content-between">
             <div class="header-brand">
-                <a href="index.html" class="logo logo-dark">
+                <a class="logo logo-dark">
                     <img src="assets/images/logo.jpg" style="width: 50px;max-width: 50px;" alt="Site Logo">
                 </a>
             </div>
@@ -11,7 +11,7 @@
                     <button class="mobile-close-btn mobile-nav-toggler" (click)="closeSidebar(navbar)"><i
                             class="fas fa-times"></i></button>
                     <div class="mobile-nav-brand">
-                        <a href="index.html" class="logo">
+                        <a class="logo">
                             <img src="assets/images/logo.jpg" alt="Site Logo">
                         </a>
                     </div>
@@ -43,7 +43,7 @@
                         </a>
                     </li> -->
                     <li class="shopping-cart" (click)="openSidebar(cartSidebar)">
-                        <a href="#" class="cart-dropdown-btn">
+                        <a class="cart-dropdown-btn">
                             <span class="cart-count">{{cartCount}}</span>
                             <i style="font-size: 20px;" class="fa-solid fa-cart-plus"></i>
                         </a>
@@ -61,11 +61,11 @@
                                 </li> -->
                                 <li (click)="toggleProfileList(profileList)">
                                     <a class="text-reset pointer"
-                                        href="https://api.whatsapp.com/send?phone=+201062794576"
-                                        target="_blank" rel="noopener noreferrer">{{"profile.support"|translate}}</a>
+                                        href="https://api.whatsapp.com/send?phone=+201062794576" target="_blank"
+                                        rel="noopener noreferrer">{{"profile.support"|translate}}</a>
                                 </li>
                                 <li (click)="changeLang();toggleProfileList(profileList)">
-                                    <a class="text-reset pointer">{{"profile.lang"|translate}}</a>
+                                    <a class="text-reset pointer">{{"profile.lang"|translate}} : {{lang}}</a>
                                 </li>
                             </ul>
                             <!-- <div class="login-btn">
@@ -119,14 +119,12 @@
                             <span class="rating-number">({{product.id+20}})</span>
                         </div>
                         <h3 class="item-title"><a class="text-reset">{{product.name}}</a></h3>
-                        <div class="item-price"><span
-                                class="currency-symbol">{{product.price}}</span>{{"currency"|translate}}</div>
+                        <div class="item-price"><span class="currency-symbol">{{product.price}}</span>
+                            {{"currency"|translate}}</div>
                         <div class="pro-qty item-quantity">
-                            <span class="dec qtybtn"
-                                (click)="decreaseItem(product)">-</span>
+                            <span class="dec qtybtn" (click)="decreaseItem(product)">-</span>
                             <input type="text" readonly class="quantity-input" [value]="product.quantity">
-                            <span class="inc qtybtn"
-                                (click)="increaseItem(product)">+</span>
+                            <span class="inc qtybtn" (click)="increaseItem(product)">+</span>
                         </div>
                     </div>
                 </li>

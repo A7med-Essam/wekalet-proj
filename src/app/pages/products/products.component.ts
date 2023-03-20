@@ -26,7 +26,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private _TranslateService: TranslateService,
     private _MessageService: MessageService
   ) {}
-  rangeValues: number[] = [1000,5000];
+  rangeValues: number[] = [1000, 5000];
 
   private unsubscribe$ = new Subject<void>();
 
@@ -47,23 +47,23 @@ export class ProductsComponent implements OnInit, OnDestroy {
       switch (type.toLowerCase()) {
         case 'categories':
           this.categoryFilterBtn = !this.categoryFilterBtn;
-          this.selectedCategories = []
+          this.selectedCategories = [];
           break;
         case 'gender':
           this.genderFilterBtn = !this.genderFilterBtn;
-          this.selectedGenders = []
+          this.selectedGenders = [];
           break;
         case 'colors':
           this.colorsFilterBtn = !this.colorsFilterBtn;
-          this.selectedColors = []
+          this.selectedColors = [];
           break;
         case 'size':
           this.sizeFilterBtn = !this.sizeFilterBtn;
-          this.selectedSizes = []
+          this.selectedSizes = [];
           break;
         default:
           this.priceFilterBtn = !this.priceFilterBtn;
-          this.selectedPrices = []
+          this.selectedPrices = [];
           break;
       }
     }
@@ -115,7 +115,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   currentPage: number = 0;
   pagination: any;
   skeletonStatus: boolean = true;
-  perPage:number[]=[]
+  perPage: number[] = [];
   getProducts(page: number = 1) {
     this._ProductService.getProducts(page).subscribe({
       next: (res) => {
@@ -123,11 +123,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
         this.products = res.data.data;
         this.pagination = res.data;
         this.currentPage = res.data.current_page;
-        this.perPage = Array(res.data.per_page).fill(0).map((x,i)=>i);
+        // this.perPage = Array(res.data.per_page).fill(0).map((x,i)=>i);
+        this.perPage = Array(6)
+          .fill(0)
+          .map((x, i) => i);
       },
     });
   }
-  skeletonStatus2:boolean = false;
+  skeletonStatus2: boolean = false;
   loadMoreProducts(loadBtn: HTMLAnchorElement) {
     this.skeletonStatus2 = true;
     loadBtn.innerHTML = `<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>`;
@@ -251,18 +254,19 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   // EmailSubscribe
   getEmailSubscribe(email: HTMLInputElement) {
-    if (email.value == '') {
+    console.log();
+    if (email.value == '' || email.validationMessage != '') {
       if (this._TranslateService.currentLang == 'ar') {
         this._MessageService.add({
           severity: 'warn',
           summary: 'اشترك من خلال البريد الإلكتروني',
-          detail: 'رجاءا أدخل بريدك الإلكتروني',
+          detail: 'يرجى إدخال البريد الإلكتروني بشكل صحيح',
         });
       } else {
         this._MessageService.add({
           severity: 'warn',
           summary: 'Subscribe via email',
-          detail: 'Please enter your email',
+          detail: 'Please enter a valid email',
         });
       }
     } else {

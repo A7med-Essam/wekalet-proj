@@ -1,227 +1,227 @@
 {
-  "currency": "egp",
+  "currency": "EGP",
   "errors": {
     "required": "This field is required",
     "email": "The email is invalid",
     "confirm": "Password does not match",
     "password_pattern": "Password must be at least 8 characters long.",
     "mobile": "This field must be 11 digits long.",
-    "minLength":"Name must be at least 3 characters long."
+    "minLength": "Name must be at least 3 characters long."
   },
-  "home":{
-    "section1":{
-      "title":"Men's Running Shoes - Black/Yellow",
-      "subtitle":"Hot Deal In This Week",
-      "reviews":"Reviews",
-      "img_label":"From"
+  "home": {
+    "section1": {
+      "title": "Abu State Group Company Authorized agent for the rotating factory and the largest shoe factories in Egypt and the Arab world",
+      "subtitle": "Authorized Agent",
+      "reviews": "Reviews",
+      "img_label": "From"
     },
-    "section2":{
-      "title":"Browse by Category",
-      "subtitle":"Categories"
+    "section2": {
+      "title": "Browse by Category",
+      "subtitle": "Categories"
     },
-    "section3":{
-      "title":"Explore Our Products",
-      "subtitle":"Our Products"
+    "section3": {
+      "title": "Explore Our Products",
+      "subtitle": "Our Products"
     }
   },
-  "about":{
-    "breadcrumb":{
-      "home":"Home",
-      "current":"About Us",
-      "title":"About Our Store"
+  "about": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "About Us",
+      "title": "About Our Store"
     },
-    "title":"Online shopping includes both buying things online.",
-    "subtitle":"About Store",
-    "description1":"Abo Steet Commerce can help you create unified, intelligent digital commerce experiences — both online and in the store.",
-    "description2":"Empower your sales teams with industry tailored solutions that support manufacturers as they go digital, and adapt to changing markets & customers faster by creating new business.",
-    "description3":"Abo Steet offers buyers the seamless, self-service experience of online shopping"
+    "title": "Online shopping includes both buying things online.",
+    "subtitle": "About Store",
+    "description1": "Abo Steet Commerce can help you create unified, intelligent digital commerce experiences — both online and in the store.",
+    "description2": "Empower your sales teams with industry tailored solutions that support manufacturers as they go digital, and adapt to changing markets & customers faster by creating new business.",
+    "description3": "Abo Steet offers buyers the seamless, self-service experience of online shopping"
   },
-  "contact":{
-    "breadcrumb":{
-      "home":"Home",
-      "current":"Contact",
-      "title":"Contact With Us"
+  "contact": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Contact",
+      "title": "Contact With Us"
     },
-    "form":{
-      "title":"We would love to hear from you",
-      "subtitle":"If you’ve got great products your making or looking to work with us then drop us a line.",
-      "inputName":"Name",
-      "inputEmail":"E-mail",
-      "inputPhone":"Phone",
-      "textareaMessage":"Your Message"
+    "form": {
+      "title": "We would love to hear from you",
+      "subtitle": "If you’ve got great products your making or looking to work with us then drop us a line.",
+      "inputName": "Name",
+      "inputEmail": "E-mail",
+      "inputPhone": "Phone",
+      "textareaMessage": "Your Message"
     },
-    "contactDetails":{
-      "section1":{
-        "title":"Our Store",
-        "address":"Al Amrawi, Montaza 2, Alexandria Governorate 5525015",
-        "phone":"Phone: +201062794576/+201221522821",
-        "email":"Email: abo-steet@gmail.com"
+    "contactDetails": {
+      "section1": {
+        "title": "Our Store",
+        "address": "Al Amrawi, Montaza 2, Alexandria Governorate 5525015",
+        "phone": "Phone: +201062794576/+201221522821",
+        "email": "Email: abo-steet@gmail.com"
       },
-      "section2":{
-        "title":"Careers",
-        "description_part1":"Collaborate with Digital and Technology partners to position retail to excel in technology for",
-        "description_part2":"Stores ,",
-        "description_part3":"and enhanced experiences."
+      "section2": {
+        "title": "Careers",
+        "description_part1": "Collaborate with Digital and Technology partners to position retail to excel in technology for",
+        "description_part2": "Stores ,",
+        "description_part3": "and enhanced experiences."
       },
-      "section3":{
-        "title":"Opening Hours",
-        "description":"All Week: 9am - 12pm"
+      "section3": {
+        "title": "Opening Hours",
+        "description": "All Week: 9am - 12pm"
       }
     }
   },
-  "shop":{
-    "breadcrumb":{
-      "home":"Home",
-      "current":"Shop",
-      "title":"Explore All Products"
+  "shop": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Shop",
+      "title": "Explore All Products"
     },
-    "products":{
-      "emptyMsg":"There isn't products at the moment for this category",
-      "paginate":"Showing {{from}}-{{to}} of {{total}} results",
-      "sort":{
-        "byLatest":"Sort By Latest",
-        "byOldest":"Sort By Oldest",
-        "byName":"Sort By Name",
-        "byPriceHeigh":"Sort By Heigh Price",
-        "byPriceLow":"Sort By Low Price"
+    "products": {
+      "emptyMsg": "There isn't products at the moment for this category",
+      "paginate": "Showing {{from}}-{{to}} of {{total}} results",
+      "sort": {
+        "byLatest": "Sort By Latest",
+        "byOldest": "Sort By Oldest",
+        "byName": "Sort By Name",
+        "byPriceHeigh": "Sort By Heigh Price",
+        "byPriceLow": "Sort By Low Price"
       }
     },
-    "filter":{
-      "category":"Categories",
-      "gender":"Gender",
-      "color":"Color",
-      "size":"Size",
-      "price":"Price"
+    "filter": {
+      "category": "Categories",
+      "gender": "Gender",
+      "color": "Color",
+      "size": "Size",
+      "price": "Price"
     },
-    "subscribe":{
-      "title":"Get weekly update",
-      "subtitle":"Newsletter",
-      "subscribeInputPlaceholder":"example@gmail.com"
+    "subscribe": {
+      "title": "Get weekly update",
+      "subtitle": "Newsletter",
+      "subscribeInputPlaceholder": "example@gmail.com"
     }
   },
-  "cart":{
-    "title":"Your Cart",
-    "coupon_placeholder":"Enter coupon code",
-    "tableHeader":{
-      "product":"Product",
-      "price":"Price",
-      "quantity":"Quantity",
-      "subtotal":"Subtotal"
+  "cart": {
+    "title": "Your Cart",
+    "coupon_placeholder": "Enter coupon code",
+    "tableHeader": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal"
     },
-    "payment":{
-      "title":"Order Summary",
-      "subtotal":"Subtotal",
-      "shipping":{
-        "title":"Shipping",
-        "flatRate":"Flat Rate",
-        "local":"Local",
-        "free":"Free Shipping"
+    "payment": {
+      "title": "Order Summary",
+      "subtotal": "Subtotal",
+      "shipping": {
+        "title": "Shipping",
+        "flatRate": "Flat Rate",
+        "local": "Local",
+        "free": "Free Shipping"
       },
-      "stateTax":"State Tax",
-      "total":"Total",
+      "stateTax": "State Tax",
+      "total": "Total",
       "emptyMsg": "The cart is empty..."
     }
   },
-  "productDetails":{
-    "title":"Product Details",
-    "review":" customer reviews ",
-    "colors":"colors",
-    "size":"size",
-    "description1":"In stock",
-    "description2":"Free delivery available",
-    "description3":"Sales 30% Off Use Code: MOTIVE30",
-    "description4":"Minimum quantity is {{min}}"
+  "productDetails": {
+    "title": "Product Details",
+    "review": " customer reviews ",
+    "colors": "colors",
+    "size": "size",
+    "description1": "In stock",
+    "description2": "Free delivery available",
+    "description3": "Sales 30% Off Use Code: MOTIVE30",
+    "description4": "Minimum quantity is {{min}}"
   },
-  "checkout":{
-    "coupon":{  
-      "question":"Have a coupon?",
-      "clickHere":"Click here to enter your code",
-      "note":"If you have a coupon code, please apply it below.",
-      "enterCoupon_placeholder":"Enter coupon code"
+  "checkout": {
+    "coupon": {
+      "question": "Have a coupon?",
+      "clickHere": "Click here to enter your code",
+      "note": "If you have a coupon code, please apply it below.",
+      "enterCoupon_placeholder": "Enter coupon code"
     },
-    "billingDetails":{
-      "title":"Billing details",
-      "firstName":"First Name",
-      "lastName":"Last Name",
-      "companyName":"Merchant name",
-      "location":"Location Url",
-      "country":"Country/Region",
-      "streetAddress":"Street Address",
-      "streetAddress_placeholder":"House number and street name",
-      "apartment_placeholder":"Apartment, suite, unit, etc. (optional)",
-      "city":"Town/City",
-      "phone":"Phone",
-      "email":"Email Address",
-      "otherNote":"Other Notes (optional)",
-      "otherNote_placeholder":"Notes about your order, e.g. special notes for delivery."
+    "billingDetails": {
+      "title": "Billing details",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "companyName": "Merchant name",
+      "location": "Location Url",
+      "country": "Country/Region",
+      "streetAddress": "Street Address",
+      "streetAddress_placeholder": "House number and street name",
+      "apartment_placeholder": "Apartment, suite, unit, etc. (optional)",
+      "city": "Town/City",
+      "phone": "Phone",
+      "email": "Email Address",
+      "otherNote": "Other Notes (optional)",
+      "otherNote_placeholder": "Notes about your order, e.g. special notes for delivery."
     },
-    "orderDetails":{
-      "title":"Your Order",
-      "product":"Product",
-      "subtotal":"Subtotal",
-      "total":"Total",
-      "shipping":{
-        "title":"Shipping Methods",
-        "free":"Free Shipping",
-        "local":"Local",
-        "flatRate":"Flat Rate"
+    "orderDetails": {
+      "title": "Your Order",
+      "product": "Product",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "shipping": {
+        "title": "Shipping Methods",
+        "free": "Free Shipping",
+        "local": "Local",
+        "flatRate": "Flat Rate"
       },
-      "paymentWays":{
-        "bank":{
-          "title":"Direct bank transfer",
-          "description":"Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account."
+      "paymentWays": {
+        "bank": {
+          "title": "Direct bank transfer",
+          "description": "Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account."
         },
-         "onDelivery":{
-          "title":"Cash on delivery",
-          "description":"Pay with cash upon delivery."
+        "onDelivery": {
+          "title": "Cash on delivery",
+          "description": "Pay with cash upon delivery."
         }
       }
     }
   },
   "buttons": {
-    "shopNow":"Shop Now",
-    "addToCart":"Add to Cart",
-    "viewCart":"View Cart",
+    "shopNow": "Shop Now",
+    "addToCart": "Add to Cart",
+    "viewCart": "View Cart",
     "checkout": "Checkout",
-    "sendMessage":"Send Message",
-    "subscribe":"Subscribe",
-    "loadMore":"Load More",
-    "reset":"All Reset",
-    "clearShoppingCart":"Clear Shoping Cart",
+    "sendMessage": "Send Message",
+    "subscribe": "Subscribe",
+    "loadMore": "Load More",
+    "reset": "All Reset",
+    "clearShoppingCart": "Clear Shoping Cart",
     "apply": "Apply",
-    "updateCart":"Update Cart",
-    "processToCheckout":"Process to Checkout",
+    "updateCart": "Update Cart",
+    "processToCheckout": "Process to Checkout",
     "goHomePage": "Back To Home"
   },
-  "labels":{
-    "discount":"off",
-    "subtotal":"Subtotal",
-    "cartReview":"Cart review",
-    "new":"Minimum Quantity {{min}} Pieces",
-    "optional":"(Optional)"
+  "labels": {
+    "discount": "off",
+    "subtotal": "Subtotal",
+    "cartReview": "Cart review",
+    "new": "Minimum Quantity {{min}} Pieces",
+    "optional": "(Optional)"
   },
-  "footer":{
-    "allRightsReserved":"© 2022. All rights reserved by",
-    "companyName":"Abo Steet"
+  "footer": {
+    "allRightsReserved": "© 2022. All rights reserved by",
+    "companyName": "Abo Steet"
   },
-  "pages":{
-    "home":"Home",
-    "shop":"Shop",
-    "about":"About",
-    "contact":"Contact"
+  "pages": {
+    "home": "Home",
+    "shop": "Shop",
+    "about": "About",
+    "contact": "Contact"
   },
-  "profile":{
-    "account":"My Account",
-    "support":"Support",
-    "lang":"Language",
-    "login":"Login",
-    "register":"Sign Up",
-    "registerLabel":"No account yet?",
-    "title":"QUICKLINKS"
+  "profile": {
+    "account": "My Account",
+    "support": "Support",
+    "lang": "Language",
+    "login": "Login",
+    "register": "Sign Up",
+    "registerLabel": "No account yet?",
+    "title": "QUICKLINKS"
   },
-  "notFound":{
-    "title":"Page not found",
-    "subtitle":"Oops! Something's missing",
-    "description":"It seems like we dont find what you searched. The page you were looking for doesn't exist, isn't available loading incorrectly"
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "Oops! Something's missing",
+    "description": "It seems like we dont find what you searched. The page you were looking for doesn't exist, isn't available loading incorrectly"
   }
 }

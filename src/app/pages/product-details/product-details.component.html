@@ -15,7 +15,8 @@
                                             <img [src]="product.images[0].image" style="height: 500px;"
                                                 alt="Product Images" #mainImage>
                                             <div class="label-block label-right">
-                                                <div class="product-badget"> {{"labels.new"|translate: {min:product.min_quantity} }}</div>
+                                                <div class="product-badget"> {{"labels.new"|translate:
+                                                    {min:product.min_quantity} }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -52,7 +53,7 @@
                                     <img src="assets/images/icons/rate.png" alt="Rate Images">
                                 </div>
                                 <div class="review-link mx-2">
-                                    <a href="#">
+                                    <a>
                                         ({{"productDetails.review"|translate}}<span>{{product.id+20}}</span> )
                                     </a>
                                 </div>
@@ -62,7 +63,8 @@
                             <ul class="product-meta p-0">
                                 <li><i class="fas fa-check"></i>{{"productDetails.description1"|translate}}</li>
                                 <li><i class="fas fa-check"></i>{{"productDetails.description2"|translate}}</li>
-                                <li><i class="fas fa-check"></i>{{"productDetails.description4"|translate : {min:product.min_quantity} }}</li>
+                                <li><i class="fas fa-check"></i>{{"productDetails.description4"|translate :
+                                    {min:product.min_quantity} }}</li>
                                 <!-- <li><i class="fas fa-check"></i>{{"productDetails.description3"|translate}}</li> -->
                             </ul>
                             <p class="description">{{product.descriptions[0].title}}</p>
@@ -114,12 +116,9 @@
                                     <!-- <span class="dec qtybtn">-</span>
                                     <input type="text" value="1">
                                     <span class="inc qtybtn">+</span> -->
-                                    <span class="dec qtybtn"
-                                        (click)="decreaseItem(product)">-</span>
-                                    <input type="text" readonly class="quantity-input"
-                                        [value]="product.quantity">
-                                    <span class="inc qtybtn"
-                                        (click)="increaseItem(product)">+</span>
+                                    <span class="dec qtybtn" (click)="decreaseItem(product)">-</span>
+                                    <input type="text" readonly class="quantity-input" [value]="product.quantity">
+                                    <span class="inc qtybtn" (click)="increaseItem(product)">+</span>
                                 </div>
                                 <!-- End Quentity Action  -->
 
@@ -130,7 +129,7 @@
                                             {{"buttons.addToCart"|translate}}
                                         </a>
                                     </li>
-                                    <li class="wishlist"><a href="wishlist.html" class="axil-btn wishlist-btn"><i
+                                    <li class="wishlist"><a class="axil-btn wishlist-btn pointer"><i
                                                 class="far fa-heart"></i></a>
                                     </li>
                                 </ul>

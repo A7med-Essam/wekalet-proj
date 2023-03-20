@@ -17,13 +17,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   cartCount: number = 0;
   totalPrice: number = 0;
   private unsubscribe$ = new Subject<void>();
+  lang: string = '';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private _CartService: CartService,
-    private _MessageService:MessageService,
-    private _I18nService:I18nService,
-    private _TranslateService:TranslateService
+    private _MessageService: MessageService,
+    private _I18nService: I18nService,
+    private _TranslateService: TranslateService
   ) {}
 
   cart: IProduct[] = [];
@@ -40,6 +41,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.totalPrice = this._CartService.calcCartPrice(res);
       },
     });
+    this._TranslateService.currentLang == 'ar'
+      ? (this.lang = 'English')
+      : (this.lang = 'العربية');
   }
 
   openSidebar(navbar: HTMLElement) {
@@ -79,17 +83,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   increaseItem(item: IProduct) {
     this._CartService.increaseItem(item);
   }
-  
+
   decreaseItem(item: IProduct) {
-    this._CartService.decreaseItem(item)
+    this._CartService.decreaseItem(item);
   }
 
-  changeLang(){
+  changeLang() {
     if (this._I18nService.currentLang == 'ar') {
-      this._I18nService.changeCurrentLang(this._TranslateService,'en')
+      this._I18nService.changeCurrentLang(this._TranslateService, 'en');
     } else {
-      this._I18nService.changeCurrentLang(this._TranslateService,'ar')
+      this._I18nService.changeCurrentLang(this._TranslateService, 'ar');
     }
-    this._I18nService.saveCurrentLang(this._TranslateService)
+    this._I18nService.saveCurrentLang(this._TranslateService);
+    window.location.reload();
   }
 }

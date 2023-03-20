@@ -66,8 +66,8 @@
                                 <div class="text-start">
                                     <small class="text-danger ms-1" *ngIf="paymentForm.get('company')?.touched &&
                                     paymentForm.get('company')?.hasError('minlength')">
-                                    {{"errors.minLength" | translate}}
-                                </small>
+                                        {{"errors.minLength" | translate}}
+                                    </small>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -86,7 +86,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>{{"checkout.billingDetails.email"|translate}} <span style="color: #00000050;">{{"labels.optional"|translate}}</span></label>
+                                <label>{{"checkout.billingDetails.email"|translate}} <span
+                                        style="color: #00000050;">{{"labels.optional"|translate}}</span></label>
                                 <input type="email" id="email" formControlName='email'>
                                 <div class="text-start">
                                     <small class="text-danger ms-1" *ngIf="paymentForm.get('email')?.touched &&
@@ -100,7 +101,8 @@
                             </div>
                             <div class="form-group">
                                 <label>{{"checkout.billingDetails.location"|translate}}</label>
-                                <input type="text" id="last-name" placeholder="https://goo.gl/maps" formControlName='location'>
+                                <input type="text" id="last-name" placeholder="https://goo.gl/maps"
+                                    formControlName='location'>
                             </div>
                             <!-- <div class="form-group">
                                 <label>{{"checkout.billingDetails.country"|translate}} <span>*</span></label>
@@ -114,7 +116,7 @@
                                 </select>
                             </div> -->
                             <div class="form-group">
-                                <label>{{"checkout.billingDetails.country"|translate}}  <span>*</span></label>
+                                <label>{{"checkout.billingDetails.country"|translate}} <span>*</span></label>
                                 <input type="text" id="country" formControlName='country'>
                                 <div class="text-start">
                                     <small class="text-danger ms-1" *ngIf="paymentForm.get('country')?.touched &&
@@ -149,9 +151,9 @@
                                         translate}}</small>
                                 </div> -->
                             </div>
-                 
-                  
-                    
+
+
+
                             <div class="form-group">
                                 <label>{{"checkout.billingDetails.otherNote"|translate}}</label>
                                 <textarea id="notes" rows="2" formControlName='notes'
@@ -172,10 +174,9 @@
                                     </thead>
                                     <tbody>
                                         <tr class="order-product" *ngFor="let product of cart">
-                                            <td>{{product.name}} <span
-                                                    class="quantity">x{{product.quantity}}</span></td>
-                                            <td>{{product.price*(product.quantity)}}
-                                                {{"currency"|translate}}</td>
+                                            <td>{{product.name}} <span class="quantity">x{{product.quantity}}</span>
+                                            </td>
+                                            <td>{{product.price*(product.quantity)}} {{"currency"|translate}}</td>
                                         </tr>
                                         <tr class="order-shipping">
                                             <td colspan="2">
@@ -248,5 +249,5 @@
     <!-- End Checkout Area  -->
 </main>
 
-<p-confirmDialog [style]="{width: '50vw'}" acceptIcon=""
- [baseZIndex]="10000" rejectButtonStyleClass="d-none" acceptButtonStyleClass="p-button-success"></p-confirmDialog>
+<p-confirmDialog [style]="{width: '50vw'}" acceptIcon="" [baseZIndex]="10000" rejectButtonStyleClass="d-none"
+    acceptButtonStyleClass="p-button-success"></p-confirmDialog>

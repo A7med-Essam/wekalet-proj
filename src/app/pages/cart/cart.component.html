@@ -6,7 +6,8 @@
             <div class="axil-product-cart-wrap">
                 <div class="product-table-heading">
                     <h4 class="title">{{"cart.title"|translate}}</h4>
-                    <a (click)="clearCart()" class="cart-clear pointer" *ngIf="cart.length;">{{"buttons.clearShoppingCart"|translate}}</a>
+                    <a (click)="clearCart()" class="cart-clear pointer"
+                        *ngIf="cart.length;">{{"buttons.clearShoppingCart"|translate}}</a>
                 </div>
                 <div class="table-responsive" *ngIf="cart.length;else other_content">
                     <table class="table axil-product-table axil-cart-table mb--40">
@@ -32,9 +33,9 @@
                                         <img [src]="product.images[0].image" [alt]="product.name">
                                     </a>
                                 </td>
-                                <td class="product-title"><a href="single-product.html">Wireless PS Handler</a></td>
+                                <td class="product-title"><a>Wireless PS Handler</a></td>
                                 <td class="product-price" data-title="Price"><span
-                                        class="currency-symbol">{{product.price}}</span>{{"currency"|translate}}</td>
+                                        class="currency-symbol">{{product.price}}</span> {{"currency"|translate}}</td>
                                 <td class="product-quantity" data-title="Qty">
                                     <div class="pro-qty">
                                         <!-- <span class="dec qtybtn">-</span>
@@ -57,11 +58,13 @@
                     <div class="input-group product-cupon">
                         <input placeholder="{{'cart.coupon_placeholder'|translate}}" type="text">
                         <div class="product-cupon-btn">
-                            <button type="button" (click)="applyCoupon()" class="axil-btn btn-outline">{{"buttons.apply"|translate}}</button>
+                            <button type="button" (click)="applyCoupon()"
+                                class="axil-btn btn-outline">{{"buttons.apply"|translate}}</button>
                         </div>
                     </div>
                     <div class="update-btn">
-                        <a routerLink="../products" class="axil-btn btn-outline text-reset pointer">{{"buttons.updateCart"|translate}}</a>
+                        <a routerLink="../products"
+                            class="axil-btn btn-outline text-reset pointer">{{"buttons.updateCart"|translate}}</a>
                     </div>
                 </div>
                 <div class="row" *ngIf="cart.length;">
@@ -73,14 +76,15 @@
                                     <tbody>
                                         <tr class="order-subtotal">
                                             <td>{{"cart.payment.subtotal"|translate}}</td>
-                                            <td>{{totalPrice}}{{"currency"|translate}}</td>
+                                            <td>{{totalPrice}} {{"currency"|translate}}</td>
                                         </tr>
                                         <tr class="order-shipping">
                                             <td>{{"cart.payment.shipping.title"|translate}}</td>
                                             <td>
                                                 <div class="input-group">
                                                     <input type="radio" id="radio1" name="shipping" checked="">
-                                                    <label for="radio1">{{"cart.payment.shipping.free"|translate}}</label>
+                                                    <label
+                                                        for="radio1">{{"cart.payment.shipping.free"|translate}}</label>
                                                 </div>
                                                 <!-- <div class="input-group">
                                                     <input type="radio" id="radio2" name="shipping">
@@ -103,7 +107,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a routerLink="../checkout" class="axil-btn btn-bg-primary checkout-btn">{{"buttons.processToCheckout"|translate}}</a>
+                            <a routerLink="../checkout"
+                                class="axil-btn btn-bg-primary checkout-btn">{{"buttons.processToCheckout"|translate}}</a>
                         </div>
                     </div>
                 </div>
@@ -125,4 +130,3 @@
         </div>
     </div>
 </ng-template>
-

@@ -24,7 +24,9 @@ export class InsertComponent implements OnInit {
   }
 
   insertRow(insertForm: FormGroup) {
-    this.insertForm.controls.quantity.setValue(this.insertForm.value.min_quantity)
+    this.insertForm.controls.quantity.setValue(
+      this.insertForm.value.min_quantity
+    );
     this._DashboardService
       .insertProduct(insertForm.value)
       .subscribe((res: any) => {
@@ -42,10 +44,22 @@ export class InsertComponent implements OnInit {
       category_id: new FormControl(null, [Validators.required]),
       gender_id: new FormControl(null, [Validators.required]),
       images: new FormControl(null, [Validators.required]),
-      title: new FormControl(null, [Validators.required]),
-      title_ar: new FormControl(null, [Validators.required]),
-      description: new FormControl(null, [Validators.required]),
-      description_ar: new FormControl(null, [Validators.required]),
+      title: new FormControl('Explanation:', [Validators.required]),
+      title_ar: new FormControl('الشرح:', [Validators.required]),
+      description: new FormControl(
+        `Slipper shoes sandal shoes
+Medical insole
+Very clean material
+Carton one color 6 pieces`,
+        [Validators.required]
+      ),
+      description_ar: new FormControl(
+        `شبشب شوز حذاء صندل
+نعل طبي
+خامة نظيفة جدا
+الكرتونة لون واحد 6 قطع`,
+        [Validators.required]
+      ),
       color_ids: new FormControl(null, [Validators.required]),
       size_ids: new FormControl(null, [Validators.required]),
       min_quantity: new FormControl(null, [Validators.required]),

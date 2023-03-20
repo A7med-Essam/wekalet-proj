@@ -88,11 +88,13 @@
                             </div>
                         </div>
                         <div class="toggle-list product-price" *ngIf="false">
-                            <h6 class="title" (click)="toggleFilterBtn('PRICE',$event)">{{"shop.filter.price"|translate}}
+                            <h6 class="title" (click)="toggleFilterBtn('PRICE',$event)">
+                                {{"shop.filter.price"|translate}}
                             </h6>
                             <div class="shop-submenu" *ngIf="priceFilterBtn">
                                 <h5>Range: {{rangeValues[0] + ' - ' + rangeValues[1]}}</h5>
-                                <p-slider [min]="100" [max]="10000" [step]="10" [range]="true" [(ngModel)]="rangeValues"></p-slider>
+                                <p-slider [min]="100" [max]="10000" [step]="10" [range]="true"
+                                    [(ngModel)]="rangeValues"></p-slider>
                             </div>
                         </div>
                         <button class="axil-btn btn-bg-primary danger m-1" (click)="ApplyFilter()">
@@ -151,7 +153,7 @@
                                                 </a>
                                             </li>
                                             <li class="wishlist">
-                                                <a href="wishlist.html">
+                                                <a class="pointer">
                                                     <i class="far fa-heart"></i>
                                                 </a>
                                             </li>
@@ -161,12 +163,12 @@
                                 </div>
                                 <div class="product-content">
                                     <div class="inner">
-                                        <h5 class="title"><a href="single-product.html">{{product.name}}</a></h5>
+                                        <h5 class="title"><a>{{product.name}}</a></h5>
                                         <div class="product-price-variant">
-                                            <span
-                                                class="price current-price">{{product.price}}{{"currency"|translate}}</span>
+                                            <span class="price current-price">{{product.price}}
+                                                {{"currency"|translate}}</span>
                                             <span class="price old-price" *ngIf="product?.old_price">
-                                                {{product.price}}{{"currency"|translate}}
+                                                {{product.price}} {{"currency"|translate}}
                                             </span>
                                         </div>
                                     </div>
@@ -174,7 +176,7 @@
                             </div>
                         </div>
                         <ng-container *ngIf="skeletonStatus2">
-                            <div class="col-xl-4 col-sm-6" *ngFor="let paginate of perPage">
+                            <div class="col-xl-4 col-sm-6 my-2" *ngFor="let paginate of perPage">
                                 <p-skeleton width="100%" height="18.75rem"></p-skeleton>
                             </div>
                         </ng-container>
@@ -228,7 +230,7 @@
                     <h2 class="title mb--40 mb_sm--30">{{"shop.subscribe.title"|translate}}</h2>
                     <div class="input-group newsletter-form mt-5">
                         <div class="position-relative newsletter-inner mb--15 me-4 my-3">
-                            <input placeholder="{{'shop.subscribe.subscribeInputPlaceholder'|translate}}" type="text"
+                            <input placeholder="{{'shop.subscribe.subscribeInputPlaceholder'|translate}}" type="email"
                                 #subscribeInput>
                         </div>
                         <button type="submit" class="axil-btn mb--15 my-3"
