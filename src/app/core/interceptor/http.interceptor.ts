@@ -92,7 +92,17 @@ export class AuthInterceptor implements HttpInterceptor {
     //   HttpHeader = request.clone();
     // }
 
-    HttpHeader = request.clone();
+    // HttpHeader = request.clone();
+
+    if (this._LocalService.getJsonValue('currentLang') == 'ar') {
+      HttpHeader = request.clone({
+        headers: request.headers.set('lang', 'ar'),
+      });
+    } else {
+      HttpHeader = request.clone({
+        headers: request.headers.set('lang', 'en'),
+      });
+    }
 
     return next.handle(HttpHeader);
   }

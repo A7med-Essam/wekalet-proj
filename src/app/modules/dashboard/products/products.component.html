@@ -1,7 +1,8 @@
 <section class="mt-5">
     <div class="container pt-5">
         <div class="card mt-5">
-            <button pButton type="button" icon="pi pi-plus" label="Add New Product" class="p-button-sm w-100" routerLink="./insert"></button>
+            <button pButton type="button" icon="pi pi-plus" label="Add New Product" class="p-button-sm w-100"
+                routerLink="./insert"></button>
             <p-table [value]="products" [paginator]="true" [rows]="PaginationInfo?.per_page"
                 [totalRecords]="PaginationInfo?.total" [lazy]="true" (onPage)="paginate($event)"
                 [showCurrentPageReport]="true" responsiveLayout="scroll"
@@ -9,27 +10,40 @@
                 [rowsPerPageOptions]="[10,25,50,100]">
                 <ng-template pTemplate="header">
                     <tr>
+                        <th class="text-center">Id</th>
                         <th class="text-center">Name</th>
                         <th class="text-center">Price</th>
                         <th class="text-center">Category</th>
                         <th class="text-center">Gender</th>
                         <th class="text-center">Min Quantity</th>
+                        <th class="text-center">Image</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-product>
                     <tr>
+                        <td class="text-center">{{product?.id}}</td>
                         <td class="text-center">{{product?.name}}</td>
                         <td class="text-center">{{product?.price}}</td>
                         <td class="text-center">{{product?.category?.name}}</td>
                         <td class="text-center">{{product?.gender?.name}}</td>
                         <td class="text-center">{{product?.min_quantity}}</td>
                         <td class="text-center">
-                            <button pButton type="button" icon="pi pi-trash"
-                            (click)="confirm(product?.id)" class="m-1 p-button-danger p-button-sm"></button>
+                            <!-- <img *ngFor="let img of product?.images" [src]="img?.image" -->
+                            <!-- style="border-radius: 50%; width: 40px;height: 40px;" class="m-1" alt=""> -->
+
+                            <p-image *ngFor="let img of product?.images" [src]="img?.image" alt="Product Image"
+                                width="40" height="40" class="m-1" [preview]="true">
+                            </p-image>
+
+                        </td>
+                        <td class="text-center">
+                            <button pButton type="button" icon="pi pi-trash" (click)="confirm(product?.id)"
+                                class="m-1 p-button-danger p-button-sm"></button>
                             <!-- <button pButton type="button" icon="pi pi-pencil" 
                                 class="m-1 p-button-warning p-button-sm"></button> -->
-                            <button pButton type="button" icon="pi pi-eye" class="m-1 p-button-sm" (click)="showRow(product?.id)"></button>
+                            <button pButton type="button" icon="pi pi-eye" class="m-1 p-button-sm"
+                                (click)="showRow(product?.id)"></button>
                         </td>
                     </tr>
                 </ng-template>
