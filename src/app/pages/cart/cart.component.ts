@@ -14,7 +14,9 @@ export class CartComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
   cart: IProduct[] = [];
   totalPrice: number = 0;
-
+  qty:string = ""
+  subtotal:string = ""
+  price:string = ""
   constructor(private _CartService: CartService,private _MessageService:MessageService, private _TranslateService:TranslateService) {}
 
   ngOnInit(): void {
@@ -24,6 +26,13 @@ export class CartComponent implements OnInit, OnDestroy {
         this.totalPrice = this._CartService.calcCartPrice(res);
       },
     });
+
+    setTimeout(() => {
+      this.qty = this._TranslateService.instant('cart.tableHeader.quantity');
+      this.subtotal = this._TranslateService.instant('cart.tableHeader.subtotal');
+      this.price = this._TranslateService.instant('cart.tableHeader.price');
+    }, 100);
+
   }
 
   clearCart() {

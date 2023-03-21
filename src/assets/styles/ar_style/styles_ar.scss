@@ -402,4 +402,32 @@
         margin-right: auto;
         padding-left: 0;
     }
+
+    @media only screen and (max-width: 767px)
+{    .axil-product-table tbody td.product-title {
+        padding-right: 0px !important;
+        text-align: right !important;
+    }}
+
+@media only screen and (max-width: 767px)
+{.axil-product-table tbody td {
+    text-align: left !important;
+}}
+@media only screen and (max-width: 767px)
+{.axil-product-table tbody td.product-price:before, .axil-product-table tbody td.product-quantity:before, .axil-product-table tbody td.product-subtotal:before {
+    content: attr(data-title) " :";
+    left: auto !important;
+    right: 0 !important;
+}}
+
+.pro-qty{
+    padding: 0px !important;
+}
+
+@media only screen and (max-width: 767px)
+{.axil-product-table tbody td.product-remove {
+    right: 60% !important;
+}}
+
+
 }

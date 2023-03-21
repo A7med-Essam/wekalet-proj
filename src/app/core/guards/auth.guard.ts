@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
     // this._Router.navigate(['./auth/login']);
     //   return false;
     // }
-    if (this.pass?.toLocaleLowerCase() == '123123123') {
+    if (this.pass?.toLocaleLowerCase() == '@b0-steet') {
       return true;
     } else {
       this.pass = null;

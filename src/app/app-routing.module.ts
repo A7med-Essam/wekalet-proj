@@ -37,7 +37,7 @@ const routes: Routes = [
     component: CheckoutComponent,
   },
   {
-    path: 'dashboard',
+    path: 'steet-dashboard',
     loadChildren: () =>
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -51,7 +51,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true , scrollPositionRestoration : "top" })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
