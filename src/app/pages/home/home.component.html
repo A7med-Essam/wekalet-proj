@@ -140,11 +140,18 @@
 
 <section class="products axil-product-area bg-color-white axil-section-gap position-relative bg-white">
     <div class="container">
-        <div class="section-title-wrapper">
+        <div class="section-title-wrapper p-0">
             <span class="title-highlighter highlighter-primary">
                 <i class="fas fa-shopping-basket"></i> {{ "home.section3.subtitle" | translate }}
             </span>
-            <h2 class="title"> {{ "home.section3.title" | translate }}</h2>
+            <div class="d-flex justify-content-between flex-wrap align-items-center">
+                <h2 class="title"> {{ "home.section3.title" | translate }}</h2>
+                <div>
+                    <div class="shop-btn btn-bg-primary">
+                        <a class="axil-btn btn-bg-primary pointer" routerLink="../products"> {{ "buttons.shopNow" | translate }} </a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-sm-6 col-12 my-4" *ngFor="let product of products">

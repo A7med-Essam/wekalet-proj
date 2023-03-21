@@ -1,8 +1,6 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   Component,
-  ElementRef,
   Input,
   OnDestroy,
   OnInit,
@@ -22,7 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit, OnDestroy, AfterViewChecked,AfterViewInit {
+export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   categoryFilterBtn: boolean = false;
   genderFilterBtn: boolean = false;
   colorsFilterBtn: boolean = false;
@@ -337,20 +335,17 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewChecked,Af
 
   @ViewChild('scrollMe') private scrollMe!: any;
 
-  ngAfterViewChecked() {
+  ngAfterViewInit() {
+    // this.elementHeight = this.scrollMe.nativeElement.offsetHeight;
     this.scrollToElement();
   }
 
-  ngAfterViewInit() {
-    this.elementHeight = this.scrollMe.nativeElement.offsetHeight
-  }
-
-  elementHeight:any;
+  // elementHeight: any;
   scrollToElement(): void {
     window.scroll({
-      top: this.elementHeight,
+      top: 600,
       left: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 }
