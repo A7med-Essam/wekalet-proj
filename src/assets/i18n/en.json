@@ -54,15 +54,15 @@
     "contactDetails": {
       "section1": {
         "title": "Our Store",
-        "address": "Al Amrawi, Montaza 2, Alexandria Governorate 5525015",
+        "address": "Alexandria, Mandara, Qebli, Al-Haramain, next to Al-Faraana Market and Al-Suqaili Market, Apostate Group Company for Wholesale Trade",
         "phone": "Phone: +201062794576/+201221522821",
         "email": "Email: abo-steet@gmail.com"
       },
       "section2": {
         "title": "Careers",
-        "description_part1": "Alexandria, Mandara, Qebli, Al-Haramain, next to Al-Faraana Market and Al-Suqaili Market, Apostate Group Company for Wholesale Trade",
+        "description_part1": "Collaborate with Digital and Technology Partners to Position Wholesale Trade to Excel in Technology for",
         "description_part2": "Stores ,",
-        "description_part3": "and enhanced experiences."
+        "description_part3": "and Enhanced Experiences."
       },
       "section3": {
         "title": "Opening Hours",
@@ -193,7 +193,7 @@
     "updateCart": "Update Cart",
     "processToCheckout": "Process to Checkout",
     "goHomePage": "Back To Home",
-    "allProducts":"All Products"
+    "allProducts": "All Products"
   },
   "labels": {
     "discount": "off",
