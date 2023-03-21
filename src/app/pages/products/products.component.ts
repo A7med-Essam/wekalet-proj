@@ -202,7 +202,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedCategories: any = [];
   selectedPrices: any = [];
   ApplyFilter() {
-    this.skeletonStatus = true;
+        this.scrollToElement();
+        this.skeletonStatus = true;
     const filters = {
       category_ids: this.selectedCategories,
       size_ids: this.selectedSizes,
@@ -343,7 +344,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   // elementHeight: any;
   scrollToElement(): void {
     window.scroll({
-      top: 600,
+      top: 1000,
       left: 0,
       behavior: 'smooth',
     });

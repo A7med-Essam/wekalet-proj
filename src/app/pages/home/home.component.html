@@ -147,9 +147,11 @@
             <div class="d-flex justify-content-between flex-wrap align-items-center">
                 <h2 class="title"> {{ "home.section3.title" | translate }}</h2>
                 <div>
-                    <div class="shop-btn btn-bg-primary">
-                        <a class="axil-btn btn-bg-primary pointer" routerLink="../products"> {{ "buttons.shopNow" | translate }} </a>
-                    </div>
+                    <!-- <div class="shop-btn btn-bg-primary">
+                        <a class="axil-btn btn-bg-primary pointer" routerLink="../products"> {{ "buttons.allProducts" | translate }} </a>
+                    </div> -->
+
+                    <button routerLink="../products" class="axil-btn btn-bg-primary danger m-1">  {{ "buttons.allProducts" | translate }} </button>
                 </div>
             </div>
         </div>

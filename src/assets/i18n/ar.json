@@ -192,7 +192,8 @@
     "apply": "تطبيق",
     "updateCart": "تحديث عربة التسوق",
     "processToCheckout": "المتابعه الي الدفع",
-    "goHomePage": "العودة الي الصفحة الرئيسية"
+    "goHomePage": "العودة الي الصفحة الرئيسية",
+    "allProducts":"كل المنتجات"
   },
   "labels": {
     "discount": "خصم",
