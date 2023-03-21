@@ -1,4 +1,13 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -13,7 +22,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit, OnDestroy, AfterViewChecked,AfterViewInit {
   categoryFilterBtn: boolean = false;
   genderFilterBtn: boolean = false;
   colorsFilterBtn: boolean = false;
@@ -152,6 +161,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.skeletonStatus = false;
         this.products = res.data.data;
+        this.pagination = res.data;
       },
     });
   }
@@ -254,7 +264,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   // EmailSubscribe
   getEmailSubscribe(email: HTMLInputElement) {
-    console.log();
     if (email.value == '' || email.validationMessage != '') {
       if (this._TranslateService.currentLang == 'ar') {
         this._MessageService.add({
@@ -323,4 +332,25 @@ export class ProductsComponent implements OnInit, OnDestroy {
       );
     };
   };
+
+  // ============================
+
+  @ViewChild('scrollMe') private scrollMe!: any;
+
+  ngAfterViewChecked() {
+    this.scrollToElement();
+  }
+
+  ngAfterViewInit() {
+    this.elementHeight = this.scrollMe.nativeElement.offsetHeight
+  }
+
+  elementHeight:any;
+  scrollToElement(): void {
+    window.scroll({
+      top: this.elementHeight,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 }

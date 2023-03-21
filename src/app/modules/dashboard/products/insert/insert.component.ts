@@ -38,8 +38,8 @@ export class InsertComponent implements OnInit {
 
   setInsertForm() {
     this.insertForm = new FormGroup({
-      name: new FormControl(null, [Validators.required]),
-      name_ar: new FormControl(null, [Validators.required]),
+      name: new FormControl(`Slipper Shoes`, [Validators.required]),
+      name_ar: new FormControl(`شبشب شوز حذاء صندل`, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
       category_id: new FormControl(null, [Validators.required]),
       gender_id: new FormControl(null, [Validators.required]),
@@ -47,17 +47,19 @@ export class InsertComponent implements OnInit {
       title: new FormControl('Explanation:', [Validators.required]),
       title_ar: new FormControl('الشرح:', [Validators.required]),
       description: new FormControl(
-        `Slipper shoes sandal shoes
+        `Slipper Shoes Sandal
 Medical insole
-Very clean material
-Carton one color 6 pieces`,
+Very flexible
+Easy to clean
+Very clean material`,
         [Validators.required]
       ),
       description_ar: new FormControl(
         `شبشب شوز حذاء صندل
 نعل طبي
-خامة نظيفة جدا
-الكرتونة لون واحد 6 قطع`,
+مرن جدا
+سهل التنظيف
+خامة نظيفة جدا`,
         [Validators.required]
       ),
       color_ids: new FormControl(null, [Validators.required]),

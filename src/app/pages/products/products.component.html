@@ -43,7 +43,7 @@
                                 <ul>
                                     <li (click)="toggleClass($event,'current-cat')"
                                         [class.current-cat]="category.id == currentCategoryId"
-                                        *ngFor="let category of filterOptions.categories">
+                                        *ngFor="let category of filterOptions?.categories">
                                         <a class="pointer" name="category"
                                             [attr.val]="category.id">{{category.name}}</a>
                                     </li>
@@ -56,7 +56,7 @@
                             <div class="shop-submenu" *ngIf="genderFilterBtn">
                                 <ul>
                                     <li (click)="toggleClass($event,'chosen')"
-                                        *ngFor="let gender of filterOptions.genders">
+                                        *ngFor="let gender of filterOptions?.genders">
                                         <a class="pointer" name="gender" [attr.val]="gender.id">{{gender.name}}</a>
                                     </li>
                                 </ul>
@@ -68,7 +68,7 @@
                             <div class="shop-submenu" *ngIf="colorsFilterBtn">
                                 <ul>
                                     <li (click)="toggleClass($event,'chosen')"
-                                        *ngFor="let color of filterOptions.colors">
+                                        *ngFor="let color of filterOptions?.colors">
                                         <a class="color-extra-01 pointer" [style.background-color]="color.hexa"
                                             [style.border]="color.hexa.toLowerCase() == '#fff'&& '1px solid #000' "
                                             name="color" [attr.val]="color.id"></a>
@@ -81,7 +81,7 @@
                             </h6>
                             <div class="shop-submenu" *ngIf="sizeFilterBtn">
                                 <ul>
-                                    <li (click)="toggleClass($event,'chosen')" *ngFor="let size of filterOptions.sizes">
+                                    <li (click)="toggleClass($event,'chosen')" *ngFor="let size of filterOptions?.sizes">
                                         <a class="pointer" name="size" [attr.val]="size.id">{{size.name}}</a>
                                     </li>
                                 </ul>
@@ -104,7 +104,7 @@
                     </div>
                     <!-- End .axil-shop-sidebar -->
                 </div>
-                <div class="col-lg-9 my-4">
+                <div class="col-lg-9 my-4" #scrollMe>
                     <div class="row" *ngIf="products.length&&!skeletonStatus;else other_content">
                         <div class="col-lg-12">
                             <div class="axil-shop-top mb--40">
