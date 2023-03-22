@@ -31,7 +31,7 @@ export class InsertComponent implements OnInit {
       .insertProduct(insertForm.value)
       .subscribe((res: any) => {
         if (res.status == 1) {
-          this._Router.navigate(['dashboard/products']);
+          this._Router.navigate(['steet-dashboard/products']);
         }
       });
   }
@@ -73,9 +73,26 @@ Very clean material`,
     this._ProductService.getFilterOptions().subscribe({
       next: (res) => {
         this.productOptions = res.data;
+        this.productOptions.sizes.sort(this.sort_by('name', false, parseInt));
       },
     });
   }
+
+  sort_by = (field: string, reverse: any, primer: any) => {
+    const key = primer
+      ? function (x: any) {
+          return primer(x[field]);
+        }
+      : function (x: any) {
+          return x[field];
+        };
+    reverse = !reverse ? 1 : -1;
+    return function (a: any, b: any) {
+      return (
+        (a = key(a)), (b = key(b)), reverse * ((a && a > b) - (b && b > a))
+      );
+    };
+  };
 
   toBase64 = (file: any) =>
     new Promise((resolve, reject) => {

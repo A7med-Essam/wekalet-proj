@@ -14,7 +14,7 @@ export class ShowComponent implements OnInit {
 
   ngOnInit(): void {
     this._DashboardService.ProductId.value == 0
-      ? this._Router.navigate(['dashboard/products'])
+      ? this._Router.navigate(['steet-dashboard/products'])
       : this.getDetails();
   }
 

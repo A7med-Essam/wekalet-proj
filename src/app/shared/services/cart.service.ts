@@ -37,12 +37,14 @@ export class CartService {
         severity: 'info',
         summary: 'تم تحديث السله',
         detail: `تمت إضافة منتج (${product.name}) بنجاح إلى سلة التسوق الخاصة بك`,
+        life:1500
       };
     } else {
       notify = {
         severity: 'info',
         summary: 'Cart Updated',
         detail: `A product (${product.name}) has been added successfully to your cart`,
+        life:1500
       };
     }
     return notify;
@@ -55,12 +57,14 @@ export class CartService {
         severity: 'warn',
         summary: 'أشعار عن السله',
         detail: `هذا المنتج يوجد بالفعل في سلتك`,
+        life:1500
       };
     } else {
       notify = {
         severity: 'warn',
         summary: 'Cart Notification',
         detail: `This product is already in your cart`,
+        life:1500
       };
     }
     return notify;
@@ -120,12 +124,14 @@ export class CartService {
         severity: 'warn',
         summary: 'أشعار عن السله',
         detail: `تم أزاله (${product.name}) من السله`,
+        life:1500
       };
     } else {
       notify = {
         severity: 'warn',
         summary: 'Cart Notification',
         detail: `This product (${product.name}) has been removed from cart`,
+        life:1500
       };
     }
     return notify;

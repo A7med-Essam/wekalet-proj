@@ -19,7 +19,7 @@ export class ProductService {
     status: number;
     data: IPagination;
   }> {
-    return this._ApiService.postReq(`dashboard/products?page=${page}`,'');
+    return this._ApiService.postReq(`dashboard/products?page=${page}`, '');
   }
 
   getProductsByCategoryId(category_ids: number): Observable<{
@@ -27,7 +27,9 @@ export class ProductService {
     status: number;
     data: IPagination;
   }> {
-    return this._ApiService.postReq('dashboard/products', { category_ids:[category_ids] });
+    return this._ApiService.postReq('dashboard/products', {
+      category_ids: [category_ids],
+    });
   }
 
   getFilterOptions(): Observable<{
@@ -38,12 +40,16 @@ export class ProductService {
     return this._ApiService.postReq('dashboard/products/filterOptions', '');
   }
 
-  filterProducts(filter: any): Observable<{
+  filterProducts(
+    filter: any,
+    page: number = 1
+  ): Observable<{
     message: string;
     status: number;
-    data: IProduct[];
+    data: IPagination;
   }> {
-    filter.withoutPagination = 'true';
-    return this._ApiService.postReq('dashboard/products', filter);
+    // filter.withoutPagination = 'true';
+    // filter&&(filter.paginate = '1');
+    return this._ApiService.postReq(`dashboard/products?page=${page}`, filter);
   }
 }

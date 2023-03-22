@@ -105,6 +105,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
             this.currentCategoryId = res;
             this.getProductsByCategoryId(res);
             this.categoryFilterBtn = true;
+            this.selectedCategories.push(this.currentCategoryId)
           } else {
             this.getProducts();
           }
@@ -119,7 +120,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   products: IProduct[] = [];
-  currentPage: number = 0;
+  currentPage: number = 1;
   pagination: any;
   skeletonStatus: boolean = true;
   perPage: number[] = [];
@@ -141,17 +142,26 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   loadMoreProducts(loadBtn: HTMLAnchorElement) {
     this.skeletonStatus2 = true;
     loadBtn.innerHTML = `<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>`;
-    this._ProductService.getProducts(this.currentPage + 1).subscribe({
-      next: (res) => {
-        this.skeletonStatus2 = false;
-        loadBtn.innerHTML = this._TranslateService.instant('buttons.loadMore');
-        res.data.data.length > 0 && this.products.push(...res.data.data);
-        this.currentPage = res.data.current_page;
-        if (res.data.total == this.products.length) {
-          loadBtn.style.display = 'none';
-        }
-      },
-    });
+    if (this.currentCategoryId != 0) {
+      this.currentFilters.category_ids = [this.currentCategoryId];
+    }
+    this._ProductService
+      .filterProducts(this.currentFilters, this.currentPage)
+      .subscribe({
+        next: (res) => {
+          this.skeletonStatus2 = false;
+          loadBtn.innerHTML =
+            this._TranslateService.instant('buttons.loadMore');
+          res.data.data.length > 0 && this.products.push(...res.data.data);
+          this.currentPage = res.data.current_page+1;
+          res.data.data.length == 0 && this.currentPage--;
+          console.log(res.data.total, "TOTAL");
+          console.log(this.products.length, " PRODUCT LENGTH");
+          if (res.data.total == this.products.length) {
+            loadBtn.style.display = 'none';
+          }
+        },
+      });
   }
 
   getProductsByCategoryId(id: number) {
@@ -160,6 +170,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.skeletonStatus = false;
         this.products = res.data.data;
         this.pagination = res.data;
+        this.currentPage = res.data.current_page+1
       },
     });
   }
@@ -201,9 +212,15 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   selectedColors: any = [];
   selectedCategories: any = [];
   selectedPrices: any = [];
+  currentFilters: any = {
+    category_ids: null,
+    size_ids: null,
+    color_ids: null,
+    gender_ids: null,
+  };
   ApplyFilter() {
-        this.scrollToElement();
-        this.skeletonStatus = true;
+    this.scrollToElement();
+    this.skeletonStatus = true;
     const filters = {
       category_ids: this.selectedCategories,
       size_ids: this.selectedSizes,
@@ -216,7 +233,10 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     filters.gender_ids.length == 0 && (filters.gender_ids = null);
     this._ProductService.filterProducts(filters).subscribe({
       next: (res) => {
-        this.products = res.data;
+        this.pagination = res.data;
+        this.currentPage = res.data.current_page;
+        this.currentFilters = filters;
+        this.products = res.data.data;
         this.skeletonStatus = false;
       },
     });
@@ -226,30 +246,30 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     switch (attr) {
       case 'category':
         status
-          ? !this.selectedCategories.includes(val) &&
-            this.selectedCategories.push(val)
-          : this.removeFromFilter(this.selectedCategories, val);
+          ? !this.selectedCategories.includes(Number(val)) &&
+            this.selectedCategories.push(Number(val))
+          : this.removeFromFilter(this.selectedCategories, Number(val));
         break;
       case 'color':
         status
-          ? !this.selectedColors.includes(val) && this.selectedColors.push(val)
-          : this.removeFromFilter(this.selectedColors, val);
+          ? !this.selectedColors.includes(Number(val)) && this.selectedColors.push(Number(val))
+          : this.removeFromFilter(this.selectedColors, Number(val));
         break;
       case 'gender':
         status
-          ? !this.selectedGenders.includes(val) &&
-            this.selectedGenders.push(val)
-          : this.removeFromFilter(this.selectedGenders, val);
+          ? !this.selectedGenders.includes(Number(val)) &&
+            this.selectedGenders.push(Number(val))
+          : this.removeFromFilter(this.selectedGenders, Number(val));
         break;
       case 'size':
         status
-          ? !this.selectedSizes.includes(val) && this.selectedSizes.push(val)
-          : this.removeFromFilter(this.selectedSizes, val);
+          ? !this.selectedSizes.includes(Number(val)) && this.selectedSizes.push(Number(val))
+          : this.removeFromFilter(this.selectedSizes, Number(val));
         break;
       default:
         status
-          ? !this.selectedPrices.includes(val) && this.selectedPrices.push(val)
-          : this.removeFromFilter(this.selectedPrices, val);
+          ? !this.selectedPrices.includes(Number(val)) && this.selectedPrices.push(Number(val))
+          : this.removeFromFilter(this.selectedPrices, Number(val));
         break;
     }
   }
