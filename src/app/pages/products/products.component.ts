@@ -120,7 +120,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   products: IProduct[] = [];
-  currentPage: number = 1;
+  currentPage: number = 0;
   pagination: any;
   skeletonStatus: boolean = true;
   perPage: number[] = [];
@@ -142,21 +142,15 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   loadMoreProducts(loadBtn: HTMLAnchorElement) {
     this.skeletonStatus2 = true;
     loadBtn.innerHTML = `<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>`;
-    if (this.currentCategoryId != 0) {
-      this.currentFilters.category_ids = [this.currentCategoryId];
-    }
     this._ProductService
-      .filterProducts(this.currentFilters, this.currentPage)
+      .filterProducts(this.currentFilters,this.currentPage+1)
       .subscribe({
         next: (res) => {
           this.skeletonStatus2 = false;
           loadBtn.innerHTML =
             this._TranslateService.instant('buttons.loadMore');
           res.data.data.length > 0 && this.products.push(...res.data.data);
-          this.currentPage = res.data.current_page+1;
-          res.data.data.length == 0 && this.currentPage--;
-          console.log(res.data.total, "TOTAL");
-          console.log(this.products.length, " PRODUCT LENGTH");
+          this.currentPage = res.data.current_page;
           if (res.data.total == this.products.length) {
             loadBtn.style.display = 'none';
           }
@@ -170,7 +164,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.skeletonStatus = false;
         this.products = res.data.data;
         this.pagination = res.data;
-        this.currentPage = res.data.current_page+1
+        this.currentPage = res.data.current_page
       },
     });
   }
@@ -185,7 +179,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  // =============
   @Input() currentProduct!: IProduct;
   productDetailsStatus: boolean = false;
   displayDetails(item: IProduct) {
@@ -352,10 +345,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     };
   };
 
-  // ============================
 
   @ViewChild('scrollMe') private scrollMe!: any;
-
   ngAfterViewInit() {
     // this.elementHeight = this.scrollMe.nativeElement.offsetHeight;
     this.scrollToElement();
