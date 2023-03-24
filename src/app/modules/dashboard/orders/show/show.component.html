@@ -185,8 +185,12 @@
                                 <tr>
                                     <td style="height:40px;">
                                         <div class="text-center m-2">
-                                            <button class="btn btn-secondary no-print" style="width: fit-content;"
+                                            <button class="btn btn-secondary no-print mx-1" style="width: fit-content;"
                                                 (click)="print()">Print
+                                                Invoice</button>
+
+                                            <button class="btn btn-secondary no-print mx-1" style="width: fit-content;"
+                                                (click)="export(details.id)">Export
                                                 Invoice</button>
                                         </div>
                                     </td>

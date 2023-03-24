@@ -34,4 +34,12 @@ export class ShowComponent implements OnInit {
   print() {
     window.print();
   }
+
+  export(id: number) {
+    this._DashboardService.export(id).subscribe((res) => {
+      const link = document.createElement('a');
+      link.href = res.data;
+      link.click();
+    });
+  }
 }

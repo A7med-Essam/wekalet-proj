@@ -8,16 +8,16 @@ import { ApiService } from 'src/app/core/services/api.service';
 export class DashboardService {
   constructor(private _ApiService: ApiService) {}
 
-  OrderId:BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  ProductId:BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  OrderId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  ProductId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   getOrders(page: number, paginate?: any): Observable<any> {
     return this._ApiService.postReq(`dashboard/orders?page=${page}`, {
       paginate: paginate,
     });
   }
 
-  getOrderById(id:number): Observable<any> {
-    return this._ApiService.postReq(`dashboard/orders/show`, {id});
+  getOrderById(id: number): Observable<any> {
+    return this._ApiService.postReq(`dashboard/orders/show`, { id });
   }
 
   // products
@@ -27,26 +27,30 @@ export class DashboardService {
       paginate: paginate,
     });
   }
-  
-  getProductById(id:number): Observable<any> {
-    return this._ApiService.postReq(`dashboard/products/show`, {id});
-  }
 
+  getProductById(id: number): Observable<any> {
+    return this._ApiService.postReq(`dashboard/products/show`, { id });
+  }
 
   insertProduct(row: any): Observable<any> {
     return this._ApiService.postReq('dashboard/products/store', row);
   }
 
-  updateImage(imgId:number,img: any): Observable<any> {
-    return this._ApiService.postReq('dashboard/products/updateImage', {image_id:imgId,image:img});
+  updateImage(imgId: number, img: any): Observable<any> {
+    return this._ApiService.postReq('dashboard/products/updateImage', {
+      image_id: imgId,
+      image: img,
+    });
   }
 
-  deleteImage(image_id:number): Observable<any> {
-    return this._ApiService.postReq('dashboard/products/deleteImage', {image_id});
+  deleteImage(image_id: number): Observable<any> {
+    return this._ApiService.postReq('dashboard/products/deleteImage', {
+      image_id,
+    });
   }
 
-  deleteRow(id:number): Observable<any> {
-    return this._ApiService.postReq('dashboard/products/destroy', {id});
+  deleteRow(id: number): Observable<any> {
+    return this._ApiService.postReq('dashboard/products/destroy', { id });
   }
 
   // cateogries
@@ -86,5 +90,9 @@ export class DashboardService {
   }
   insertSizes(row: any): Observable<any> {
     return this._ApiService.postReq('dashboard/sizes/store', row);
+  }
+  // export
+  export(Id: any): Observable<any> {
+    return this._ApiService.postReq('dashboard/orders/printExcel', { Id });
   }
 }
