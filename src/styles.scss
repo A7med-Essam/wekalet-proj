@@ -1576,8 +1576,14 @@ button.axil-btn.btn-bg-primary.danger:before {
   }
 }
 
-.axil-product .product-hover-action{
+.axil-product .product-hover-action {
   margin-bottom: 10px !important;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
 }

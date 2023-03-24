@@ -30,4 +30,8 @@ export class ShowComponent implements OnInit {
         },
       });
   }
+
+  print() {
+    window.print();
+  }
 }

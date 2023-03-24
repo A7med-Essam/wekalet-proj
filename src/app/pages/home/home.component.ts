@@ -6,7 +6,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _Router: Router,
     private _MessageService: MessageService,
     private _CartService: CartService,
+    private _ActivatedRoute: ActivatedRoute
   ) {}
   private unsubscribe$ = new Subject<void>();
   @Input() currentProduct!: IProduct;
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     //     res ? (this.products = res) : this.getProducts();
     //   },
     // });
-    this.getProducts()
+    this.getProducts();
   }
 
   categories: ICategory[] = [];
@@ -53,6 +54,58 @@ export class HomeComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.categories = res.data.data;
         this._CategoryService.categories.next(res.data.data);
+        this._ActivatedRoute.queryParams.subscribe({
+          next: (res) => {
+            if (res?.قسم) {
+              switch (res.قسم) {
+                case 'الرجالي':
+                  this.categories.forEach((e) => {
+                    if (e.name == 'رجالي' || e.name == 'Men') {
+                      this.displayProductsByCategoryId(e.id);
+                    }
+                  });
+                  break;
+                case 'الحريمي':
+                  this.categories.forEach((e) => {
+                    if (e.name == 'حريمي' || e.name == 'Women') {
+                      this.displayProductsByCategoryId(e.id);
+                    }
+                  });
+                  break;
+                case 'الاطفالي':
+                  this.categories.forEach((e) => {
+                    if (e.name == 'أطفالي' || e.name == 'Kids') {
+                      this.displayProductsByCategoryId(e.id);
+                    }
+                  });
+                  break;
+                case 'الشباشب والصنادل':
+                  this.categories.forEach((e) => {
+                    if (e.name == 'شباشب و صنادل' || e.name == 'Slippers') {
+                      this.displayProductsByCategoryId(e.id);
+                    }
+                  });
+                  break;
+                case 'الرياضي':
+                  this.categories.forEach((e) => {
+                    if (e.name == 'رياضي' || e.name == 'Sports') {
+                      this.displayProductsByCategoryId(e.id);
+                    }
+                  });
+                  break;
+                case 'الأحذية':
+                  this.categories.forEach((e) => {
+                    if (e.name == 'أحذية' || e.name == 'Shose') {
+                      this.displayProductsByCategoryId(e.id);
+                    }
+                  });
+                  break;
+                default:
+                  break;
+              }
+            }
+          },
+        });
       },
     });
   }
@@ -95,6 +148,4 @@ export class HomeComponent implements OnInit, OnDestroy {
       this._MessageService.add(this._CartService.warningMessageService());
     }
   }
-
-
 }

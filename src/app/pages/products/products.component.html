@@ -208,7 +208,7 @@
                             class="axil-btn btn-bg-lighter btn-load-more pointer">{{"buttons.loadMore"|translate}}</a>
                     </div>
                     <ng-template #other_content>
-                        <div class="text-danger my-5 text-center">
+                        <div class="text-danger my-5 text-center" *ngIf="emptyMessageStatus&&products.length == 0">
                             {{"shop.products.emptyMsg" | translate}}
                         </div>
                     </ng-template>

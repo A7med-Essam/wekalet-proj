@@ -1,0 +1,9 @@
+@media print {
+
+    section,
+    table.main,
+    tr.main,
+    td.main {
+        padding: 0 !important;
+    }
+}

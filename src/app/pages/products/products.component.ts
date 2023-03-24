@@ -14,6 +14,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -31,7 +32,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     private _ProductService: ProductService,
     private _CartService: CartService,
     private _TranslateService: TranslateService,
-    private _MessageService: MessageService
+    private _MessageService: MessageService,
+    private _ActivatedRoute: ActivatedRoute
   ) {}
   rangeValues: number[] = [1000, 5000];
 
@@ -105,7 +107,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
             this.currentCategoryId = res;
             this.getProductsByCategoryId(res);
             this.categoryFilterBtn = true;
-            this.selectedCategories.push(this.currentCategoryId)
+            this.selectedCategories.push(this.currentCategoryId);
           } else {
             this.getProducts();
           }
@@ -124,10 +126,12 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
   pagination: any;
   skeletonStatus: boolean = true;
   perPage: number[] = [];
+  emptyMessageStatus: boolean = false;
   getProducts(page: number = 1) {
     this._ProductService.getProducts(page).subscribe({
       next: (res) => {
         this.skeletonStatus = false;
+        this.emptyMessageStatus = true;
         this.products = res.data.data;
         this.pagination = res.data;
         this.currentPage = res.data.current_page;
@@ -143,7 +147,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.skeletonStatus2 = true;
     loadBtn.innerHTML = `<i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>`;
     this._ProductService
-      .filterProducts(this.currentFilters,this.currentPage+1)
+      .filterProducts(this.currentFilters, this.currentPage + 1)
       .subscribe({
         next: (res) => {
           this.skeletonStatus2 = false;
@@ -164,7 +168,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.skeletonStatus = false;
         this.products = res.data.data;
         this.pagination = res.data;
-        this.currentPage = res.data.current_page
+        this.currentPage = res.data.current_page;
       },
     });
   }
@@ -174,6 +178,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
     this._ProductService.getFilterOptions().subscribe({
       next: (res) => {
         this.filterOptions = res.data;
+        this.filterOptions.sizes.sort(this.sort_by('name', false, parseInt));
         this._ProductService.filterOptions.next(res.data);
       },
     });
@@ -231,6 +236,7 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.currentFilters = filters;
         this.products = res.data.data;
         this.skeletonStatus = false;
+        this.emptyMessageStatus = true;
       },
     });
   }
@@ -245,7 +251,8 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       case 'color':
         status
-          ? !this.selectedColors.includes(Number(val)) && this.selectedColors.push(Number(val))
+          ? !this.selectedColors.includes(Number(val)) &&
+            this.selectedColors.push(Number(val))
           : this.removeFromFilter(this.selectedColors, Number(val));
         break;
       case 'gender':
@@ -256,12 +263,14 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
         break;
       case 'size':
         status
-          ? !this.selectedSizes.includes(Number(val)) && this.selectedSizes.push(Number(val))
+          ? !this.selectedSizes.includes(Number(val)) &&
+            this.selectedSizes.push(Number(val))
           : this.removeFromFilter(this.selectedSizes, Number(val));
         break;
       default:
         status
-          ? !this.selectedPrices.includes(Number(val)) && this.selectedPrices.push(Number(val))
+          ? !this.selectedPrices.includes(Number(val)) &&
+            this.selectedPrices.push(Number(val))
           : this.removeFromFilter(this.selectedPrices, Number(val));
         break;
     }
@@ -344,7 +353,6 @@ export class ProductsComponent implements OnInit, OnDestroy, AfterViewInit {
       );
     };
   };
-
 
   @ViewChild('scrollMe') private scrollMe!: any;
   ngAfterViewInit() {

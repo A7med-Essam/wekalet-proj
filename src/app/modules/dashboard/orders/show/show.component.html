@@ -1,68 +1,215 @@
-<section class="mt-5">
-    <div class="container pt-5">
-        <div class="row py-5">
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Shipping:</span> {{details.shippingType}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>PaymentType:</span> {{details.paymentType}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Status:</span>{{details.status}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Total Price:</span> {{details.total_price}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Date:</span> {{details.created_at | date}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Address:</span> {{details.address}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3" *ngIf="details.location">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Location:</span> {{details.location}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 my-3" *ngIf="details.notes">
-                <div class="item shadow-lg rounded-4 bg-white text-dark py-3 text-center">
-                    <span>Notes:</span> {{details.notes}}
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <p-table [value]="details?.order_products">
-                <ng-template pTemplate="header">
+<section class="py-5" style="background-color: #f2f3f8;">
+    <table cellspacing="0" border="0" cellpadding="0" width="100%" bgcolor="#f2f3f8" class="py-5 main"
+        style="@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700); font-family: 'Open Sans', sans-serif;direction: ltr;">
+        <tr class="py-5 main">
+            <td class="py-5 main">
+                <table style="background-color: #f2f3f8; max-width:670px; margin:0 auto;" width="100%" border="0"
+                    align="center" cellpadding="0" cellspacing="0">
+                    <!-- Logo -->
                     <tr>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Count</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Total price</th>
-                        <th class="text-center">Date</th>
+                        <td style="padding-bottom: 20px;padding-top: 50px;" align="center" valign="top" class="imgHero">
+                            <a style="text-decoration:none" target="_blank">
+                                <img alt="" border="0" src="../../../../../assets/images/logo.jpg"
+                                    style="width:100%;max-width:200px;height:auto;display:block;color: #f9f9f9;"
+                                    width="600">
+                            </a>
+                        </td>
                     </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-order>
                     <tr>
-                        <td class="text-center">{{order.product.name}}</td>
-                        <td class="text-center">{{order.count}}</td>
-                        <td class="text-center">{{order.price}}</td>
-                        <td class="text-center">{{order.total_price}}</td>
-                        <td class="text-center">{{order.created_at | date}}</td>
+                        <td style="height:20px;">&nbsp;</td>
                     </tr>
-                </ng-template>
-            </p-table>
-        </div>
-    </div>
+                    <!-- Email Content -->
+                    <tr>
+                        <td>
+                            <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0"
+                                style="max-width:670px; background:#fff; border-radius:3px;-webkit-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);-moz-box-shadow:0 6px 18px 0 rgba(0,0,0,.06);box-shadow:0 6px 18px 0 rgba(0,0,0,.06);padding:0 40px;">
+                                <tr>
+                                    <td style="height:40px;">&nbsp;</td>
+                                </tr>
+                                <!-- Title -->
+                                <tr>
+                                    <td style="padding:0 15px; text-align:center;">
+                                        <h1
+                                            style="color:#1e1e2d; font-weight:400; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">
+                                            Order Invoice</h1>
+                                        <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece;
+                                        width:100px;"></span>
+                                    </td>
+                                </tr>
+                                <!-- Details Table -->
+                                <tr>
+                                    <td>
+                                        <table cellpadding="0" cellspacing="0"
+                                            style="width: 100%; border: 1px solid #ededed">
+                                            <tbody>
+                                                <tr>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%; font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Shipping :
+                                                    </td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056;">
+                                                        {{details?.shippingType}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%; font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Payment Type :</td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056;">
+                                                        {{details?.paymentType}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%; font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Order Status :</td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056;">
+                                                        {{details?.status}}
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed;border-right: 1px solid #ededed; width: 35%; font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Total Price :</td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056;">
+                                                        {{details?.total_price}}
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        style="padding: 10px;  border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Order Date:</td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056;">
+                                                        {{details?.created_at | date}}
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="details?.location">
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Location :</td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056; ">
+                                                        {{details?.location}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr *ngIf="details?.notes">
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Notes :</td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056; ">
+                                                        {{details?.notes}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                        Address :</td>
+                                                    <td
+                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056; ">
+                                                        {{details?.address}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <table cellpadding="0" cellspacing="0"
+                                                            style="width: 100%; border: 1px solid #ededed">
+                                                            <tbody
+                                                                *ngFor="let product of details?.order_products; let i = index">
+                                                                <tr>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64);background-color: #c2c9cc;">
+                                                                        Product ({{i+1}})</td>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056;background-color: #c2c9cc; ">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                                        Name :</td>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056; ">
+                                                                        {{product?.product?.name}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                                        Price :</td>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056; ">
+                                                                        {{product?.product?.price}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                                        Quantity :</td>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056; ">
+                                                                        {{product?.product?.quantity}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; border-right: 1px solid #ededed; width: 35%;font-weight:500; color:rgba(0,0,0,.64)">
+                                                                        Images :</td>
+                                                                    <td
+                                                                        style="padding: 10px; border-bottom: 1px solid #ededed; color: #455056;">
+                                                                        <p-image
+                                                                            *ngFor="let img of product?.product?.images"
+                                                                            [src]="img?.image" alt="Product Image"
+                                                                            width="150" height="150" class="m-1"
+                                                                            [preview]="true">
+                                                                        </p-image>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height:40px;">
+                                        <div class="text-center m-2">
+                                            <button class="btn btn-secondary no-print" style="width: fit-content;"
+                                                (click)="print()">Print
+                                                Invoice</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="height:20px;">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;">
+                            <p
+                                style="font-size:14px; color:#455056bd; line-height:18px; margin:0 0 0; margin-bottom: 10px;">
+                                &copy;
+                                <strong>https://wekalet-abo-steet.me</strong>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </section>
