@@ -92,7 +92,7 @@ export class DashboardService {
     return this._ApiService.postReq('dashboard/sizes/store', row);
   }
   // export
-  export(Id: any): Observable<any> {
-    return this._ApiService.postReq('dashboard/orders/printExcel', { Id });
+  export(id: any): Observable<any> {
+    return this._ApiService.postReq('dashboard/orders/printExcel', { id });
   }
 }
