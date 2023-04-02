@@ -12,7 +12,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
 })
-export class CheckoutComponent implements OnInit ,OnDestroy{
+export class CheckoutComponent implements OnInit, OnDestroy {
   totalPrice: number = 0;
   paymentForm!: FormGroup;
   couponStatus: boolean = false;
@@ -34,14 +34,12 @@ export class CheckoutComponent implements OnInit ,OnDestroy{
     this.setPaymentForm();
     // this.getCart();
     this.getTotalPrice();
-    this._CartService.cart
-    .pipe(takeUntil(this.unsubscribe$))
-    .subscribe({
-      next:res=>{
+    this._CartService.cart.pipe(takeUntil(this.unsubscribe$)).subscribe({
+      next: (res) => {
         this.cart = this._CartService.cart.value;
-        this.totalPrice = this._CartService.calcCartPrice(this.cart)
-      }
-    })
+        this.totalPrice = this._CartService.calcCartPrice(this.cart);
+      },
+    });
   }
 
   toggleCouponSection(e: HTMLElement) {
@@ -156,8 +154,8 @@ export class CheckoutComponent implements OnInit ,OnDestroy{
       order.push({
         product_id: e.id,
         price: e.price,
-        total_price: e.price * e.min_quantity,
-        count: e.min_quantity,
+        total_price: e.price * e.quantity,
+        count: e.quantity,
       });
     });
     return order;
