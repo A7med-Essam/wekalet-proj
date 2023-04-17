@@ -84,6 +84,7 @@ export interface ICategory {
   deleted_at: string;
   created_at: string;
   updated_at: string;
+  array:any
 }
 export interface IPagination {
   current_page: number;
