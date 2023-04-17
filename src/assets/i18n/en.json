@@ -23,6 +23,10 @@
     "section3": {
       "title": "Explore Our Products",
       "subtitle": "Our Products"
+    } ,
+    "section4": {
+      "orders": "Orders",
+      "comments": "Comments"
     }
   },
   "about": {

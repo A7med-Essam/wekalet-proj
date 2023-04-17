@@ -23,6 +23,10 @@
     "section3": {
       "title": "تصفح منتجاتنا",
       "subtitle": "منتجاتنا"
+    },
+    "section4": {
+      "orders": "الأوردرات",
+      "comments": "الكومنتات"
     }
   },
   "about": {
@@ -193,7 +197,7 @@
     "updateCart": "تحديث عربة التسوق",
     "processToCheckout": "المتابعه الي الدفع",
     "goHomePage": "العودة الي الصفحة الرئيسية",
-    "allProducts":"كل المنتجات"
+    "allProducts": "كل المنتجات"
   },
   "labels": {
     "discount": "خصم",

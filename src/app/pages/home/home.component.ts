@@ -28,7 +28,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _MessageService: MessageService,
     private _CartService: CartService,
     private _ActivatedRoute: ActivatedRoute
-  ) {}
+  ) {
+        history.pushState("", document.title, window.location.pathname
+    + window.location.search);
+  }
   private unsubscribe$ = new Subject<void>();
   @Input() currentProduct!: IProduct;
   ngOnInit(): void {

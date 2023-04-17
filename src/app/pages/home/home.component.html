@@ -138,6 +138,31 @@
     </div>
 </section>
 
+<section class="section4">
+    <div class="container4 p-5 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="icon2 d-flex justify-content-center align-items-center m-auto mb-2"> 
+                        <i  class="fas fa-users fa-2x"></i> 
+                            <!-- <i class="fa-solid fa-sack-dollar"></i>     -->
+                    </span>
+                    <b class="text-white">{{categories[0].array.orders}}</b>
+                    <div class="text-white"><b>{{"home.section4.orders" | translate}}</b></div>
+                </div>
+
+                <div class="col-md-6">
+                    <span class="icon2 d-flex justify-content-center align-items-center m-auto mb-2"> 
+                        <i class="fa-solid fa-comment-dots fa-2x"></i>
+                    </span>
+                    <b class="text-white">{{categories[0].array.comments}}</b>
+                    <div class="text-white"><b>{{"home.section4.comments" | translate}}</b></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="products axil-product-area bg-color-white axil-section-gap position-relative bg-white">
     <div class="container">
         <div class="section-title-wrapper p-0">
@@ -215,27 +240,3 @@
     <app-product-details (modalStatus)="onCloseModal($event)" [product]="currentProduct"></app-product-details>
 </div>
 
-<section class="section4">
-    <div class="container4 p-5 text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <span class="icon2 d-flex justify-content-center align-items-center m-auto mb-2"> 
-                        <i  class="fas fa-users fa-2x"></i> 
-                            <!-- <i class="fa-solid fa-sack-dollar"></i>     -->
-                    </span>
-                    <b class="text-white">{{categories[0].array.orders}}</b>
-                    <div class="text-white"><b>Clients</b></div>
-                </div>
-
-                <div class="col-md-6">
-                    <span class="icon2 d-flex justify-content-center align-items-center m-auto mb-2"> 
-                        <i class="fa-solid fa-comment-dots fa-2x"></i>
-                    </span>
-                    <b class="text-white">{{categories[0].array.comments}}</b>
-                    <div class="text-white"><b>Comments</b></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
