@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { ManagerGuard } from './core/guards/manager.guard';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CartComponent } from './pages/cart/cart.component';
@@ -43,6 +44,14 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'steet-manager',
+    loadChildren: () =>
+      import('./modules/manager/manager.module').then(
+        (m) => m.ManagerModule
+      ),
+    canActivate: [ManagerGuard],
   },
   {
     path: '**',
