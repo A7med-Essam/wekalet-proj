@@ -75,6 +75,7 @@ export class ProductControlsComponent implements OnInit, OnDestroy {
     }
   }
 
+  filterBtnText:string = 'فلتر المنتجات حسب حاله المنتج';
   filter: number = 0;
   filterActiveProduct(page: number, filter: number) {
     this.currentPage > 1 ? (page = this.currentPage) : (page = 1);
@@ -83,6 +84,7 @@ export class ProductControlsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res) => {
         this.filter = this.filter == 0 ? 1 : 0;
+        this.filterBtnText = this.filter == 1 ? 'فلتر المنتجات المتاحه' : 'فلتر المنتجات الغير المتاحه';
         this.PaginationInfo = res.data;
         this.products = res.data.data;
       });

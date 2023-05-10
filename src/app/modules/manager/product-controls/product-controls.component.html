@@ -9,12 +9,14 @@
                     [rowsPerPageOptions]="[10,25,50,100]">
                     <ng-template pTemplate="caption">
                         <div class="flex">
-                            <button pButton label="تغيير حاله المنتج" class="p-button-outlined" icon="pi pi-filter" (click)="filterActiveProduct(1,filter)"></button>
+                            <button pButton [label]="filterBtnText" class="p-button-outlined" icon="pi pi-filter" (click)="filterActiveProduct(1,filter)"></button>
                         </div>
                     </ng-template>
                     <ng-template pTemplate="header">
                         <tr>
                             <th class="text-center">الصورة</th>
+                            <th class="text-center">السعر</th>
+                            <th class="text-center">أقل كمية</th>
                             <th class="text-center">حالة المنتج</th>
                             <th style="width: 14rem">
                                 حذف من العرض؟
@@ -28,6 +30,8 @@
                                     width="140" height="140" class="m-1" [preview]="true">
                                 </p-image>
                             </td>
+                            <td class="text-center">{{product.price}}</td>
+                            <td class="text-center">{{product.quantity}}</td>
                             <td class="text-center">
                                 <p-tag [value]="product.active == 1 ? 'متاح':'غير متاح'"
                                     [severity]="getSeverity(product.active)"></p-tag>
