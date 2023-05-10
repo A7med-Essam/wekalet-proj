@@ -6,7 +6,7 @@ import { ProductControlsComponent } from './product-controls/product-controls.co
 import { TableModule } from 'primeng/table';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ImageModule } from 'primeng/image';
-
+import { TagModule } from 'primeng/tag';
 @NgModule({
   declarations: [ProductControlsComponent],
   imports: [
@@ -15,6 +15,7 @@ import { ImageModule } from 'primeng/image';
     TableModule,
     ImageModule,
     ConfirmDialogModule,
+    TagModule,
   ],
 })
 export class ManagerModule {}
