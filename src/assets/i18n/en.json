@@ -10,7 +10,7 @@
   },
   "home": {
     "section1": {
-      "title": "Abu State Group Company",
+      "title": "Abu Steet Group Company",
       "title2": "Authorized agent for the rotating factory and the largest shoe factories in Egypt and the Arab world",
       "subtitle": "Authorized Agent",
       "reviews": "Reviews",
@@ -21,8 +21,11 @@
       "subtitle": "Categories"
     },
     "section3": {
-      "title": "Explore Our Products",
-      "subtitle": "Our Products"
+      "subtitle": "Our Products",
+      "title1": "Explore Our Male Products",
+      "title2": "Explore Our Female Products",
+      "title3": "Explore Our Kids Products",
+      "title4": "Explore Our Sandals Products"
     } ,
     "section4": {
       "orders": "Orders",

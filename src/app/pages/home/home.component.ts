@@ -43,12 +43,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
       });
 
-    // this._ProductService.products.pipe(takeUntil(this.unsubscribe$)).subscribe({
-    //   next: (res) => {
-    //     res ? (this.products = res) : this.getProducts();
-    //   },
-    // });
-    this.getProducts();
+ 
+    this.getProducts_men();
+    this.getProducts_women();
+    this.getProducts_kids();
+    this.getProducts_shoes();
   }
 
   categories: ICategory[] = [];
@@ -118,15 +117,43 @@ export class HomeComponent implements OnInit, OnDestroy {
     this._Router.navigate(['./products']);
   }
 
-  products: IProduct[] = [];
-  getProducts() {
-    this._ProductService.getProducts().subscribe({
+  products_men: IProduct[] = [];
+  getProducts_men() {
+    this._ProductService.getProductsById([2]).subscribe({
       next: (res) => {
-        this.products = res.data.data.slice(0, 8);
-        this._ProductService.products.next(res.data.data);
+        this.products_men = res.data.data;
       },
     });
   }
+
+  products_women: IProduct[] = [];
+  getProducts_women() {
+    this._ProductService.getProductsById([3]).subscribe({
+      next: (res) => {
+        this.products_women = res.data.data;
+      },
+    });
+  }
+
+  products_kids: IProduct[] = [];
+  getProducts_kids() {
+    this._ProductService.getProductsById([1]).subscribe({
+      next: (res) => {
+        this.products_kids = res.data.data;
+      },
+    });
+  }
+
+  products_shoes: IProduct[] = [];
+  getProducts_shoes() {
+    this._ProductService.getProductsById([4,5,6]).subscribe({
+      next: (res) => {
+        this.products_shoes = res.data.data;
+      },
+    });
+  }
+
+
 
   ngOnDestroy(): void {
     this.unsubscribe$.next();

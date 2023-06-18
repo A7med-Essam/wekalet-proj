@@ -25,6 +25,12 @@ export class ManagerService {
     });
   }
 
+  getProductsWithoutPagination(): Observable<any> {
+    return this._ApiService.postReq(`dashboard/products/indexV2`, {
+      withoutPagination:true
+    });
+  }
+
   filterProducts(page: number, filter: any): Observable<any> {
     return this._ApiService.postReq(`dashboard/products?page=${page}`, {active:filter});
   }

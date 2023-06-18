@@ -22,6 +22,16 @@ export class ProductService {
     return this._ApiService.postReq(`dashboard/products?page=${page}`, '');
   }
 
+  getProductsById(id:number[]): Observable<{
+    message: string;
+    status: number;
+    data: any;
+  }> {
+    return this._ApiService.postReq(`dashboard/products?page=1&paginate=8`, {
+      category_ids: id,
+    });
+  }
+
   getProductsByCategoryId(category_ids: number): Observable<{
     message: string;
     status: number;

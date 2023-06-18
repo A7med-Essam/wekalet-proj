@@ -43,19 +43,21 @@ export class ProductControlsComponent implements OnInit, OnDestroy {
 
   getProducts(page: number = 1, paginate?: any) {
     this.currentPage > 1 ? (page = this.currentPage) : (page = 1);
+    // page, paginate
     this._ManagerService
-      .getProducts(page, paginate)
+      .getProductsWithoutPagination()
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((res) => {
-        this.PaginationInfo = res.data;
-        this.products = res.data.data;
+        // this.PaginationInfo = res.data;
+        // this.products = res.data.data;
+        this.products = res.data;
       });
   }
 
-  paginate(e: any) {
-    this.currentPage = e.first / e.rows + 1;
-    this.getProducts(e.first / e.rows + 1, e.rows);
-  }
+  // paginate(e: any) {
+  //   this.currentPage = e.first / e.rows + 1;
+  //   this.getProducts(e.first / e.rows + 1, e.rows);
+  // }
 
   confirm() {
     this._ConfirmationService.confirm({
