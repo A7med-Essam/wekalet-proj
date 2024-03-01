@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BaseUrl: 'https://api.wekalet-abo-steet.me/api/',
+  BaseUrl: 'https://api.store.kirellos.com/api/',
 };
 
 /*

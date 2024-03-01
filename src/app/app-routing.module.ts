@@ -10,32 +10,24 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { LayoutComponent } from './modules/web/layout/layout.component';
+import { from } from 'rxjs';
+import { LayoutDashboardModule } from './modules/admin/layout-dashboard.module';
+import { AdminLayoutComponent } from './modules/admin/layouts/admin-layout/admin-layout.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: '',
+    component: LayoutComponent,
+    loadChildren: () =>
+      import('./modules/web/layout/layout.module').then((m) => m.LayoutModule),
   },
   {
-    path: 'products',
-    component: ProductsComponent,
-  },
-  {
-    path: 'about',
-    component: AboutComponent,
-  },
-  {
-    path: 'contact',
-    component: ContactComponent,
-  },
-  {
-    path: 'cart',
-    component: CartComponent,
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent,
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./modules/admin/layout-dashboard.module').then(
+        (m) => m.LayoutDashboardModule
+      ),
   },
   {
     path: 'steet-dashboard',
@@ -48,9 +40,7 @@ const routes: Routes = [
   {
     path: 'steet-manager',
     loadChildren: () =>
-      import('./modules/manager/manager.module').then(
-        (m) => m.ManagerModule
-      ),
+      import('./modules/manager/manager.module').then((m) => m.ManagerModule),
     canActivate: [ManagerGuard],
   },
   {
@@ -60,7 +50,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true , scrollPositionRestoration : "top" })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'top',
+      // useHash: false,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

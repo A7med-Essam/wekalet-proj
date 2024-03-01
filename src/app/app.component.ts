@@ -24,15 +24,6 @@ export class AppComponent {
     this.handleRouteEvents();
   }
 
-  scrollToTop(): void {
-    // scroll to the top of the body
-    return document.body.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'start',
-    });
-  }
-
   handleRouteEvents() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -41,7 +32,7 @@ export class AppComponent {
           this.router.routerState.root
         ).join('-');
         this.titleService.setTitle(title);
-        title == '' &&  (title = event.urlAfterRedirects.substring(1))
+        title == '' && (title = event.urlAfterRedirects.substring(1));
         gtag('event', 'page_view', {
           page_title: title,
           page_path: event.urlAfterRedirects,

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './pages/navbar/navbar.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -27,6 +26,12 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { SkeletonModule } from 'primeng/skeleton';
 import { SliderModule } from 'primeng/slider';
+import { LayoutDashboardModule } from './modules/admin/layout-dashboard.module';
+import {
+  HashLocationStrategy,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 
 export const ngxUiLoaderConfig: any = {
   bgsColor: '#2E36B2',
@@ -61,19 +66,7 @@ export const ngxUiLoaderConfig: any = {
   minTime: 300,
 };
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    NotFoundComponent,
-    HomeComponent,
-    ProductsComponent,
-    ContactComponent,
-    AboutComponent,
-    CheckoutComponent,
-    CartComponent,
-    ProductDetailsComponent,
-  ],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -88,7 +81,7 @@ export const ngxUiLoaderConfig: any = {
     NgxUiLoaderModule,
     SkeletonModule,
     SliderModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

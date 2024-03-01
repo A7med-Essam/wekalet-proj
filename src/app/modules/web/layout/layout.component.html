@@ -1,0 +1,12 @@
+<app-navbar class="no-print"></app-navbar>
+<router-outlet></router-outlet>
+
+<app-footer class="no-print"></app-footer>
+<p-toast position="bottom-right" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'300ms'"
+  [hideTransitionOptions]="'300ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+<ngx-ui-loader></ngx-ui-loader>
+<div class="to-top no-print" (click)="scrollToTop()">
+  <button _ngcontent-sva-c71="" class="axil-btn btn-bg-primary danger m-1" style="padding: 12px 20px;">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+</div>
